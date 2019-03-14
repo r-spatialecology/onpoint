@@ -25,6 +25,4 @@ You can install the development version of `onpoint` from
 
 ``` r
 devtools::install_github("mhesselbarth/onpoint")
-#> Skipping install of 'onpoint' from a github remote, the SHA1 (1779a343) has not changed since last install.
-#>   Use `force = TRUE` to force installation
 ```

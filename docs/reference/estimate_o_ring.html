@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • onpoint</title>
+<title>estimate_o_ring — estimate_o_ring • onpoint</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,7 +30,10 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="estimate_o_ring — estimate_o_ring" />
+
+<meta property="og:description" content="O-ring function" />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -47,7 +50,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -94,66 +97,80 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>estimate_o_ring</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mhesselbarth/onpoint/blob/master/R/estimate_o_ring.R'><code>R/estimate_o_ring.R</code></a></small>
+    <div class="hidden name"><code>estimate_o_ring.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    
+    <p>O-ring function</p>
+    
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
-
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="center_l_function.html">center_l_function()</a></code> </p>
-        </td>
-        <td><p>center_l_function</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="estimate_o_ring.html">estimate_o_ring()</a></code> </p>
-        </td>
-        <td><p>estimate_o_ring</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="onpoint.html">onpoint</a></code> </p>
-        </td>
-        <td><p>onpoint</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="quantum_plot.html">quantum_plot()</a></code> </p>
-        </td>
-        <td><p>quantum_plot</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="simulate_heterogenous_pattern.html">simulate_heterogenous_pattern()</a></code> </p>
-        </td>
-        <td><p>simulate_heterogenous_pattern</p></td>
-      </tr>
-    </tbody>
+    <pre class="usage"><span class='fu'>estimate_o_ring</span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>ppp</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Arguments passed to <code><a href='https://www.rdocumentation.org/packages/spatstat/topics/pcf.ppp'>spatstat::pcf.ppp()</a></code></p></td>
+    </tr>
     </table>
-  </div>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
+    <p>Estimate the O-ring function.</p>
+    
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Wiegand, T. and Moloney, K. A. 2014. Handbook of spatial point-pattern analysis in ecology. - Chapman and Hall/CRC Press.</p>
+<p>Wiegand, T. and Moloney, K. A. 2004. Rings, circles, and null models for point pattern analysis in ecology. - Oikos 104: 209–229.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code>envelope</code>
+<code>density.ppp</code></p></div>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>input_pattern</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>spatstat</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/spatstat/topics/runifpoint'>runifpoint</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>100</span>)
+<span class='fu'>estimate_o_ring</span>(<span class='no'>input_pattern</span>)</div><div class='output co'>#&gt; Function value object (class 'fv')
+#&gt; for the function r -&gt; g(r)*lambda
+#&gt; ............................................................................
+#&gt;       Math.label               Description                                  
+#&gt; r     r                        distance argument r                          
+#&gt; theo  g[Pois](r)*lambda        theoretical Poisson g(r)*lambda              
+#&gt; trans hat(g)[Trans](r)*lambda  translation-corrected estimate of g(r)*lambda
+#&gt; iso   hat(g)[Ripley](r)*lambda isotropic-corrected estimate of g(r)*lambda  
+#&gt; ............................................................................
+#&gt; Default plot formula:  .~.x
+#&gt; where "." stands for 'iso', 'trans', 'theo'
+#&gt; Recommended range of argument r: [0, 0.25]
+#&gt; Available range of argument r: [0, 0.25]</div><div class='input'>
+</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#references">References</a></li>
+
+      <li><a href="#see-also">See also</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
     </ul>
+
   </div>
 </div>
 
