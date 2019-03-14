@@ -1,12 +1,28 @@
-Package: onpoint
 Type: Package
-Title: What the Package Does (Title Case)
+Package: onpoint
+Title: Helper functions for point pattern analysis
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Authors@R: 
+  person("Maximillian H.K.", "Hesselbarth", 
+  email = "maximilian.hesselbarth@uni-goettingen.de",
+  role = c("aut", "cre"), 
+  comment = c(ORCID = "0000-0003-1125-9918"))
+Maintainer: Maximillian H.K. Hesselbarth <maximilian.hesselbarth@uni-goettingen.de>
+Description: 
+  Growing collection of small helper functions for point pattern analysis. Most functions
+  are designed to work with the spatstat package.
+URL: https://github.com/mhesselbarth/onpoint
+BugReports: https://github.com/mhesselbarth/onpoint/issues
 License: GPL-3
-Encoding: UTF-8
+Depends: R (>= 3.1)
+Imports:
+  ggplot2,
+  spatstat, 
+  dplyr, 
+  tibble
+Suggests: 
+    testthat,
+    covr
 LazyData: true
+Encoding: UTF-8
 RoxygenNote: 6.1.1
