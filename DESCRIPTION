@@ -18,8 +18,7 @@ Depends: R (>= 3.1)
 Imports:
   ggplot2,
   spatstat, 
-  dplyr, 
-  tibble
+  stats,
 Suggests: 
     testthat,
     covr

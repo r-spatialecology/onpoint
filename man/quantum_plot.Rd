@@ -29,13 +29,13 @@ Plot simulation envelopes
 \details{
 This functions provides a plotting style for envelope objects of the spatstat
 package (for more information please see `?spatstat::envelope`). The location of the
-observed value in relation to the simulation envelope of the null model data is
+observed value in relation to the simulation envelope of the null model input is
 indicated by an additional colour bar at the bottom of the plot.
 
 A named vector including labels for the following three cases:
-\cr 1 = obs > hi
-\cr 2 = lo < obs < hi
-\cr 3 = obs < lo
+\cr 1 = observed > high
+\cr 2 = low < observed < high
+\cr 3 = observed < low
 
 All values are standarized by subtracting the theoretical value for CSR
 }

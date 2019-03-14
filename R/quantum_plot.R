@@ -13,13 +13,13 @@
 #' @details
 #' This functions provides a plotting style for envelope objects of the spatstat
 #' package (for more information please see `?spatstat::envelope`). The location of the
-#' observed value in relation to the simulation envelope of the null model data is
+#' observed value in relation to the simulation envelope of the null model input is
 #' indicated by an additional colour bar at the bottom of the plot.
 #'
 #' A named vector including labels for the following three cases:
-#' \cr 1 = obs > hi
-#' \cr 2 = lo < obs < hi
-#' \cr 3 = obs < lo
+#' \cr 1 = observed > high
+#' \cr 2 = low < observed < high
+#' \cr 3 = observed < low
 #'
 #' All values are standarized by subtracting the theoretical value for CSR
 #'
@@ -45,9 +45,9 @@ quantum_plot <- function(input,
                          title = NULL, xlab = NULL, ylab = NULL, size = 5,
                          full_fun = T, standarized = F){
 
-  if(!is(input, "envelope") && !is(input, "data.frame")) {
+  if(!is(input, "envelope") && !is(input, "input.frame")) {
 
-    stop("Please provide envelope object or dataframe.", call. = FALSE)
+    stop("Please provide envelope or data frame.", call. = FALSE)
   }
 
   if(length(labels) !=  3){
@@ -60,27 +60,28 @@ quantum_plot <- function(input,
 
   if(is.null(ylab)){ylab <- "f(r)"}
 
-  data <- tibble::as.tibble(input)
+  input <- spatstat::as.data.frame.fv(input)
 
-  names(data) <- c("r", "obs", "theo", "lo", "hi")
+  names(input) <- c("r", "observed", "theoretical", "low", "high")
 
   if(standarized == TRUE){
-
-    data <- dplyr::mutate(data, obs = obs - theo,
-                          lo = lo - theo ,
-                          hi = hi - theo,
-                          theo = theo - theo)
+    input$observed <- input$observed - theoretical
+    input$low <- input$low - theoretical
+    input$high <- input$high - theoretical
+    input$theoretical <- input$theoretical - theoretical
   }
 
-  data <- data[stats::complete.cases(data), ]
+  # get rid of stats
+  input <- input[stats::complete.cases(input), ]
 
-  data <- dplyr::mutate(data, type = dplyr::case_when(obs > hi ~ labels[1],
-                                                      obs >=  lo & obs <=  hi ~ labels[2],
-                                                      obs < lo ~ labels[3]))
+  input$type <- labels[[2]]
+  input$type[input$observed > input$high] <- labels[[1]]
+  input$type[input$observed < input$low] <- labels[[3]]
 
-  data <- dplyr::filter(data,
-                        !is.na(type))
+  # really needed
+  input <- input[!is.na(input$type), ]
 
+  # allow for user color scale
   color_scale <- c("#440154FF",
                    "#238A8DFF",
                    "#FDE725FF")
@@ -89,11 +90,11 @@ quantum_plot <- function(input,
 
   if(full_fun == TRUE){
 
-    gg_plot <- ggplot2::ggplot(data) +
-      ggplot2::geom_ribbon(ggplot2::aes(x = r, ymin = lo, ymax = hi), fill = "grey") +
-      ggplot2::geom_line(ggplot2::aes(x = r, y = obs, linetype = "Observed"), size = 0.5) +
-      ggplot2::geom_line(ggplot2::aes(x = r, y = theo, linetype = "Theoretical"), size = 0.5) +
-      ggplot2::geom_line(ggplot2::aes(x = r, y = min(c(lo, obs)), colour = type, group = "x"), size = size) +
+    gg_plot <- ggplot2::ggplot(input) +
+      ggplot2::geom_ribbon(ggplot2::aes(x = r, ymin = low, ymax = high), fill = "grey") +
+      ggplot2::geom_line(ggplot2::aes(x = r, y = observed, linetype = "Observed"), size = 0.5) +
+      ggplot2::geom_line(ggplot2::aes(x = r, y = theoretical, linetype = "Theoretical"), size = 0.5) +
+      ggplot2::geom_line(ggplot2::aes(x = r, y = min(c(low, observed)), colour = type, group = "x"), size = size) +
       ggplot2::scale_color_manual(name = "", values = color_scale) +
       ggplot2::scale_linetype_manual(name = "", values = c(1,2)) +
       ggplot2::labs(x = xlab, y = ylab, title = title) +
@@ -102,7 +103,7 @@ quantum_plot <- function(input,
   }
 
   else{
-    gg_plot <- ggplot2::ggplot(data) +
+    gg_plot <- ggplot2::ggplot(input) +
       ggplot2::geom_line(ggplot2::aes(x = r, y = 0, colour = type, group = "x"), size = 5) +
       ggplot2::coord_cartesian(ylim = c(0, 0.1)) +
       ggplot2::scale_color_manual(name = "", values = color_scale) +

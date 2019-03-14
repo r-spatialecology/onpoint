@@ -51,5 +51,5 @@ test_that("quantum_plot returns error", {
 
   expect_error(quantum_plot(pattern, ylab = "g(r)",
                             labels = c("clustering", "segregation")),
-               regexp = "Please provide envelope object or dataframe.")
+               regexp = "Please provide envelope or data frame.")
 })
