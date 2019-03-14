@@ -45,7 +45,7 @@ quantum_plot <- function(input,
                          title = NULL, xlab = NULL, ylab = NULL, size = 5,
                          full_fun = T, standarized = F){
 
-  if(!is(input, "envelope") && !is(input, "input.frame")) {
+  if(!is(input, "envelope") && !is(input, "data.frame")) {
 
     stop("Please provide envelope or data frame.", call. = FALSE)
   }
