@@ -33,5 +33,9 @@ simulate_heterogenous_pattern <- function(x, nsim, ...) {
   simulated_pattern <- spatstat::rpoispp(lambda = lambda_xy,
                                          nsim = nsim)
 
+  for(i in seq_len(nsim)) {
+    simulated_pattern[[i]]$window <- x$window
+  }
+
   return(simulated_pattern)
 }
