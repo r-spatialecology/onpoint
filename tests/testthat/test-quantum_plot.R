@@ -31,6 +31,21 @@ test_that("quantum_plot returns ggplot (only quantum)", {
   expect_length(plot$layers, n = 1)
 })
 
+test_that("quantum_plot returns ggplot only function", {
+
+  pattern <- spatstat::rThomas(kappa = 50, scale = 0.025, mu = 5)
+
+  csr_envelope <- spatstat::envelope(pattern,
+                                     fun = spatstat::pcf, nsim = 9,
+                                     funargs = list(divisor = "d",
+                                                    correction = "Ripley"))
+
+  plot <- quantum_plot(csr_envelope, ylab = "g(r)", quantum = FALSE)
+
+  expect_is(plot, "ggplot")
+  expect_length(plot$layers, n = 3)
+})
+
 test_that("quantum_plot creates labels if not provided", {
 
   pattern <- spatstat::rThomas(kappa = 50, scale = 0.025, mu = 5)

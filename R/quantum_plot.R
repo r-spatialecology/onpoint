@@ -4,24 +4,31 @@
 #'
 #' @param input envelope.
 #' @param labels Name of the labels. See details for more information.
+#' @param color_scale Colors used with labels.
+#' @param legend_position The position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector)
+#' @param quantum_position Position of the quantum relative to the simulation envelopes.
 #' @param title Plot title.
 #' @param xlab,ylab axis labels.
 #' @param size Size of the colour bar.
 #' @param full_fun If true observed value and envelope is plotted.
+#' @param quantum If true quantums bars are plotted.
 #' @param standarized If true observed value is standardized. See details for more details.
 #'
 #' @details
 #' This functions provides a plotting style for envelope objects of the spatstat
-#' package (for more information please see `?spatstat::envelope`). The location of the
+#' package (for more information please see \code{spatstat::envelope}). The location of the
 #' observed value in relation to the simulation envelope of the null model input is
-#' indicated by an additional colour bar at the bottom of the plot.
+#' indicated by an additional colour bar at the bottom of the plot. If \code{standarized = TRUE},
+#' all values are standarized by subtracting the theoretical value for CSR
 #'
-#' A named vector including labels for the following three cases:
+#' Labels must be a vector including labels for the following three cases. The color scale vector is used in the same order.
 #' \cr 1 = observed > high
 #' \cr 2 = low < observed < high
 #' \cr 3 = observed < low
 #'
-#' All values are standarized by subtracting the theoretical value for CSR
+#' To adjust the position of the quantum bar, use \code{quantum_position}. Larger values increase
+#' the distance from the lower part of the envelope. \code{quantum_position = 0} puts the quantum
+#' bar on the minium value of the simulation envelope, negative value shift above that value.
 #'
 #' @seealso
 #' \code{\link{envelope}}
@@ -33,7 +40,7 @@
 #' @examples
 #' set.seed(42)
 #' pattern <- spatstat::rThomas(kappa = 50, scale = 0.025, mu = 5)
-#' csr_envelope <- spatstat::envelope(pattern, fun = spatstat::pcf, nsim = 39)
+#' csr_envelope <- spatstat::envelope(pattern, fun = spatstat::pcf, nsim = 19)
 #' quantum_plot(csr_envelope, ylab = "g(r)")
 #'
 #' @aliases quantum_plot
@@ -41,13 +48,18 @@
 
 #' @export
 quantum_plot <- function(input,
-                         labels = c("clustering", "randomness", "segregation"),
+                         labels = NULL, color_scale = NULL, legend_position = "bottom",
+                         quantum_position = 0.05,
                          title = NULL, xlab = NULL, ylab = NULL, size = 5,
-                         full_fun = T, standarized = F){
+                         full_fun = TRUE, quantum = TRUE, standarized = FALSE){
 
   if(!is(input, "envelope") && !is(input, "data.frame")) {
 
     stop("Please provide envelope or data frame.", call. = FALSE)
+  }
+
+  if(is.null(labels)) {
+    labels <- c("clustering", "randomness", "segregation")
   }
 
   if(length(labels) !=  3){
@@ -59,6 +71,14 @@ quantum_plot <- function(input,
   if(is.null(xlab)){xlab <- "r"}
 
   if(is.null(ylab)){ylab <- "f(r)"}
+
+  if(is.null(color_scale)) {
+    color_scale <- c("#440154FF",
+                     "#238A8DFF",
+                     "#FDE725FF")
+  }
+
+  names(color_scale) <- labels
 
   input <- spatstat::as.data.frame.fv(input)
 
@@ -81,25 +101,34 @@ quantum_plot <- function(input,
   # really needed
   input <- input[!is.na(input$type), ]
 
-  # allow for user color scale
-  color_scale <- c("#440154FF",
-                   "#238A8DFF",
-                   "#FDE725FF")
-
-  names(color_scale) <- labels
-
   if(full_fun == TRUE){
 
-    gg_plot <- ggplot2::ggplot(input) +
-      ggplot2::geom_ribbon(ggplot2::aes(x = r, ymin = low, ymax = high), fill = "grey") +
-      ggplot2::geom_line(ggplot2::aes(x = r, y = observed, linetype = "Observed"), size = 0.5) +
-      ggplot2::geom_line(ggplot2::aes(x = r, y = theoretical, linetype = "Theoretical"), size = 0.5) +
-      ggplot2::geom_line(ggplot2::aes(x = r, y = min(c(low, observed)), colour = type, group = "x"), size = size) +
-      ggplot2::scale_color_manual(name = "", values = color_scale) +
-      ggplot2::scale_linetype_manual(name = "", values = c(1,2)) +
-      ggplot2::labs(x = xlab, y = ylab, title = title) +
-      ggplot2::theme_bw(base_size = 15) +
-      ggplot2::theme(legend.position = "bottom")
+    if(quantum == TRUE) {
+
+      y_quantum <- min(c(input$low, input$observed)) - (max(input$high, input$observed) - min(input$low, input$observed)) * quantum_position
+
+      gg_plot <- ggplot2::ggplot(input) +
+        ggplot2::geom_ribbon(ggplot2::aes(x = r, ymin = low, ymax = high), fill = "grey") +
+        ggplot2::geom_line(ggplot2::aes(x = r, y = observed, linetype = "Observed"), size = 0.5) +
+        ggplot2::geom_line(ggplot2::aes(x = r, y = theoretical, linetype = "Theoretical"), size = 0.5) +
+        ggplot2::geom_line(ggplot2::aes(x = r, y = y_quantum, colour = type, group = "x"), size = size) +
+        ggplot2::scale_color_manual(name = "", values = color_scale) +
+        ggplot2::scale_linetype_manual(name = "", values = c(1, 2)) +
+        ggplot2::labs(x = xlab, y = ylab, title = title) +
+        ggplot2::theme_bw(base_size = 15) +
+        ggplot2::theme(legend.position = legend_position)
+    }
+
+    else {
+      gg_plot <- ggplot2::ggplot(input) +
+        ggplot2::geom_ribbon(ggplot2::aes(x = r, ymin = low, ymax = high), fill = "grey") +
+        ggplot2::geom_line(ggplot2::aes(x = r, y = observed, linetype = "Observed"), size = 0.5) +
+        ggplot2::geom_line(ggplot2::aes(x = r, y = theoretical, linetype = "Theoretical"), size = 0.5) +
+        ggplot2::scale_linetype_manual(name = "", values = c(1, 2)) +
+        ggplot2::labs(x = xlab, y = ylab, title = title) +
+        ggplot2::theme_bw(base_size = 15) +
+        ggplot2::theme(legend.position = legend_position)
+    }
   }
 
   else{
@@ -109,11 +138,12 @@ quantum_plot <- function(input,
       ggplot2::scale_color_manual(name = "", values = color_scale) +
       ggplot2::labs(x = xlab, y = "", title = title) +
       ggplot2::theme_classic(base_size = 15) +
-      ggplot2::theme(legend.position = "bottom",
+      ggplot2::theme(legend.position = legend_position,
                      strip.background = ggplot2::element_blank(),
                      axis.line.y = ggplot2::element_blank(),
                      axis.text.y = ggplot2::element_blank(),
                      axis.ticks.y = ggplot2::element_blank())
   }
+
   return(gg_plot)
 }

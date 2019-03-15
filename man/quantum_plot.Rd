@@ -4,14 +4,21 @@
 \alias{quantum_plot}
 \title{quantum_plot}
 \usage{
-quantum_plot(input, labels = c("clustering", "randomness",
-  "segregation"), title = NULL, xlab = NULL, ylab = NULL, size = 5,
-  full_fun = T, standarized = F)
+quantum_plot(input, labels = NULL, color_scale = NULL,
+  legend_position = "bottom", quantum_position = 0.05, title = NULL,
+  xlab = NULL, ylab = NULL, size = 5, full_fun = TRUE,
+  quantum = TRUE, standarized = FALSE)
 }
 \arguments{
 \item{input}{envelope.}
 
 \item{labels}{Name of the labels. See details for more information.}
+
+\item{color_scale}{Colors used with labels.}
+
+\item{legend_position}{The position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector)}
+
+\item{quantum_position}{Position of the quantum relative to the simulation envelopes.}
 
 \item{title}{Plot title.}
 
@@ -21,6 +28,8 @@ quantum_plot(input, labels = c("clustering", "randomness",
 
 \item{full_fun}{If true observed value and envelope is plotted.}
 
+\item{quantum}{If true quantums bars are plotted.}
+
 \item{standarized}{If true observed value is standardized. See details for more details.}
 }
 \description{
@@ -28,21 +37,24 @@ Plot simulation envelopes
 }
 \details{
 This functions provides a plotting style for envelope objects of the spatstat
-package (for more information please see `?spatstat::envelope`). The location of the
+package (for more information please see \code{spatstat::envelope}). The location of the
 observed value in relation to the simulation envelope of the null model input is
-indicated by an additional colour bar at the bottom of the plot.
+indicated by an additional colour bar at the bottom of the plot. If \code{standarized = TRUE},
+all values are standarized by subtracting the theoretical value for CSR
 
-A named vector including labels for the following three cases:
+Labels must be a vector including labels for the following three cases. The color scale vector is used in the same order.
 \cr 1 = observed > high
 \cr 2 = low < observed < high
 \cr 3 = observed < low
 
-All values are standarized by subtracting the theoretical value for CSR
+To adjust the position of the quantum bar, use \code{quantum_position}. Larger values increase
+the distance from the lower part of the envelope. \code{quantum_position = 0} puts the quantum
+bar on the minium value of the simulation envelope, negative value shift above that value.
 }
 \examples{
 set.seed(42)
 pattern <- spatstat::rThomas(kappa = 50, scale = 0.025, mu = 5)
-csr_envelope <- spatstat::envelope(pattern, fun = spatstat::pcf, nsim = 39)
+csr_envelope <- spatstat::envelope(pattern, fun = spatstat::pcf, nsim = 19)
 quantum_plot(csr_envelope, ylab = "g(r)")
 
 }
