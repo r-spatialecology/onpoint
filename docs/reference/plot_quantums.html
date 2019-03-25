@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>simulate_heterogenous_pattern — simulate_heterogenous_pattern • onpoint | Helper functions for spatstat</title>
+<title>plot_quantums — plot_quantums • onpoint | Helper functions for spatstat</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="simulate_heterogenous_pattern — simulate_heterogenous_pattern" />
+<meta property="og:title" content="plot_quantums — plot_quantums" />
 
-<meta property="og:description" content="Simulate heterogenous pattern" />
+<meta property="og:description" content="Plot simulation envelopes" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -97,79 +97,103 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>simulate_heterogenous_pattern</h1>
+    <h1>plot_quantums</h1>
     
-    <div class="hidden name"><code>simulate_heterogenous_pattern.Rd</code></div>
+    <div class="hidden name"><code>plot_quantums.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Simulate heterogenous pattern</p>
+    <p>Plot simulation envelopes</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>simulate_heterogenous_pattern</span>(<span class='no'>x</span>, <span class='no'>nsim</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>plot_quantums</span>(<span class='no'>input</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>color_scale</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>legend_position</span> <span class='kw'>=</span> <span class='st'>"bottom"</span>, <span class='kw'>quantum_position</span> <span class='kw'>=</span> <span class='fl'>0.05</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>full_fun</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>quantum</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>standarized</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>ppp</p></td>
+      <th>input</th>
+      <td><p>envelope.</p></td>
     </tr>
     <tr>
-      <th>nsim</th>
-      <td><p>Number of patterns to simulate.</p></td>
+      <th>labels</th>
+      <td><p>Name of the labels. See details for more information.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Arguments passed to <code><a href='https://www.rdocumentation.org/packages/spatstat/topics/density.ppp'>spatstat::density.ppp()</a></code></p></td>
+      <th>color_scale</th>
+      <td><p>Colors used with labels.</p></td>
+    </tr>
+    <tr>
+      <th>legend_position</th>
+      <td><p>The position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector)</p></td>
+    </tr>
+    <tr>
+      <th>quantum_position</th>
+      <td><p>Position of the quantum relative to the simulation envelopes.</p></td>
+    </tr>
+    <tr>
+      <th>title</th>
+      <td><p>Plot title.</p></td>
+    </tr>
+    <tr>
+      <th>xlab, ylab</th>
+      <td><p>axis labels.</p></td>
+    </tr>
+    <tr>
+      <th>size</th>
+      <td><p>Size of the colour bar.</p></td>
+    </tr>
+    <tr>
+      <th>full_fun</th>
+      <td><p>If true observed value and envelope is plotted.</p></td>
+    </tr>
+    <tr>
+      <th>quantum</th>
+      <td><p>If true quantums bars are plotted.</p></td>
+    </tr>
+    <tr>
+      <th>standarized</th>
+      <td><p>If true observed value is standardized. See details for more details.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Simulate heterogenous point patterns as null model data for <code><a href='https://www.rdocumentation.org/packages/spatstat/topics/envelope'>spatstat::envelope()</a></code>.
-A heterogenous Poisson process is used, meaning that there are no interaction between points,
-however, the simulated coordinates depend on the intensity \(\lambda\) of the input pattern.</p>
+    <p>This functions provides a plotting style for envelope objects of the spatstat
+package (for more information please see <code><a href='https://www.rdocumentation.org/packages/spatstat/topics/envelope'>spatstat::envelope</a></code>). The location of the
+observed value in relation to the simulation envelope of the null model input is
+indicated by an additional colour bar at the bottom of the plot. If <code>standarized = TRUE</code>,
+all values are standarized by subtracting the theoretical value for CSR</p>
+<p>Labels must be a vector including labels for the following three cases. The color scale vector is used in the same order.
+<br /> 1 = observed &gt; high
+<br /> 2 = low &lt; observed &lt; high
+<br /> 3 = observed &lt; low</p>
+<p>To adjust the position of the quantum bar, use <code>quantum_position</code>. Larger values increase
+the distance from the lower part of the envelope. <code>quantum_position = 0</code> puts the quantum
+bar on the minium value of the simulation envelope, negative value shift above that value.</p>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Baddeley, A. et al. 2015. Spatial Point Patterns: Methodology and Applications with R. - Chapman and Hall/CRC Press.</p>
-<p>Wiegand, T. and Moloney, K. A. 2014. Handbook of spatial point-pattern analysis in ecology. - Chapman and Hall/CRC Press.</p>
+    <p>Esser, D. S. et al. 2015. Spatial scales of interactions among bacteria and between
+bacteria and the leaf surface. - FEMS Microbiol. Ecol. 91: fiu034.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code>envelope</code> <br />
-<code>density.ppp</code></p></div>
+    <div class='dont-index'><p><code>envelope</code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Random'>set.seed</a></span>(<span class='fl'>42</span>)
-<span class='no'>input_pattern</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>spatstat</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/spatstat/topics/rpoispp'>rpoispp</a></span>(<span class='kw'>lambda</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>x</span> , <span class='no'>y</span>) {<span class='fl'>100</span> * <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Log'>exp</a></span>(-<span class='fl'>3</span> * <span class='no'>x</span>)}, <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>1</span>)
-<span class='no'>null_model</span> <span class='kw'>&lt;-</span> <span class='fu'>simulate_heterogenous_pattern</span>(<span class='no'>input_pattern</span>, <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>19</span>)
-<span class='kw pkg'>spatstat</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/spatstat/topics/envelope'>envelope</a></span>(<span class='kw'>Y</span> <span class='kw'>=</span> <span class='no'>input_pattern</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='kw pkg'>spatstat</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/spatstat/topics/pcf'>pcf</a></span>, <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>19</span>, <span class='kw'>simulate</span> <span class='kw'>=</span> <span class='no'>null_model</span>)</div><div class='output co'>#&gt; Extracting 19 point patterns from list  ...
+<span class='no'>pattern</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>spatstat</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/spatstat/topics/rThomas'>rThomas</a></span>(<span class='kw'>kappa</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>0.025</span>, <span class='kw'>mu</span> <span class='kw'>=</span> <span class='fl'>5</span>)
+<span class='no'>csr_envelope</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>spatstat</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/spatstat/topics/envelope'>envelope</a></span>(<span class='no'>pattern</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='kw pkg'>spatstat</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/spatstat/topics/pcf'>pcf</a></span>, <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>19</span>)</div><div class='output co'>#&gt; Generating 19 simulations of CSR  ...
 #&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,  19.
 #&gt; 
-#&gt; Done.</div><div class='output co'>#&gt; Pointwise critical envelopes for g(r)
-#&gt; and observed value for 'input_pattern'
-#&gt; Edge correction: "iso"
-#&gt; Obtained from 19 point pattern datasets in user-supplied list
-#&gt; Alternative: two.sided
-#&gt; Significance level of pointwise Monte Carlo test: 2/20 = 0.1
-#&gt; ......................................................................
-#&gt;       Math.label     Description                                      
-#&gt; r     r              distance argument r                              
-#&gt; obs   hat(g)[obs](r) observed value of g(r) for data pattern          
-#&gt; mmean bar(g)(r)      sample mean of g(r) from simulations             
-#&gt; lo    hat(g)[lo](r)  lower pointwise envelope of g(r) from simulations
-#&gt; hi    hat(g)[hi](r)  upper pointwise envelope of g(r) from simulations
-#&gt; ......................................................................
-#&gt; Default plot formula:  .~r
-#&gt; where "." stands for 'obs', 'mmean', 'hi', 'lo'
-#&gt; Columns 'lo' and 'hi' will be plotted as shading (by default)
-#&gt; Recommended range of argument r: [0, 0.25]
-#&gt; Available range of argument r: [0, 0.25]</div><div class='input'>
+#&gt; Done.</div><div class='input'><span class='fu'>plot_quantums</span>(<span class='no'>csr_envelope</span>, <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='st'>"g(r)"</span>)</div><div class='img'><img src='plot_quantums-1.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
