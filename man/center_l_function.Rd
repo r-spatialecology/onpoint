@@ -15,8 +15,8 @@ center_l_function(x, ...)
 Centered L-function
 }
 \details{
-Centers Besag's L-function to zero by calculating L(r) -r. Centering
-the L-function allows an easier interpretation and plotting of the results (Haase 1995).
+Centers Besag's L-function to zero by calculating L(r) -r. Centering the L-function
+allows an easier interpretation and plotting of the results (Haase 1995).
 }
 \examples{
 input_pattern <- spatstat::runifpoint(n = 100)
