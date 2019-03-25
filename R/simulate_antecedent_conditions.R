@@ -36,6 +36,19 @@ simulate_antecedent_conditions <- function(x, i, j, nsim) {
     stop("Please provide marked point pattern.", call. = FALSE)
   }
 
+  # check if more than 2 types are present
+  if(length(unique(spatstat::marks(x))) > 2) {
+    stop("Currently only bivariate point patterns are supported.", call. = FALSE)
+  }
+
+  # check if i and j are valid marks
+  if(!all(unique(spatstat::marks(x)) %in% c(i, j))) {
+    stop("i and j must be marks of x.", call. = FALSE)
+  }
+
+
+
+
   # only points with mark j
   pattern_j <- spatstat::subset.ppp(x, marks == j, drop = TRUE)
 

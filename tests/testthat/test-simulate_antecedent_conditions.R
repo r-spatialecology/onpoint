@@ -47,9 +47,16 @@ test_that("simulate_antecedent_conditions randomizes pattern i", {
 
 test_that("simulate_antecedent_conditions returns error", {
 
-  pattern <- spatstat::runifpoint(n = 100)
+  pattern_unmarked <- spatstat::runifpoint(n = 100)
 
-  expect_error(simulate_antecedent_conditions(x = pattern),
+  expect_error(simulate_antecedent_conditions(x = pattern_unmarked),
                regexp = "Please provide marked point pattern.")
 
+  expect_error(simulate_antecedent_conditions(x = pattern, i = "a", j = "c"),
+               regexp = "i and j must be marks of x.")
+
+  spatstat::marks(pattern[1]) <- "c"
+
+  expect_error(simulate_antecedent_conditions(x = pattern, i = "a", j = "b"),
+               regexp = "Currently only bivariate point patterns are supported.")
 })
