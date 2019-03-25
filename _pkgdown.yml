@@ -1,0 +1,5 @@
+title: onpoint | Helper functions for spatstat
+
+template:
+  params:
+    bootswatch: sandstone
