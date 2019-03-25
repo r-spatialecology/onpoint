@@ -11,6 +11,7 @@
 # Global variables
 globalVariables(c("high",
                   "low",
+                  "marks",
                   "observed",
                   "r",
                   "theoretical",
