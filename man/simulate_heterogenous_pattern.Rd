@@ -22,6 +22,7 @@ A heterogenous Poisson process is used, meaning that there are no interaction be
 however, the simulated coordinates depend on the intensity \eqn{\lambda} of the input pattern.
 }
 \examples{
+set.seed(42)
 input_pattern <- spatstat::rpoispp(lambda = function(x , y) {100 * exp(-3 * x)}, nsim = 1)
 null_model <- simulate_heterogenous_pattern(input_pattern, nsim = 19)
 spatstat::envelope(Y = input_pattern, fun = spatstat::pcf, nsim = 19, simulate = null_model)

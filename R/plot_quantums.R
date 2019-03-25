@@ -1,4 +1,4 @@
-#' quantum_plot
+#' plot_quantums
 #'
 #' @description Plot simulation envelopes
 #'
@@ -41,13 +41,13 @@
 #' set.seed(42)
 #' pattern <- spatstat::rThomas(kappa = 50, scale = 0.025, mu = 5)
 #' csr_envelope <- spatstat::envelope(pattern, fun = spatstat::pcf, nsim = 19)
-#' quantum_plot(csr_envelope, ylab = "g(r)")
+#' plot_quantums(csr_envelope, ylab = "g(r)")
 #'
-#' @aliases quantum_plot
-#' @rdname quantum_plot
+#' @aliases plot_quantums
+#' @rdname plot_quantums
 
 #' @export
-quantum_plot <- function(input,
+plot_quantums <- function(input,
                          labels = NULL, color_scale = NULL, legend_position = "bottom",
                          quantum_position = 0.05,
                          title = NULL, xlab = NULL, ylab = NULL, size = 5,

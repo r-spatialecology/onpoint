@@ -26,6 +26,7 @@ points of type i, but not the other way around (Velazquez et al 2016). One examp
 the positions of seedlings that may be influenced by the position of mature trees.
 }
 \examples{
+set.seed(42)
 pattern_a <- spatstat::runifpoint(n = 20)
 spatstat::marks(pattern_a) <- "a"
 pattern_b <- spatstat::runifpoint(n = 100)

@@ -23,6 +23,7 @@
 #' Wiegand, T. and Moloney, K. A. 2004. Rings, circles, and null models for point pattern analysis in ecology. - Oikos 104: 209-229.
 #'
 #' @examples
+#' set.seed(42)
 #' pattern_a <- spatstat::runifpoint(n = 20)
 #' spatstat::marks(pattern_a) <- "a"
 #' pattern_b <- spatstat::runifpoint(n = 100)

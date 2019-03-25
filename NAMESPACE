@@ -2,6 +2,6 @@
 
 export(center_l_function)
 export(estimate_o_ring)
-export(quantum_plot)
+export(plot_quantums)
 export(simulate_antecedent_conditions)
 export(simulate_heterogenous_pattern)
