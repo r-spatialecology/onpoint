@@ -3,3 +3,31 @@ title: onpoint | Helper functions for spatstat
 template:
   params:
     bootswatch: sandstone
+
+reference:
+  - title: Summary functions
+    contents:
+      - center_l_function
+      - estimate_o_ring
+  - title: Null models
+    contents:
+      - simulate_heterogenous_pattern
+      - simulate_antecedent_conditions
+  - title: Various
+    contents:
+      - plot_quantums
+navbar:
+  title: onpoint
+
+  left:
+    - icon: fa-gears
+      text: "functions"
+      href: reference/index.html
+
+  right:
+    - icon: fa-newspaper-o
+      text: "news"
+      href: news/index.html
+    - icon: fa-github fa-lg
+      text: "github"
+      href: https://github.com/r-spatialecology/onpoint
