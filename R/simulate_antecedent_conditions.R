@@ -10,9 +10,17 @@
 #' @details
 #' Simulate point patterns as null model data for \code{spatstat::envelope()} using
 #' antecendet conditions as null model. \code{x} must be marked point pattern.
+#' Antecedent conditions are suitable as a null model if points of type j may influence
+#' points of type i, but not the other way around (Velazquez et al 2016). One example are
+#' the positions of seedlings that may be influenced by the position of mature trees.
 #'
 #' @seealso
 #' \code{\link{envelope}}
+#'
+#' @references
+#' Velazquez, E. et al. 2016. An evaluation of the state of spatial point pattern analysis in ecology. - Ecography (Cop.). 39: 1-14.
+#'
+#' Wiegand, T. and Moloney, K. A. 2004. Rings, circles, and null models for point pattern analysis in ecology. - Oikos 104: 209-229.
 #'
 #' @examples
 #' pattern_a <- spatstat::runifpoint(n = 20)
@@ -45,9 +53,6 @@ simulate_antecedent_conditions <- function(x, i, j, nsim) {
   if(!all(unique(spatstat::marks(x)) %in% c(i, j))) {
     stop("i and j must be marks of x.", call. = FALSE)
   }
-
-
-
 
   # only points with mark j
   pattern_j <- spatstat::subset.ppp(x, marks == j, drop = TRUE)

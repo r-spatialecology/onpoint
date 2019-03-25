@@ -21,6 +21,9 @@ Simulate heterogenous pattern
 \details{
 Simulate point patterns as null model data for \code{spatstat::envelope()} using
 antecendet conditions as null model. \code{x} must be marked point pattern.
+Antecedent conditions are suitable as a null model if points of type j may influence
+points of type i, but not the other way around (Velazquez et al 2016). One example are
+the positions of seedlings that may be influenced by the position of mature trees.
 }
 \examples{
 pattern_a <- spatstat::runifpoint(n = 20)
@@ -32,6 +35,11 @@ pattern <- spatstat::superimpose(pattern_a, pattern_b)
 null_model <- simulate_antecedent_conditions(x = pattern, i = "b", j = "a", nsim = 19)
 spatstat::envelope(Y = pattern, fun = spatstat::pcf, nsim = 19, simulate = null_model)
 
+}
+\references{
+Velazquez, E. et al. 2016. An evaluation of the state of spatial point pattern analysis in ecology. - Ecography (Cop.). 39: 1-14.
+
+Wiegand, T. and Moloney, K. A. 2004. Rings, circles, and null models for point pattern analysis in ecology. - Oikos 104: 209-229.
 }
 \seealso{
 \code{\link{envelope}}

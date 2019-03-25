@@ -34,8 +34,8 @@
 #' \code{\link{envelope}}
 #'
 #' @references
-#' Esser D.S., Leveau J.H.J., Meyer K.M., Wiegand K. (2015): Spatial scales of
-#' interactions among bacteria and between bacteria and the leaf surface. FEMS Microbiology Ecology, in press.
+#' Esser, D. S. et al. 2015. Spatial scales of interactions among bacteria and between
+#' bacteria and the leaf surface. - FEMS Microbiol. Ecol. 91: fiu034.
 #'
 #' @examples
 #' set.seed(42)
