@@ -9,6 +9,7 @@ reference:
     contents:
       - center_l_function
       - estimate_o_ring
+      - estimate_pcf_fast
   - title: Null models
     contents:
       - simulate_heterogenous_pattern
@@ -18,13 +19,10 @@ reference:
       - plot_quantums
 navbar:
   title: onpoint
-
-  left:
+  right:
     - icon: fa-gears
       text: "functions"
       href: reference/index.html
-
-  right:
     - icon: fa-newspaper-o
       text: "news"
       href: news/index.html

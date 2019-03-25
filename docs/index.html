@@ -39,14 +39,26 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
+  <a href="index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="reference/index.html">Reference</a>
+</li>
+<li>
+  <a href="news/index.html">Changelog</a>
+</li>
+      </ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
   <a href="reference/index.html">
     <span class="fa fa-gears"></span>
      
     functions
   </a>
 </li>
-      </ul>
-<ul class="nav navbar-nav navbar-right">
 <li>
   <a href="news/index.html">
     <span class="fa fa-newspaper-o"></span>
@@ -94,7 +106,7 @@
 <div id="summary-functions" class="section level3">
 <h3 class="hasAnchor">
 <a href="#summary-functions" class="anchor"></a>Summary functions</h3>
-<p>Currently, <code>onpoint</code> provides two second-order summary functions, namely Besag’s L-function centered to zero and the O-ring statistic.</p>
+<p>Currently, <code>onpoint</code> provides three second-order summary functions, namely Besag’s L-function centered to zero and the O-ring statistic and a fast estimation of the pair-correlation function.</p>
 <p>Centering Besag’s L-function to zero has the advantage of an easier interpretation and plotting (Haase 1995). The function <code><a href="reference/center_l_function.html">center_l_function()</a></code> can either deal with a point pattern and calculated the centered L-function directly, or center the L-function afterwards it was calculating using <code>spatstat</code>s <code>Lest()</code>.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># calculate L-function</span></a>
 <a class="sourceLine" id="cb3-2" title="2">l_function &lt;-<span class="st"> </span><span class="kw">Lest</span>(spruces, <span class="dt">correction =</span> <span class="st">"Ripley"</span>)</a>
@@ -108,37 +120,52 @@
 <p>Of course, both summary functions can be used in combination with <code>spatstat</code>’s <code>envelope()</code> function.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">oring_envelope &lt;-<span class="st"> </span><span class="kw">envelope</span>(spruces, <span class="dt">fun =</span> estimate_o_ring, <span class="dt">nsim =</span> <span class="dv">199</span>, <span class="dt">verbose =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-6-1.png" width="100%"></p>
+<p><code><a href="reference/estimate_pcf_fast.html">estimate_pcf_fast()</a></code> estimates the pair-correlation function based on Ripley’s K-function, which is faster than estimation the pair-correlation function directly.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw"><a href="reference/estimate_pcf_fast.html">estimate_pcf_fast</a></span>(spruces)</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="co">#&gt; Function value object (class 'fv')</span></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="co">#&gt; for the function r -&gt; g(r)</span></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="co">#&gt; .............................................................</span></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="co">#&gt;      Math.label Description                                  </span></a>
+<a class="sourceLine" id="cb6-6" title="6"><span class="co">#&gt; r    r          distance argument r                          </span></a>
+<a class="sourceLine" id="cb6-7" title="7"><span class="co">#&gt; theo g[pois](r) theoretical Poisson value of g(r)            </span></a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="co">#&gt; pcf  g(r)       estimate of g(r) by numerical differentiation</span></a>
+<a class="sourceLine" id="cb6-9" title="9"><span class="co">#&gt; .............................................................</span></a>
+<a class="sourceLine" id="cb6-10" title="10"><span class="co">#&gt; Default plot formula:  .~r</span></a>
+<a class="sourceLine" id="cb6-11" title="11"><span class="co">#&gt; where "." stands for 'pcf', 'theo'</span></a>
+<a class="sourceLine" id="cb6-12" title="12"><span class="co">#&gt; Recommended range of argument r: [0, 9.5]</span></a>
+<a class="sourceLine" id="cb6-13" title="13"><span class="co">#&gt; Available range of argument r: [0, 9.5]</span></a>
+<a class="sourceLine" id="cb6-14" title="14"><span class="co">#&gt; Unit of length: 1 metre</span></a></code></pre></div>
 </div>
 <div id="null-models" class="section level3">
 <h3 class="hasAnchor">
 <a href="#null-models" class="anchor"></a>Null models</h3>
 <p><code>onpoint</code> includes two functions to simulate null model patterns.</p>
 <p><code><a href="reference/simulate_heterogenous_pattern.html">simulate_heterogenous_pattern()</a></code> is a convienent wrapper around a few <code>spatstat</code> functions to straighforward simulate a heterogeneous Poisson process.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">null_model_hetero &lt;-<span class="st"> </span><span class="kw"><a href="reference/simulate_heterogenous_pattern.html">simulate_heterogenous_pattern</a></span>(spruces, <span class="dt">nsim =</span> <span class="dv">199</span>)</a>
-<a class="sourceLine" id="cb6-2" title="2"></a>
-<a class="sourceLine" id="cb6-3" title="3">hetero &lt;-<span class="st"> </span><span class="kw">envelope</span>(spruces, <span class="dt">fun =</span> pcf, </a>
-<a class="sourceLine" id="cb6-4" title="4">                   <span class="dt">funargs =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">correction =</span> <span class="st">"Ripley"</span>, <span class="dt">divisor =</span> <span class="st">"d"</span>),</a>
-<a class="sourceLine" id="cb6-5" title="5">                   <span class="dt">simulate =</span> null_model_hetero, <span class="dt">nsim =</span> <span class="dv">199</span>, </a>
-<a class="sourceLine" id="cb6-6" title="6">                   <span class="dt">verbose =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-8-1.png" width="100%"></p>
-<p>To simulate antecedent conditions in which only one pattern influences the other, but not the other way around (Wiegand &amp; Moloney 2004, Velazquez et al. 2016), <code><a href="reference/simulate_antecedent_conditions.html">simulate_antecedent_conditions()</a></code> can be used. This null model randomizes only one type of points (e.g. seedlings), while keeping the other type of points constant (e.g. mature trees) to check for associations between the two.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">marks</span>(spruces) &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/ifelse">ifelse</a></span>(<span class="kw">marks</span>(spruces) <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.3</span>, <span class="dt">yes =</span> <span class="st">"adult"</span>, <span class="dt">no =</span> <span class="st">"seedling"</span>)</a>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">null_model_hetero &lt;-<span class="st"> </span><span class="kw"><a href="reference/simulate_heterogenous_pattern.html">simulate_heterogenous_pattern</a></span>(spruces, <span class="dt">nsim =</span> <span class="dv">199</span>)</a>
 <a class="sourceLine" id="cb7-2" title="2"></a>
-<a class="sourceLine" id="cb7-3" title="3">null_model_antecedent &lt;-<span class="st"> </span><span class="kw"><a href="reference/simulate_antecedent_conditions.html">simulate_antecedent_conditions</a></span>(spruces, </a>
-<a class="sourceLine" id="cb7-4" title="4">                                                        <span class="dt">i =</span> <span class="st">"seedling"</span>, <span class="dt">j =</span> <span class="st">"adult"</span>, <span class="dt">nsim =</span> <span class="dv">199</span>)</a>
-<a class="sourceLine" id="cb7-5" title="5"></a>
-<a class="sourceLine" id="cb7-6" title="6">antecedent &lt;-<span class="st"> </span><span class="kw">envelope</span>(spruces, <span class="dt">fun =</span> pcf, </a>
-<a class="sourceLine" id="cb7-7" title="7">                       <span class="dt">funargs =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">correction =</span> <span class="st">"Ripley"</span>, <span class="dt">divisor =</span> <span class="st">"d"</span>),</a>
-<a class="sourceLine" id="cb7-8" title="8">                       <span class="dt">simulate =</span> null_model_antecedent, <span class="dt">nsim =</span> <span class="dv">199</span>, </a>
-<a class="sourceLine" id="cb7-9" title="9">                       <span class="dt">verbose =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-10-1.png" width="100%"></p>
+<a class="sourceLine" id="cb7-3" title="3">hetero &lt;-<span class="st"> </span><span class="kw">envelope</span>(spruces, <span class="dt">fun =</span> pcf, </a>
+<a class="sourceLine" id="cb7-4" title="4">                   <span class="dt">funargs =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">correction =</span> <span class="st">"Ripley"</span>, <span class="dt">divisor =</span> <span class="st">"d"</span>),</a>
+<a class="sourceLine" id="cb7-5" title="5">                   <span class="dt">simulate =</span> null_model_hetero, <span class="dt">nsim =</span> <span class="dv">199</span>, </a>
+<a class="sourceLine" id="cb7-6" title="6">                   <span class="dt">verbose =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-9-1.png" width="100%"></p>
+<p>To simulate antecedent conditions in which only one pattern influences the other, but not the other way around (Wiegand &amp; Moloney 2004, Velazquez et al. 2016), <code><a href="reference/simulate_antecedent_conditions.html">simulate_antecedent_conditions()</a></code> can be used. This null model randomizes only one type of points (e.g. seedlings), while keeping the other type of points constant (e.g. mature trees) to check for associations between the two.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">marks</span>(spruces) &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/ifelse">ifelse</a></span>(<span class="kw">marks</span>(spruces) <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.3</span>, <span class="dt">yes =</span> <span class="st">"adult"</span>, <span class="dt">no =</span> <span class="st">"seedling"</span>)</a>
+<a class="sourceLine" id="cb8-2" title="2"></a>
+<a class="sourceLine" id="cb8-3" title="3">null_model_antecedent &lt;-<span class="st"> </span><span class="kw"><a href="reference/simulate_antecedent_conditions.html">simulate_antecedent_conditions</a></span>(spruces, </a>
+<a class="sourceLine" id="cb8-4" title="4">                                                        <span class="dt">i =</span> <span class="st">"seedling"</span>, <span class="dt">j =</span> <span class="st">"adult"</span>, <span class="dt">nsim =</span> <span class="dv">199</span>)</a>
+<a class="sourceLine" id="cb8-5" title="5"></a>
+<a class="sourceLine" id="cb8-6" title="6">antecedent &lt;-<span class="st"> </span><span class="kw">envelope</span>(spruces, <span class="dt">fun =</span> pcf, </a>
+<a class="sourceLine" id="cb8-7" title="7">                       <span class="dt">funargs =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">correction =</span> <span class="st">"Ripley"</span>, <span class="dt">divisor =</span> <span class="st">"d"</span>),</a>
+<a class="sourceLine" id="cb8-8" title="8">                       <span class="dt">simulate =</span> null_model_antecedent, <span class="dt">nsim =</span> <span class="dv">199</span>, </a>
+<a class="sourceLine" id="cb8-9" title="9">                       <span class="dt">verbose =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-11-1.png" width="100%"></p>
 </div>
 <div id="various" class="section level3">
 <h3 class="hasAnchor">
 <a href="#various" class="anchor"></a>Various</h3>
 <p>To plot simulation envelopes using quantum plots (e.g. Esser et al. 2015), just pass an <code>envelope</code> object as input to <code><a href="reference/plot_quantums.html">plot_quantums()</a></code>.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw"><a href="reference/plot_quantums.html">plot_quantums</a></span>(antecedent, <span class="dt">ylab =</span> <span class="st">"g(r)"</span>)</a></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-11-1.png" width="100%"></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw"><a href="reference/plot_quantums.html">plot_quantums</a></span>(antecedent, <span class="dt">ylab =</span> <span class="st">"g(r)"</span>)</a></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-12-1.png" width="100%"></p>
 <div id="references" class="section level4">
 <h4 class="hasAnchor">
 <a href="#references" class="anchor"></a>References</h4>

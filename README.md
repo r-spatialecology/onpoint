@@ -36,8 +36,9 @@ data(spruces)
 
 ### Summary functions
 
-Currently, `onpoint` provides two second-order summary functions, namely
-Besag’s L-function centered to zero and the O-ring statistic.
+Currently, `onpoint` provides three second-order summary functions,
+namely Besag’s L-function centered to zero and the O-ring statistic and
+a fast estimation of the pair-correlation function.
 
 Centering Besag’s L-function to zero has the advantage of an easier
 interpretation and plotting (Haase 1995). The function
@@ -76,6 +77,27 @@ oring_envelope <- envelope(spruces, fun = estimate_o_ring, nsim = 199, verbose =
 
 <img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
+`estimate_pcf_fast()` estimates the pair-correlation function based on
+Ripley’s K-function, which is faster than estimation the
+pair-correlation function directly.
+
+``` r
+estimate_pcf_fast(spruces)
+#> Function value object (class 'fv')
+#> for the function r -> g(r)
+#> .............................................................
+#>      Math.label Description                                  
+#> r    r          distance argument r                          
+#> theo g[pois](r) theoretical Poisson value of g(r)            
+#> pcf  g(r)       estimate of g(r) by numerical differentiation
+#> .............................................................
+#> Default plot formula:  .~r
+#> where "." stands for 'pcf', 'theo'
+#> Recommended range of argument r: [0, 9.5]
+#> Available range of argument r: [0, 9.5]
+#> Unit of length: 1 metre
+```
+
 ### Null models
 
 `onpoint` includes two functions to simulate null model patterns.
@@ -93,7 +115,7 @@ hetero <- envelope(spruces, fun = pcf,
                    verbose = FALSE)
 ```
 
-<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
 
 To simulate antecedent conditions in which only one pattern influences
 the other, but not the other way around (Wiegand & Moloney 2004,
@@ -114,7 +136,7 @@ antecedent <- envelope(spruces, fun = pcf,
                        verbose = FALSE)
 ```
 
-<img src="man/figures/README-unnamed-chunk-10-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-11-1.png" width="100%" />
 
 ### Various
 
@@ -126,7 +148,7 @@ al. 2015), just pass an `envelope` object as input to
 plot_quantums(antecedent, ylab = "g(r)")
 ```
 
-<img src="man/figures/README-unnamed-chunk-11-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-12-1.png" width="100%" />
 
 #### References
 

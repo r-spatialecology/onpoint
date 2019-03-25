@@ -43,7 +43,7 @@ data(spruces)
 
 ### Summary functions 
 
-Currently, `onpoint` provides two second-order summary functions, namely Besag's L-function centered to zero and the O-ring statistic. 
+Currently, `onpoint` provides three second-order summary functions, namely Besag's L-function centered to zero and the O-ring statistic and a fast estimation of the pair-correlation function. 
 
 Centering Besag's L-function to zero has the advantage of an easier interpretation and plotting (Haase 1995). The function `center_l_function()` can either deal with a point pattern and calculated the centered L-function directly, or center the L-function afterwards it was calculating using `spatstat`s `Lest()`.
 
@@ -75,6 +75,12 @@ oring_envelope <- envelope(spruces, fun = estimate_o_ring, nsim = 199, verbose =
 
 ```{r, echo = FALSE}
 plot(oring_envelope, main = "O-ring statistic")
+```
+
+`estimate_pcf_fast()` estimates the pair-correlation function based on Ripley's K-function, which is faster than estimation the pair-correlation function directly.
+
+```{r, collapse = TRUE}
+estimate_pcf_fast(spruces)
 ```
 
 ### Null models 

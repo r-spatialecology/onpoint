@@ -1,5 +1,6 @@
 # onpoint 0.2.0
-* adding `simulate_antecedent_conditions`.
+* Added `simulate_antecedent_conditions`.
+* Added `estimate_pcf_fast`
 
 # onpoint 0.1.0
 * Initialised package
