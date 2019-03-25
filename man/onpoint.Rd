@@ -12,8 +12,8 @@ are designed to work with the spatstat package.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/mhesselbarth/onpoint}
-  \item Report bugs at \url{https://github.com/mhesselbarth/onpoint/issues}
+  \item \url{https://github.com/r-spatialecology/onpoint}
+  \item Report bugs at \url{https://github.com/r-spatialecology/onpoint/issues}
 }
 
 }

@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">onpoint</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -78,11 +78,14 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/mhesselbarth/onpoint">
+  <a href="https://github.com/r-spatialecology/onpoint">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -100,7 +103,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>center_l_function</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mhesselbarth/onpoint/blob/master/R/center_l_function.R'><code>R/center_l_function.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/r-spatialecology/onpoint/blob/master/R/center_l_function.R'><code>R/center_l_function.R</code></a></small>
     <div class="hidden name"><code>center_l_function.Rd</code></div>
     </div>
 
@@ -127,16 +130,19 @@
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Center Besag's L-function to zero.</p>
+    <p>Centers Besag's L-function to zero by calculating L(r) -r. Centering
+the L-function allows an easier interpretation and plotting of the results (Haase 1995).</p>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Besag, J. (1977) Discussion of Dr Ripley's paper. Journal of the Royal Statistical Society, Series B, 39, 193–195.</p>
+    <p>Besag, J. E. 1977. Discussion on Dr. Ripley's paper. - J. R. Stat. Soc. Ser. B 39: 193-195.</p>
+<p>Ripley, B. D. 1977. Modelling spatial patterns. - J. R. Stat. Soc. Ser. B 39: 172-192.</p>
+<p>Haase, P. 1995. Spatial pattern analysis in ecology based on Ripley's K-function:
+Introduction and methods of edge correction. - J. Veg. Sci. 6: 575-582.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code>envelope</code>
-<code>density.ppp</code></p></div>
+    <div class='dont-index'><p><code>Lest</code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

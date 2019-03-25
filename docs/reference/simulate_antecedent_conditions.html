@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>simulate_heterogenous_pattern — simulate_heterogenous_pattern • onpoint</title>
+<title>simulate_antecedent_conditions — simulate_antecedent_conditions • onpoint</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:title" content="simulate_heterogenous_pattern — simulate_heterogenous_pattern" />
+<meta property="og:title" content="simulate_antecedent_conditions — simulate_antecedent_conditions" />
 
 <meta property="og:description" content="Simulate heterogenous pattern" />
 <meta name="twitter:card" content="summary" />
@@ -102,9 +102,9 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>simulate_heterogenous_pattern</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-spatialecology/onpoint/blob/master/R/simulate_heterogenous_pattern.R'><code>R/simulate_heterogenous_pattern.R</code></a></small>
-    <div class="hidden name"><code>simulate_heterogenous_pattern.Rd</code></div>
+    <h1>simulate_antecedent_conditions</h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-spatialecology/onpoint/blob/master/R/simulate_antecedent_conditions.R'><code>R/simulate_antecedent_conditions.R</code></a></small>
+    <div class="hidden name"><code>simulate_antecedent_conditions.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -113,7 +113,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>simulate_heterogenous_pattern</span>(<span class='no'>x</span>, <span class='no'>nsim</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>simulate_antecedent_conditions</span>(<span class='no'>x</span>, <span class='no'>i</span>, <span class='no'>j</span>, <span class='no'>nsim</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -123,40 +123,50 @@
       <td><p>ppp</p></td>
     </tr>
     <tr>
-      <th>nsim</th>
-      <td><p>Number of patterns to simulate.</p></td>
+      <th>i</th>
+      <td><p>mark of points that are randomized.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Arguments passed to <code><a href='https://www.rdocumentation.org/packages/spatstat/topics/density.ppp'>spatstat::density.ppp()</a></code></p></td>
+      <th>j</th>
+      <td><p>mark of points that do not change.</p></td>
+    </tr>
+    <tr>
+      <th>nsim</th>
+      <td><p>Number of patterns to simulate.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Simulate heterogenous point patterns as null model data for <code><a href='https://www.rdocumentation.org/packages/spatstat/topics/envelope'>spatstat::envelope()</a></code>.
-A heterogenous Poisson process is used, meaning that there are no interaction between points,
-however, the simulated coordinates depend on the intensity \(\lambda\) of the input pattern.</p>
+    <p>Simulate point patterns as null model data for <code><a href='https://www.rdocumentation.org/packages/spatstat/topics/envelope'>spatstat::envelope()</a></code> using
+antecendet conditions as null model. <code>x</code> must be marked point pattern.
+Antecedent conditions are suitable as a null model if points of type j may influence
+points of type i, but not the other way around (Velazquez et al 2016). One example are
+the positions of seedlings that may be influenced by the position of mature trees.</p>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Baddeley, A. et al. 2015. Spatial Point Patterns: Methodology and Applications with R. - Chapman and Hall/CRC Press.</p>
-<p>Wiegand, T. and Moloney, K. A. 2014. Handbook of spatial point-pattern analysis in ecology. - Chapman and Hall/CRC Press.</p>
+    <p>Velazquez, E. et al. 2016. An evaluation of the state of spatial point pattern analysis in ecology. - Ecography (Cop.). 39: 1-14.</p>
+<p>Wiegand, T. and Moloney, K. A. 2004. Rings, circles, and null models for point pattern analysis in ecology. - Oikos 104: 209-229.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code>envelope</code> <br />
-<code>density.ppp</code></p></div>
+    <div class='dont-index'><p><code>envelope</code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>input_pattern</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>spatstat</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/spatstat/topics/rpoispp'>rpoispp</a></span>(<span class='kw'>lambda</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>x</span> , <span class='no'>y</span>) {<span class='fl'>100</span> * <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Log'>exp</a></span>(-<span class='fl'>3</span> * <span class='no'>x</span>)}, <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>1</span>)
-<span class='no'>null_model</span> <span class='kw'>&lt;-</span> <span class='fu'>simulate_heterogenous_pattern</span>(<span class='no'>input_pattern</span>, <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>19</span>)
-<span class='kw pkg'>spatstat</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/spatstat/topics/envelope'>envelope</a></span>(<span class='kw'>Y</span> <span class='kw'>=</span> <span class='no'>input_pattern</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='kw pkg'>spatstat</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/spatstat/topics/pcf'>pcf</a></span>, <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>19</span>, <span class='kw'>simulate</span> <span class='kw'>=</span> <span class='no'>null_model</span>)</div><div class='output co'>#&gt; Extracting 19 point patterns from list  ...
+    <pre class="examples"><div class='input'><span class='no'>pattern_a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>spatstat</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/spatstat/topics/runifpoint'>runifpoint</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>20</span>)
+<span class='kw pkg'>spatstat</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/spatstat/topics/marks'>marks</a></span>(<span class='no'>pattern_a</span>) <span class='kw'>&lt;-</span> <span class='st'>"a"</span>
+<span class='no'>pattern_b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>spatstat</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/spatstat/topics/runifpoint'>runifpoint</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>100</span>)
+<span class='kw pkg'>spatstat</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/spatstat/topics/marks'>marks</a></span>(<span class='no'>pattern_b</span>) <span class='kw'>&lt;-</span> <span class='st'>"b"</span>
+<span class='no'>pattern</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>spatstat</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/spatstat/topics/superimpose'>superimpose</a></span>(<span class='no'>pattern_a</span>, <span class='no'>pattern_b</span>)
+
+<span class='no'>null_model</span> <span class='kw'>&lt;-</span> <span class='fu'>simulate_antecedent_conditions</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>pattern</span>, <span class='kw'>i</span> <span class='kw'>=</span> <span class='st'>"b"</span>, <span class='kw'>j</span> <span class='kw'>=</span> <span class='st'>"a"</span>, <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>19</span>)
+<span class='kw pkg'>spatstat</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/spatstat/topics/envelope'>envelope</a></span>(<span class='kw'>Y</span> <span class='kw'>=</span> <span class='no'>pattern</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='kw pkg'>spatstat</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/spatstat/topics/pcf'>pcf</a></span>, <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>19</span>, <span class='kw'>simulate</span> <span class='kw'>=</span> <span class='no'>null_model</span>)</div><div class='output co'>#&gt; Extracting 19 point patterns from list  ...
 #&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,  19.
 #&gt; 
 #&gt; Done.</div><div class='output co'>#&gt; Pointwise critical envelopes for g(r)
-#&gt; and observed value for 'input_pattern'
+#&gt; and observed value for 'pattern'
 #&gt; Edge correction: "iso"
 #&gt; Obtained from 19 point pattern datasets in user-supplied list
 #&gt; Alternative: two.sided

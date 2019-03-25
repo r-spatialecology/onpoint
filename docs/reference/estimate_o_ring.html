@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">onpoint</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -78,11 +78,14 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/mhesselbarth/onpoint">
+  <a href="https://github.com/r-spatialecology/onpoint">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -100,7 +103,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>estimate_o_ring</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mhesselbarth/onpoint/blob/master/R/estimate_o_ring.R'><code>R/estimate_o_ring.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/r-spatialecology/onpoint/blob/master/R/estimate_o_ring.R'><code>R/estimate_o_ring.R</code></a></small>
     <div class="hidden name"><code>estimate_o_ring.Rd</code></div>
     </div>
 
@@ -127,17 +130,22 @@
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Estimate the O-ring function.</p>
+    <p>Estimates the O-ring function proposed by Wiegand and Moloney (2004). The O-ring statistic
+is defined as:</p>
+<p>$$O(r) = \lambda * g(r)$$</p>
+<p>Generally speaking, O(r) scales the pair correlation g(r) function with help of the intensity \(\lambda\).
+One advantage of the O-ring statistic is that it can be interpreted as a neighborhood density because it is
+a probability density function (Wiegand &amp; Moloney 2004).</p>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Wiegand, T. and Moloney, K. A. 2014. Handbook of spatial point-pattern analysis in ecology. - Chapman and Hall/CRC Press.</p>
-<p>Wiegand, T. and Moloney, K. A. 2004. Rings, circles, and null models for point pattern analysis in ecology. - Oikos 104: 209–229.</p>
+<p>Wiegand, T. and Moloney, K. A. 2004. Rings, circles, and null models for point pattern analysis in ecology. - Oikos 104: 209-229.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code>envelope</code>
-<code>density.ppp</code></p></div>
+    <div class='dont-index'><p><code>density.ppp</code> <br />
+<code>pcf</code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
