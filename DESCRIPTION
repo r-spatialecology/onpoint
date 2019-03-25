@@ -11,7 +11,7 @@ Maintainer: Maximillian H.K. Hesselbarth <maximilian.hesselbarth@uni-goettingen.
 Description: 
   Growing collection of small helper functions for point pattern analysis. Most functions
   are designed to work with the spatstat package.
-URL: https://github.com/r-spatialecology/onpoint
+URL: https://r-spatialecology.github.io/onpoint/
 BugReports: https://github.com/r-spatialecology/onpoint/issues
 License: GPL-3
 Depends: R (>= 3.1)
