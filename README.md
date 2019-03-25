@@ -4,7 +4,7 @@
 [![Travis build
 status](https://travis-ci.org/r-spatialecology/onpoint.svg?branch=master)](https://travis-ci.org/r-spatialecology/onpoint)
 [![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/r-spatialecology/onpoint?branch=master&svg=true)](https://ci.appveyor.com/project/r-spatialecology/onpoint)
+status](https://ci.appveyor.com/api/projects/status/github/mhesselbarth/onpoint?branch=master&svg=true)](https://ci.appveyor.com/project/mhesselbarth/onpoint)
 [![codecov](https://codecov.io/gh/r-spatialecology/onpoint/branch/master/graph/badge.svg)](https://codecov.io/gh/r-spatialecology/onpoint)
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
