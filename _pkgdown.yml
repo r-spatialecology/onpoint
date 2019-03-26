@@ -17,15 +17,23 @@ reference:
   - title: Various
     contents:
       - plot_quantums
+
 navbar:
   title: onpoint
+  left:
+    - icon: fa-home
+      text: "Home"
+      href: index.html
   right:
     - icon: fa-gears
-      text: "functions"
+      text: "Functions"
       href: reference/index.html
     - icon: fa-newspaper-o
-      text: "news"
+      text: "News"
       href: news/index.html
     - icon: fa-github fa-lg
-      text: "github"
+      text: "Github"
       href: https://github.com/r-spatialecology/onpoint
+    - icon: fa-user
+      text: Contact
+      hreft: https://mhesselbarth.rbind.io
