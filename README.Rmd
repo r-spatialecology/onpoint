@@ -10,8 +10,7 @@ editor_options:
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
+  fig.path = "man/figures/README-"
 )
 ```
 
@@ -56,9 +55,11 @@ l_function <- Lest(spruces, correction = "Ripley")
 l_function_centered <- center_l_function(spruces, correction = "Ripley")
 ```
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.width = 10, fig.height = 5, fig.align = "center"}
+par(mfrow = c(1, 2))
 plot(l_function, main = "Besag's L-function")
 plot(l_function_centered, main = "centered Besag's L-function")
+par(mfrow = c(1, 1))
 ```
 
 The O-ring statistic O(r) (Wiegand & Moloney 2004) can be calculated using `estimate_o_ring()`. Generally speaking, O(r) scales the pair correlation g(r) function with help of the intensity \eqn{\lambda}. One advantage of the O-ring statistic is that it can be interpreted as a neighborhood density because it is a probability density function (Wiegand & Moloney 2004).
@@ -73,7 +74,7 @@ Of course, both summary functions can be used in combination with `spatstat`'s `
 oring_envelope <- envelope(spruces, fun = estimate_o_ring, nsim = 199, verbose = FALSE)
 ```
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.width = 7.5, fig.height = 5, fig.align = "center"}
 plot(oring_envelope, main = "O-ring statistic")
 ```
 
@@ -98,7 +99,7 @@ hetero <- envelope(spruces, fun = pcf,
                    verbose = FALSE)
 ```
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.width = 7.5, fig.height = 5, fig.align = "center"}
 plot(hetero, main = "Heterogeneous Poisson process")
 ```
 
@@ -116,7 +117,7 @@ antecedent <- envelope(spruces, fun = pcf,
                        verbose = FALSE)
 ```
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.width = 7.5, fig.height = 5, fig.align = "center"}
 plot(antecedent, main = "Antecedent conditions")
 ```
 
@@ -124,7 +125,7 @@ plot(antecedent, main = "Antecedent conditions")
 
 To plot simulation envelopes using quantum plots (e.g. Esser et al. 2015), just pass an `envelope` object as input to `plot_quantums()`.
 
-```{r}
+```{r, fig.width = 7.5, fig.height = 5, fig.align = "center"}
 plot_quantums(antecedent, ylab = "g(r)")
 ```
 

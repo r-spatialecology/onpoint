@@ -55,7 +55,7 @@ l_function <- Lest(spruces, correction = "Ripley")
 l_function_centered <- center_l_function(spruces, correction = "Ripley")
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" /><img src="man/figures/README-unnamed-chunk-3-2.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
 
 The O-ring statistic O(r) (Wiegand & Moloney 2004) can be calculated
 using `estimate_o_ring()`. Generally speaking, O(r) scales the pair
@@ -75,7 +75,7 @@ Of course, both summary functions can be used in combination with
 oring_envelope <- envelope(spruces, fun = estimate_o_ring, nsim = 199, verbose = FALSE)
 ```
 
-<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
 
 `estimate_pcf_fast()` estimates the pair-correlation function based on
 Ripley’s K-function, which is faster than estimation the
@@ -115,7 +115,7 @@ hetero <- envelope(spruces, fun = pcf,
                    verbose = FALSE)
 ```
 
-<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
 
 To simulate antecedent conditions in which only one pattern influences
 the other, but not the other way around (Wiegand & Moloney 2004,
@@ -136,7 +136,7 @@ antecedent <- envelope(spruces, fun = pcf,
                        verbose = FALSE)
 ```
 
-<img src="man/figures/README-unnamed-chunk-11-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-11-1.png" style="display: block; margin: auto;" />
 
 ### Various
 
@@ -148,7 +148,7 @@ al. 2015), just pass an `envelope` object as input to
 plot_quantums(antecedent, ylab = "g(r)")
 ```
 
-<img src="man/figures/README-unnamed-chunk-12-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-12-1.png" style="display: block; margin: auto;" />
 
 #### References
 

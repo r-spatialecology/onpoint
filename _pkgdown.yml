@@ -35,5 +35,5 @@ navbar:
       text: "Github"
       href: https://github.com/r-spatialecology/onpoint
     - icon: fa-user
-      text: Contact
+      text: "Contact"
       hreft: https://mhesselbarth.rbind.io
