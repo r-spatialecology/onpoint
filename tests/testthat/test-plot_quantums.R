@@ -57,7 +57,7 @@ test_that("plot_quantums creates labels if not provided", {
 
   expect_warning(plot_quantums(csr_envelope,
                               labels = c("clustering", "segregation")),
-                 regexp = "Not enough labels provided - using 'clustering', 'randomness' and 'segregation'.")
+                 regexp = "Not enough labels provided - using 'clustering', 'randomness' and 'regularity'.")
 })
 
 test_that("plot_quantums returns error", {

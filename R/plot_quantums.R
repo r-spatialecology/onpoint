@@ -59,12 +59,12 @@ plot_quantums <- function(input,
   }
 
   if(is.null(labels)) {
-    labels <- c("clustering", "randomness", "segregation")
+    labels <- c("clustering", "randomness", "regularity")
   }
 
   if(length(labels) !=  3){
     labels <- c("clustering", "randomness", "segregation")
-    warning("Not enough labels provided - using 'clustering', 'randomness' and 'segregation'.",
+    warning("Not enough labels provided - using 'clustering', 'randomness' and 'regularity'.",
             call. = FALSE)
   }
 
