@@ -6,8 +6,9 @@
 \usage{
 plot_quantums(input, labels = NULL, color_scale = NULL,
   legend_position = "bottom", quantum_position = 0.05, title = NULL,
-  xlab = NULL, ylab = NULL, size = 5, full_fun = TRUE,
-  quantum = TRUE, standarized = FALSE)
+  xlab = NULL, ylab = NULL, quantum_size = 5, line_size = 0.5,
+  base_size = 15, full_fun = TRUE, quantum = TRUE,
+  standarized = FALSE)
 }
 \arguments{
 \item{input}{envelope.}
@@ -24,7 +25,11 @@ plot_quantums(input, labels = NULL, color_scale = NULL,
 
 \item{xlab, ylab}{axis labels.}
 
-\item{size}{Size of the colour bar.}
+\item{quantum_size}{Size of the colour bar.}
+
+\item{line_size}{Size of the lines.}
+
+\item{base_size}{Base font size.}
 
 \item{full_fun}{If true observed value and envelope is plotted.}
 
