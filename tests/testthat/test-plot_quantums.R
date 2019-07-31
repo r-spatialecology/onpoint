@@ -7,7 +7,8 @@ test_that("plot_quantums returns ggplot", {
   csr_envelope <- spatstat::envelope(pattern,
                                      fun = spatstat::pcf, nsim = 9,
                                      funargs = list(divisor = "d",
-                                                    correction = "Ripley"))
+                                                    correction = "Ripley"),
+                                     verbose = FALSE)
 
   plot <- plot_quantums(csr_envelope, ylab = "g(r)")
 
@@ -23,7 +24,8 @@ test_that("plot_quantums returns ggplot (only quantum)", {
   csr_envelope <- spatstat::envelope(pattern,
                                      fun = spatstat::pcf, nsim = 9,
                                      funargs = list(divisor = "d",
-                                                    correction = "Ripley"))
+                                                    correction = "Ripley"),
+                                     verbose = FALSE)
 
   plot <- plot_quantums(csr_envelope, ylab = "g(r)", full_fun = FALSE)
 
@@ -38,7 +40,8 @@ test_that("plot_quantums returns ggplot only function", {
   csr_envelope <- spatstat::envelope(pattern,
                                      fun = spatstat::pcf, nsim = 9,
                                      funargs = list(divisor = "d",
-                                                    correction = "Ripley"))
+                                                    correction = "Ripley"),
+                                     verbose = FALSE)
 
   plot <- plot_quantums(csr_envelope, ylab = "g(r)", quantum = FALSE)
 
@@ -53,11 +56,12 @@ test_that("plot_quantums creates labels if not provided", {
   csr_envelope <- spatstat::envelope(pattern,
                                      fun = spatstat::pcf, nsim = 9,
                                      funargs = list(divisor = "d",
-                                                    correction = "Ripley"))
+                                                    correction = "Ripley"),
+                                     verbose = FALSE)
 
   expect_warning(plot_quantums(csr_envelope,
                               labels = c("clustering", "segregation")),
-                 regexp = "Not enough labels provided - using 'clustering', 'randomness' and 'regularity'.")
+                 regexp = "Not enough labels provided - using 'overestimation', 'agreement' and 'underestimation'.")
 })
 
 test_that("plot_quantums returns error", {

@@ -62,12 +62,12 @@ plot_quantums <- function(input,
   }
 
   if (is.null(labels)) {
-    labels <- c("clustering", "randomness", "regularity")
+    labels <- c("overestimation", "agreement", "underestimation")
   }
 
   if (length(labels) !=  3) {
-    labels <- c("clustering", "randomness", "segregation")
-    warning("Not enough labels provided - using 'clustering', 'randomness' and 'regularity'.",
+    labels <- c("overestimation", "agreement", "underestimation")
+    warning("Not enough labels provided - using 'overestimation', 'agreement' and 'underestimation'.",
             call. = FALSE)
   }
 
