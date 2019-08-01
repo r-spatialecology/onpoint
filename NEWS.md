@@ -1,5 +1,6 @@
 # onpoint 0.2.1
  * Better size arguments for lines and base_size for `plot_quantums()`
+ * Generic labels for `plot_quantums()`
 
 # onpoint 0.2.0
 * Added `simulate_antecedent_conditions`.
