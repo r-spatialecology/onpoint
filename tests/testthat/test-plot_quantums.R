@@ -61,14 +61,13 @@ test_that("plot_quantums creates labels if not provided", {
 
   expect_warning(plot_quantums(csr_envelope,
                               labels = c("clustering", "segregation")),
-                 regexp = "Not enough labels provided - using 'overestimation', 'agreement' and 'underestimation'.")
+                 regexp = "Not enough labels provided - using 'obs > hi', 'lo < obs < hi' and 'ob < lo'.")
 })
 
 test_that("plot_quantums returns error", {
 
   pattern <- spatstat::rThomas(kappa = 50, scale = 0.025, mu = 5)
 
-  expect_error(plot_quantums(pattern, ylab = "g(r)",
-                            labels = c("clustering", "segregation")),
+  expect_error(plot_quantums(pattern, ylab = "g(r)"),
                regexp = "Please provide envelope or data frame.")
 })

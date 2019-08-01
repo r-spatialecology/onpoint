@@ -62,12 +62,12 @@ plot_quantums <- function(input,
   }
 
   if (is.null(labels)) {
-    labels <- c("overestimation", "agreement", "underestimation")
+    labels <- c("obs > hi", "lo < obs < hi", "obs < lo")
   }
 
   if (length(labels) !=  3) {
-    labels <- c("overestimation", "agreement", "underestimation")
-    warning("Not enough labels provided - using 'overestimation', 'agreement' and 'underestimation'.",
+    labels <- c("obs > hi", "lo < obs < hi", "obs < lo")
+    warning("Not enough labels provided - using 'obs > hi', 'lo < obs < hi' and 'ob < lo'.",
             call. = FALSE)
   }
 
