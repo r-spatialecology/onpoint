@@ -4,7 +4,8 @@
 #'
 #' @param x ppp
 #' @param nsim Number of patterns to simulate.
-#' @param ... Arguments passed to \code{spatstat::density.ppp()}
+#' @param fix_n Logical if true the null model patterns have exactly the same number of points ais input.
+#' @param ... Arguments passed to \code{spatstat::density.ppp()}.
 #'
 #' @details
 #' Simulate heterogenous point patterns as null model data for \code{spatstat::envelope()}.
@@ -31,18 +32,31 @@
 #' @rdname simulate_heterogenous_pattern
 
 #' @export
-simulate_heterogenous_pattern <- function(x, nsim, ...) {
+simulate_heterogenous_pattern <- function(x, nsim, fix_n = FALSE, ...) {
 
-  if(class(x) != "ppp") {
+  if (class(x) != "ppp") {
     stop("Please provide ppp object.", call. = FALSE)
   }
 
   lambda_xy <- spatstat::density.ppp(x, ...)
 
-  simulated_pattern <- spatstat::rpoispp(lambda = lambda_xy,
-                                         nsim = nsim)
+  # check if exactly same number of points
+  if (fix_n) {
 
-  for(i in seq_len(nsim)) {
+    simulated_pattern <- spatstat::rpoint(n = x$n ,
+                                          f = lambda_xy,
+                                          win = x$window,
+                                          nsim = nsim)
+  }
+
+  else {
+
+    simulated_pattern <- spatstat::rpoispp(lambda = lambda_xy,
+                                           win = x$window,
+                                           nsim = nsim)
+  }
+
+  for (i in seq_len(nsim)) {
     simulated_pattern[[i]]$window <- x$window
   }
 

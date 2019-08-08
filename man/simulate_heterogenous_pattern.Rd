@@ -4,14 +4,16 @@
 \alias{simulate_heterogenous_pattern}
 \title{simulate_heterogenous_pattern}
 \usage{
-simulate_heterogenous_pattern(x, nsim, ...)
+simulate_heterogenous_pattern(x, nsim, fix_n = FALSE, ...)
 }
 \arguments{
 \item{x}{ppp}
 
 \item{nsim}{Number of patterns to simulate.}
 
-\item{...}{Arguments passed to \code{spatstat::density.ppp()}}
+\item{fix_n}{Logical if true the null model patterns have exactly the same number of points ais input.}
+
+\item{...}{Arguments passed to \code{spatstat::density.ppp()}.}
 }
 \description{
 Simulate heterogenous pattern
