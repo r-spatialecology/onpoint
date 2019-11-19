@@ -1,3 +1,6 @@
+# onpoint 0.3
+  * New function `summarise_envelope()`
+
 # onpoint 0.2.1
  * Better size arguments for lines and base_size for `plot_quantums()`
  * Generic labels for `plot_quantums()`
