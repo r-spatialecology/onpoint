@@ -9,12 +9,18 @@
 "_PACKAGE"
 
 # Global variables
-globalVariables(c("high",
+globalVariables(c("hi",
+                  "high",
+                  "lo",
                   "low",
                   "marks",
+                  "obs",
                   "observed",
                   "r",
+                  "theo",
                   "theoretical",
                   "type",
-                  "is"))
+                  "is",
+                  "V1",
+                  "V2"))
 
