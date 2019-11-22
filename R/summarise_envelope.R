@@ -49,7 +49,6 @@ summarise_envelope <- function(x, seperated = TRUE, plot_result = FALSE) {
       ggplot2::scale_linetype_manual(name = "", values = c(1, 2)) +
       ggplot2::labs(x = "r [unit]", y = expression(italic(f(r)))) +
       ggplot2::theme_classic()
-
   }
 
   # area above envelope #
@@ -198,93 +197,107 @@ summarise_envelope <- function(x, seperated = TRUE, plot_result = FALSE) {
     }
   }
 
-  # area between envelope #
-  # which obs values are above envelope
-  between_envelope <- which(x$obs <= x$hi & x$obs >= x$lo)
+  # # area between envelope #
+  # # which obs values are above envelope
+  # between_envelope <- which(x$obs <= x$hi & x$obs >= x$lo)
+  #
+  # # no area between envelope
+  # if (length(between_envelope) == 0) {
+  #
+  #   between_area <- 0
+  # }
+  #
+  # else {
+  #
+  #   # vector for position at which new polygon is needed
+  #   next_polygon <- vector(mode = "logical", length = length(between_envelope))
+  #
+  #   # check at which position jump to next polygon
+  #   for (i in 1:(length(between_envelope) - 1)) {
+  #
+  #     # next value
+  #     j <- i + 1
+  #
+  #     # if difference between current value and next value is larger than 1 a new
+  #     # polygon is needed
+  #     if (between_envelope[j] != (between_envelope[i] + 1)) {
+  #
+  #       next_polygon[j] <- TRUE
+  #     }
+  #   }
+  #
+  #   # split position into seperated polygons
+  #   between_area_pos <- split_at(x = between_envelope,
+  #                                pos = which(next_polygon == TRUE))
+  #
+  #   # init vector for area
+  #   between_area <- vector(mode = "numeric", length = length(between_area_pos))
+  #
+  #   # loop through number of polygons
+  #   for (i in 1:length(between_area)) {
+  #
+  #     # matrix for coords area above
+  #     between_area_temp <- matrix(data = NA, nrow = length(between_area_pos[[i]]),
+  #                                 ncol = 2)
+  #
+  #     # coordinates of polygon between
+  #     for (j in 1:nrow(between_area_temp)) {
+  #
+  #       between_area_temp[j, 1] <- min(x$obs[between_area_pos[[i]]][j],
+  #                                      # x$hi[between_area_pos[[i]]][j],
+  #                                      x$lo[between_area_pos[[i]]][j])
+  #
+  #       between_area_temp[j, 2] <- max(x$obs[between_area_pos[[i]]][j],
+  #                                      # x$hi[between_area_pos[[i]]][j],
+  #                                      x$lo[between_area_pos[[i]]][j])
+  #     }
+  #
+  #     # convert to matrix with xy coords
+  #     between_area_poly_temp <- matrix(data = c(x$r[between_area_pos[[i]]],
+  #                                               rev(x$r[between_area_pos[[i]]]),
+  #                                               between_area_temp[, 1],
+  #                                               rev(between_area_temp[, 2])),
+  #                          ncol = 2)
+  #
+  #     # get area
+  #     between_area[i] <- calc_area(between_area_poly_temp)
+  #
+  #     # add polygon to plot
+  #     if (plot_result) {
+  #       ggplot_result <- ggplot_result +
+  #         ggplot2::geom_polygon(data = as.data.frame(between_area_poly_temp),
+  #                               ggplot2::aes(x = V1,
+  #                                            y = V2),
+  #                               fill = "#F0F921FF",alpha = 0.5)
+  #     }
+  #   }
+  # }
 
-  # no area between envelope
-  if (length(between_envelope) == 0) {
+  # total area #
+  # get polygon of total area under curve
+  area_total_poly <- matrix(data = c(x$r, rev(x$r),
+                                     rep(0, times = length(x$r)),
+                                     rev(x$obs)), ncol = 2)
 
-    between_area <- 0
-  }
+  # calc area
+  area_total <- calc_area(area_total_poly)
 
-  else {
-
-    # vector for position at which new polygon is needed
-    next_polygon <- vector(mode = "logical", length = length(between_envelope))
-
-    # check at which position jump to next polygon
-    for (i in 1:(length(between_envelope) - 1)) {
-
-      # next value
-      j <- i + 1
-
-      # if difference between current value and next value is larger than 1 a new
-      # polygon is needed
-      if (between_envelope[j] != (between_envelope[i] + 1)) {
-
-        next_polygon[j] <- TRUE
-      }
-    }
-
-    # split position into seperated polygons
-    between_area_pos <- split_at(x = between_envelope,
-                                 pos = which(next_polygon == TRUE))
-
-    # init vector for area
-    between_area <- vector(mode = "numeric", length = length(between_area_pos))
-
-    # loop through number of polygons
-    for (i in 1:length(between_area)) {
-
-      # matrix for coords area above
-      between_area_temp <- matrix(data = NA, nrow = length(between_area_pos[[i]]),
-                                  ncol = 2)
-
-      # coordinates of polygon between
-      for (j in 1:nrow(between_area_temp)) {
-
-        between_area_temp[j, 1] <- min(x$obs[between_area_pos[[i]]][j],
-                                       x$hi[between_area_pos[[i]]][j],
-                                       x$lo[between_area_pos[[i]]][j])
-
-        between_area_temp[j, 2] <- max(x$obs[between_area_pos[[i]]][j],
-                                       x$hi[between_area_pos[[i]]][j],
-                                       x$lo[between_area_pos[[i]]][j])
-      }
-
-      # convert to matrix with xy coords
-      between_area_poly_temp <- matrix(data = c(x$r[between_area_pos[[i]]], rev(x$r[between_area_pos[[i]]]),
-                                           between_area_temp[, 1], rev(between_area_temp[, 2])),
-                           ncol = 2)
-
-      # get area
-      between_area[i] <- calc_area(between_area_poly_temp)
-
-      # add polygon to plot
-      if (plot_result) {
-        ggplot_result <- ggplot_result +
-          ggplot2::geom_polygon(data = as.data.frame(between_area_poly_temp),
-                                ggplot2::aes(x = V1,
-                                             y = V2),
-                                fill = "#F0F921FF",alpha = 0.5)
-      }
-    }
-  }
-
-  # total result #
+  # result #
   # seperated by above/below
   if (seperated) {
 
-    result <- c(sum(above_area) / sum(between_area) * 100,
-                -sum(below_area) / sum(between_area) * 100)
+    result <- c(sum(above_area) / sum(area_total) * 100,
+                # sum(between_area) / sum(area_total) * 100,
+                -sum(below_area) / sum(area_total) * 100)
   }
 
   # one value
   else {
 
     # get ratio of area outside to total area
-    result <- (sum(above_area) + -sum(below_area)) / sum(between_area) * 100
+    result <- (sum(above_area) +
+                 # sum(between_area) +
+                 -sum(below_area)) / sum(area_total) * 100
   }
 
   # plot result
