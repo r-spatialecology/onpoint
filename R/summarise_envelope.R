@@ -272,36 +272,20 @@ summarise_envelope <- function(x, seperated = TRUE, plot_result = FALSE) {
     }
   }
 
-  # # total area #
-  # # matrix for area above
-  # area_total <- vector(mode = "numeric", length = length(x$r))
-  #
-  # # coordinates of polygon above
-  # for (i in 1:length(area_total)) {
-  #
-  #   area_total[i] <- max(x$obs[i], x$lo[i], x$hi[i])
-  # }
-  #
-  # area_total <- matrix(data = c(x$r, rev(x$r),
-  #                               rep(0, times = length(x$r)),
-  #                               rev(area_total)), ncol = 2)
-  #
-  # area_total <- calc_area(area_total)
+  # total result #
+  # seperated by above/below
+  if (seperated) {
 
-  # # total result #
-  # # seperated by above/below
-  # if (seperated) {
-  #
-  #   result <- c(sum(above_area) / sum(between_area) * 100,
-  #               -sum(below_area) / sum(between_area) * 100)
-  # }
-  #
-  # # one value
-  # else {
-  #
-  #   # get ratio of area outside to total area
-  #   result <- (sum(above_area) + sum(below_area)) / sum(between_area) * 100
-  # }
+    result <- c(sum(above_area) / sum(between_area) * 100,
+                -sum(below_area) / sum(between_area) * 100)
+  }
+
+  # one value
+  else {
+
+    # get ratio of area outside to total area
+    result <- (sum(above_area) + -sum(below_area)) / sum(between_area) * 100
+  }
 
   # plot result
   if (plot_result) {
@@ -309,13 +293,5 @@ summarise_envelope <- function(x, seperated = TRUE, plot_result = FALSE) {
     print(ggplot_result)
   }
 
-  # above_rel <- sum(above_area) / (sum(above_area) + sum(below_area) + sum(between_envelope))
-  # below_rel <- sum(below_area) / (sum(above_area) + sum(below_area) + sum(between_envelope))
-  #
-  # result <- (sum(above_rel) + -sum(below_rel)) /
-  #   (sum(above_rel) - -sum(below_rel))
-
-  result <- (sum(above_area) + -sum(below_area)) / sum(between_area) * 100
-
-  return(result)
+    return(result)
 }
