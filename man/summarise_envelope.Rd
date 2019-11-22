@@ -4,7 +4,7 @@
 \alias{summarise_envelope}
 \title{summarise_envelope}
 \usage{
-summarise_envelope(x, seperated = TRUE, plot_result = FALSE)
+summarise_envelope(x, seperated = FALSE, plot_result = FALSE)
 }
 \arguments{
 \item{x}{fv}
@@ -18,13 +18,16 @@ the relative area below the envelope are returned.}
 vector
 }
 \description{
-Summarise a simulation envelope
+Summarise simulation envelope
 }
 \details{
-Summarise a simulation envelope. The area above and below the null model
-envelope is divided by the area where the observed value is within the envelope.
-If \code{seperated = TRUE}, the first returning value is the relative area above,
-the second value the relative value below the envelope.
+The area above and below the null model envelope is divided by the total area
+under the curve. If \code{seperated = TRUE}, the first returning value is the
+relative area above, the second value the relative value below the envelope.
+If \code{seperated = FALSE} the value is the absolute sum of both ratio. If the
+value is positive, the area above the envelope is larger than the value below
+the envelope. If the value is negative, the area under the envelope is larger than
+the value above the envelope.
 }
 \examples{
 set.seed(42)
@@ -33,7 +36,7 @@ input_pattern <- spatstat::rThomas(kappa = 15, scale = 0.05, mu = 5)
 cluster_env <- spatstat::envelope(input_pattern, fun = "pcf", nsim = 39,
 funargs = list(divisor = "d", correction = "Ripley", stoyan = 0.25))
 
-summarise_envelope(cluster_env, seperated = FALSE, plot = TRUE)
+summarise_envelope(cluster_env)
 
 }
 \seealso{

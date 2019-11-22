@@ -1,6 +1,6 @@
 #' summarise_envelope
 #'
-#' @description Summarise a simulation envelope
+#' @description Summarise simulation envelope
 #'
 #' @param x fv
 #' @param seperated If TRUE one value for the relative area above and one for
@@ -8,10 +8,13 @@
 #' @param plot_result A plot is drawn.
 #'
 #' @details
-#' Summarise a simulation envelope. The area above and below the null model
-#' envelope is divided by the area where the observed value is within the envelope.
-#' If \code{seperated = TRUE}, the first returning value is the relative area above,
-#' the second value the relative value below the envelope.
+#' The area above and below the null model envelope is divided by the total area
+#' under the curve. If \code{seperated = TRUE}, the first returning value is the
+#' relative area above, the second value the relative value below the envelope.
+#' If \code{seperated = FALSE} the value is the absolute sum of both ratio. If the
+#' value is positive, the area above the envelope is larger than the value below
+#' the envelope. If the value is negative, the area under the envelope is larger than
+#' the value above the envelope.
 #'
 #' @return vector
 #'
@@ -25,13 +28,13 @@
 #' cluster_env <- spatstat::envelope(input_pattern, fun = "pcf", nsim = 39,
 #' funargs = list(divisor = "d", correction = "Ripley", stoyan = 0.25))
 #'
-#' summarise_envelope(cluster_env, seperated = FALSE, plot = TRUE)
+#' summarise_envelope(cluster_env)
 #'
 #' @aliases summarise_envelope
 #' @rdname summarise_envelope
 
 #' @export
-summarise_envelope <- function(x, seperated = TRUE, plot_result = FALSE) {
+summarise_envelope <- function(x, seperated = FALSE, plot_result = FALSE) {
 
   # check if class is envelope
   if (!any(class(x) == "envelope")) {
@@ -197,82 +200,6 @@ summarise_envelope <- function(x, seperated = TRUE, plot_result = FALSE) {
     }
   }
 
-  # # area between envelope #
-  # # which obs values are above envelope
-  # between_envelope <- which(x$obs <= x$hi & x$obs >= x$lo)
-  #
-  # # no area between envelope
-  # if (length(between_envelope) == 0) {
-  #
-  #   between_area <- 0
-  # }
-  #
-  # else {
-  #
-  #   # vector for position at which new polygon is needed
-  #   next_polygon <- vector(mode = "logical", length = length(between_envelope))
-  #
-  #   # check at which position jump to next polygon
-  #   for (i in 1:(length(between_envelope) - 1)) {
-  #
-  #     # next value
-  #     j <- i + 1
-  #
-  #     # if difference between current value and next value is larger than 1 a new
-  #     # polygon is needed
-  #     if (between_envelope[j] != (between_envelope[i] + 1)) {
-  #
-  #       next_polygon[j] <- TRUE
-  #     }
-  #   }
-  #
-  #   # split position into seperated polygons
-  #   between_area_pos <- split_at(x = between_envelope,
-  #                                pos = which(next_polygon == TRUE))
-  #
-  #   # init vector for area
-  #   between_area <- vector(mode = "numeric", length = length(between_area_pos))
-  #
-  #   # loop through number of polygons
-  #   for (i in 1:length(between_area)) {
-  #
-  #     # matrix for coords area above
-  #     between_area_temp <- matrix(data = NA, nrow = length(between_area_pos[[i]]),
-  #                                 ncol = 2)
-  #
-  #     # coordinates of polygon between
-  #     for (j in 1:nrow(between_area_temp)) {
-  #
-  #       between_area_temp[j, 1] <- min(x$obs[between_area_pos[[i]]][j],
-  #                                      # x$hi[between_area_pos[[i]]][j],
-  #                                      x$lo[between_area_pos[[i]]][j])
-  #
-  #       between_area_temp[j, 2] <- max(x$obs[between_area_pos[[i]]][j],
-  #                                      # x$hi[between_area_pos[[i]]][j],
-  #                                      x$lo[between_area_pos[[i]]][j])
-  #     }
-  #
-  #     # convert to matrix with xy coords
-  #     between_area_poly_temp <- matrix(data = c(x$r[between_area_pos[[i]]],
-  #                                               rev(x$r[between_area_pos[[i]]]),
-  #                                               between_area_temp[, 1],
-  #                                               rev(between_area_temp[, 2])),
-  #                          ncol = 2)
-  #
-  #     # get area
-  #     between_area[i] <- calc_area(between_area_poly_temp)
-  #
-  #     # add polygon to plot
-  #     if (plot_result) {
-  #       ggplot_result <- ggplot_result +
-  #         ggplot2::geom_polygon(data = as.data.frame(between_area_poly_temp),
-  #                               ggplot2::aes(x = V1,
-  #                                            y = V2),
-  #                               fill = "#F0F921FF",alpha = 0.5)
-  #     }
-  #   }
-  # }
-
   # total area #
   # get polygon of total area under curve
   area_total_poly <- matrix(data = c(x$r, rev(x$r),
@@ -283,11 +210,10 @@ summarise_envelope <- function(x, seperated = TRUE, plot_result = FALSE) {
   area_total <- calc_area(area_total_poly)
 
   # result #
-  # seperated by above/below
   if (seperated) {
 
+    # seperated by above/below
     result <- c(sum(above_area) / sum(area_total) * 100,
-                # sum(between_area) / sum(area_total) * 100,
                 -sum(below_area) / sum(area_total) * 100)
   }
 
@@ -295,9 +221,11 @@ summarise_envelope <- function(x, seperated = TRUE, plot_result = FALSE) {
   else {
 
     # get ratio of area outside to total area
-    result <- (sum(above_area) +
-                 # sum(between_area) +
-                 -sum(below_area)) / sum(area_total) * 100
+    result <- (sum(above_area) + sum(below_area)) / sum(area_total) * 100
+
+    if (sum(below_area) >  sum(above_area)) {
+      result <- -result
+    }
   }
 
   # plot result
