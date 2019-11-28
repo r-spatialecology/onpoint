@@ -7,8 +7,6 @@
 split_at(x, pos)
 }
 \arguments{
-\item{x}{vector.}
-
 \item{x}{vector with positions to split.}
 }
 \description{

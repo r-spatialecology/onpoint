@@ -4,11 +4,22 @@
 \alias{plot_quantums}
 \title{plot_quantums}
 \usage{
-plot_quantums(input, labels = NULL, color_scale = NULL,
-  legend_position = "bottom", quantum_position = 0.05, title = NULL,
-  xlab = NULL, ylab = NULL, quantum_size = 5, line_size = 0.5,
-  base_size = 15, full_fun = TRUE, quantum = TRUE,
-  standarized = FALSE)
+plot_quantums(
+  input,
+  labels = NULL,
+  color_scale = NULL,
+  legend_position = "bottom",
+  quantum_position = 0.05,
+  title = NULL,
+  xlab = NULL,
+  ylab = NULL,
+  quantum_size = 5,
+  line_size = 0.5,
+  base_size = 15,
+  full_fun = TRUE,
+  quantum = TRUE,
+  standarized = FALSE
+)
 }
 \arguments{
 \item{input}{envelope.}
