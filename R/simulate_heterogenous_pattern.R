@@ -45,14 +45,12 @@ simulate_heterogenous_pattern <- function(x, nsim, fix_n = FALSE, ...) {
 
     simulated_pattern <- spatstat::rpoint(n = x$n ,
                                           f = lambda_xy,
-                                          win = x$window,
                                           nsim = nsim)
   }
 
   else {
 
     simulated_pattern <- spatstat::rpoispp(lambda = lambda_xy,
-                                           win = x$window,
                                            nsim = nsim)
   }
 

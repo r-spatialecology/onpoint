@@ -3,9 +3,12 @@
 #' @description Simulate heterogenous pattern
 #'
 #' @param x ppp
-#' @param i mark of points that are randomized.
-#' @param j mark of points that do not change.
+#' @param i Mark of points that are randomized.
+#' @param j Mark of points that do not change.
 #' @param nsim Number of patterns to simulate.
+#' @param heterogenous If TRUE points if the mark i are randomized using a heterogeneous
+#' Poisson process.
+#' @param ... Arguments passed to \code{spatstat::density.ppp()}.
 #'
 #' @details
 #' Simulate point patterns as null model data for \code{spatstat::envelope()} using
@@ -37,21 +40,21 @@
 #' @rdname simulate_antecedent_conditions
 
 #' @export
-simulate_antecedent_conditions <- function(x, i, j, nsim) {
+simulate_antecedent_conditions <- function(x, i, j, nsim, heterogenous = FALSE, ...) {
 
 
   # check if pattern ist marked
-  if(!spatstat::is.marked(x)) {
+  if (!spatstat::is.marked(x)) {
     stop("Please provide marked point pattern.", call. = FALSE)
   }
 
   # check if more than 2 types are present
-  if(length(unique(spatstat::marks(x))) > 2) {
+  if (length(unique(spatstat::marks(x))) > 2) {
     stop("Currently only bivariate point patterns are supported.", call. = FALSE)
   }
 
   # check if i and j are valid marks
-  if(!all(unique(spatstat::marks(x)) %in% c(i, j))) {
+  if (!all(unique(spatstat::marks(x)) %in% c(i, j))) {
     stop("i and j must be marks of x.", call. = FALSE)
   }
 
@@ -61,12 +64,28 @@ simulate_antecedent_conditions <- function(x, i, j, nsim) {
   # only points with mark i
   pattern_i <- spatstat::subset.ppp(x, marks == i, drop = TRUE)
 
+  if (heterogenous) {
+
+    lambda_xy <- spatstat::density.ppp(pattern_i, ...)
+  }
+
   # create nsim patterns
   result <- lapply(seq_len(length.out = nsim), function(current_nsim) {
 
-    # random pattern i
-    random_i <- spatstat::rpoint(n = pattern_i$n,
-                                 win = pattern_i$window)
+    if (!heterogenous) {
+
+      # random pattern i
+      random_i <- spatstat::rpoint(n = pattern_i$n,
+                                   win = pattern_i$window)
+    }
+
+    else {
+
+      # random pattern i
+      random_i <- spatstat::rpoint(n = pattern_i$n,
+                                   f = lambda_xy,
+                                   win = x$window)
+    }
 
     # assign same marks again
     spatstat::marks(random_i) <- spatstat::marks(pattern_i)

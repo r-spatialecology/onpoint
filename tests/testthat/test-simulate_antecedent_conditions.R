@@ -45,6 +45,16 @@ test_that("simulate_antecedent_conditions randomizes pattern i", {
   expect_true(check)
 })
 
+test_that("simulate_antecedent_conditions uses heterogenous process", {
+
+  null_model <- simulate_antecedent_conditions(x = pattern,
+                                               i = "b", j = "a",
+                                               nsim = 19,
+                                               heterogenous = TRUE)
+
+  expect_length(null_model, n = 19)
+})
+
 test_that("simulate_antecedent_conditions returns error", {
 
   pattern_unmarked <- spatstat::runifpoint(n = 100)
