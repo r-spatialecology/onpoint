@@ -36,9 +36,19 @@
 #' @export
 summarise_envelope <- function(x, seperated = FALSE, plot_result = FALSE) {
 
-  # check if class is envelope
-  if (!any(class(x) == "envelope")) {
-    stop("Please provide an envelope object.")
+  if (inherits(x = x, what = "envelope")) {
+
+    x <- spatstat::as.data.frame.fv(x)
+  }
+
+  else if (!inherits(x = x, what = "data.frame")) {
+
+    stop("Please provide envelope object or data frame.", call. = FALSE)
+  }
+
+  if (!all(names(x) %in% c("r", "obs", "theo", "lo", "hi"))) {
+
+    stop("Data frame must have columns: 'r', 'obs', 'theo', 'lo', 'hi'.", call. = FALSE)
   }
 
   # base plot including envelope and obs

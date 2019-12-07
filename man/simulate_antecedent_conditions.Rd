@@ -4,16 +4,21 @@
 \alias{simulate_antecedent_conditions}
 \title{simulate_antecedent_conditions}
 \usage{
-simulate_antecedent_conditions(x, i, j, nsim)
+simulate_antecedent_conditions(x, i, j, nsim, heterogenous = FALSE, ...)
 }
 \arguments{
 \item{x}{ppp}
 
-\item{i}{mark of points that are randomized.}
+\item{i}{Mark of points that are randomized.}
 
-\item{j}{mark of points that do not change.}
+\item{j}{Mark of points that do not change.}
 
 \item{nsim}{Number of patterns to simulate.}
+
+\item{heterogenous}{If TRUE points if the mark i are randomized using a heterogeneous
+Poisson process.}
+
+\item{...}{Arguments passed to \code{spatstat::density.ppp()}.}
 }
 \description{
 Simulate heterogenous pattern

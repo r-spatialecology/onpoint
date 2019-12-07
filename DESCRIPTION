@@ -24,4 +24,4 @@ Suggests:
     covr
 LazyData: true
 Encoding: UTF-8
-RoxygenNote: 7.0.1
+RoxygenNote: 7.0.2
