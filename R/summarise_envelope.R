@@ -51,6 +51,9 @@ summarise_envelope <- function(x, seperated = FALSE, plot_result = FALSE) {
     stop("Data frame must have columns: 'r', 'obs', 'theo', 'lo', 'hi'.", call. = FALSE)
   }
 
+  # get rid of inf values
+  x <- x[stats::complete.cases(x) ,]
+
   # base plot including envelope and obs
   if (plot_result) {
 
@@ -172,35 +175,104 @@ summarise_envelope <- function(x, seperated = FALSE, plot_result = FALSE) {
     # loop through number of polygons
     for (i in 1:length(above_area)) {
 
-      # matrix for coords area above
-      above_area_temp <- matrix(data = NA, nrow = length(above_area_pos[[i]]),
-                                ncol = 2)
+      if (length(above_area_pos[[i]]) > 1) {
 
-      # coordinates of polygon above
-      for (j in 1:nrow(above_area_temp)) {
+        # matrix for coords area above
+        above_area_temp <- matrix(data = NA, nrow = length(above_area_pos[[i]]),
+                                  ncol = 2)
 
-        above_area_temp[j, 1] <- min(x$obs[above_area_pos[[i]]][j],
-                                     x$hi[above_area_pos[[i]]][j])
+        # coordinates of polygon above
+        for (j in 1:nrow(above_area_temp)) {
 
-        above_area_temp[j, 2] <- max(x$obs[above_area_pos[[i]]][j],
-                                     x$hi[above_area_pos[[i]]][j])
+          above_area_temp[j, 1] <- min(x$obs[above_area_pos[[i]]][j],
+                                       x$hi[above_area_pos[[i]]][j])
+
+          above_area_temp[j, 2] <- max(x$obs[above_area_pos[[i]]][j],
+                                       x$hi[above_area_pos[[i]]][j])
+        }
+
+        # convert to matrix with xy coords
+        above_area_poly_temp <- matrix(data = c(x$r[above_area_pos[[i]]], rev(x$r[above_area_pos[[i]]]),
+                                                above_area_temp[, 1], rev(above_area_temp[, 2])),
+                                       ncol = 2)
+
+        # get area
+        above_area[i] <- calc_area(above_area_poly_temp)
+
+        # add polygon to plot
+        if (plot_result) {
+          ggplot_result <- ggplot_result +
+            ggplot2::geom_polygon(data = as.data.frame(above_area_poly_temp),
+                                  ggplot2::aes(x = V1,
+                                               y = V2),
+                                  fill = "#0D0887FF",alpha = 0.5)
+        }
       }
 
-      # convert to matrix with xy coords
-      above_area_poly_temp <- matrix(data = c(x$r[above_area_pos[[i]]], rev(x$r[above_area_pos[[i]]]),
-                                              above_area_temp[, 1], rev(above_area_temp[, 2])),
-                                     ncol = 2)
+      else {
 
-      # get area
-      above_area[i] <- calc_area(above_area_poly_temp)
+        # matrix for coords area above
+        above_area_poly_temp <- matrix(data = NA, nrow = 3, ncol = 2)
 
-      # add polygon to plot
-      if (plot_result) {
-        ggplot_result <- ggplot_result +
-          ggplot2::geom_polygon(data = as.data.frame(above_area_poly_temp),
-                                ggplot2::aes(x = V1,
-                                             y = V2),
-                                fill = "#0D0887FF",alpha = 0.5)
+        # first or last value r above envelope
+        if (above_area_pos[[i]] == 1 | above_area_pos[[i]] == length(x$r)) {
+
+          # first value r above envelope
+          if (above_area_pos[[i]] == 1) {
+
+            pos <- 1
+          }
+
+          # last value r above envelope
+          else {
+
+            pos <- -1
+          }
+
+          # create polygon using three coordinates
+          above_area_poly_temp[1, 1] <- x$r[above_area_pos[[i]]]
+          above_area_poly_temp[1, 2] <- min(x$obs[above_area_pos[[i]]],
+                                            x$hi[above_area_pos[[i]]])
+
+          above_area_poly_temp[3, 1] <- x$r[above_area_pos[[i]] + pos]
+          above_area_poly_temp[3, 2] <- max(x$obs[above_area_pos[[i]] + pos],
+                                            x$hi[above_area_pos[[i]] + pos])
+
+          above_area_poly_temp[2, 1] <- x$r[above_area_pos[[i]]]
+          above_area_poly_temp[2, 2] <- max(x$obs[above_area_pos[[i]]],
+                                            x$hi[above_area_pos[[i]]])
+
+        }
+
+        # any value r above envelope
+        else {
+
+          # create polygon using three coordinates
+          above_area_poly_temp[1, 1] <- x$r[above_area_pos[[i]] - 1]
+          above_area_poly_temp[1, 2] <- max(x$obs[above_area_pos[[i]] - 1],
+                                            x$hi[above_area_pos[[i]] - 1])
+
+          above_area_poly_temp[2, 1] <- x$r[above_area_pos[[i]]]
+          above_area_poly_temp[2, 2] <- max(x$obs[above_area_pos[[i]]],
+                                            x$hi[above_area_pos[[i]]])
+
+          above_area_poly_temp[3, 1] <- x$r[above_area_pos[[i]] + 1]
+          above_area_poly_temp[3, 2] <- max(x$obs[above_area_pos[[i]] + 1],
+                                            x$hi[above_area_pos[[i]] + 1])
+        }
+
+        # get area
+        above_area[i] <- calc_area(above_area_poly_temp)
+
+        # add polygon to plot
+        if (plot_result) {
+
+          ggplot_result <- ggplot_result +
+            ggplot2::geom_polygon(data = as.data.frame(above_area_poly_temp),
+                                  ggplot2::aes(x = V1,
+                                               y = V2),
+                                  fill = "#0D0887FF",alpha = 0.5)
+        }
       }
     }
   }
@@ -224,13 +296,13 @@ summarise_envelope <- function(x, seperated = FALSE, plot_result = FALSE) {
     # first or last value r below envelope
     if (below_envelope == 1 | below_envelope == length(x$r)) {
 
-      # first value r above envelope
+      # first value r below envelope
       if (below_envelope == 1) {
 
         pos <- 1
       }
 
-      # last value r above envelope
+      # last value r below envelope
       else {
 
         pos <- -1
@@ -311,35 +383,103 @@ summarise_envelope <- function(x, seperated = FALSE, plot_result = FALSE) {
     # loop through number of polygons
     for (i in 1:length(below_area)) {
 
-      # matrix for coords area below
-      below_area_temp <- matrix(data = NA, nrow = length(below_area_pos[[i]]),
-                                ncol = 2)
+      if (length(below_area_pos[[i]]) > 1) {
 
-      # coordinates of polygon below
-      for (j in 1:nrow(below_area_temp)) {
+        # matrix for coords area below
+        below_area_temp <- matrix(data = NA, nrow = length(below_area_pos[[i]]),
+                                  ncol = 2)
 
-        below_area_temp[j, 1] <- min(x$obs[below_area_pos[[i]]][j],
-                                     x$lo[below_area_pos[[i]]][j])
+        # coordinates of polygon below
+        for (j in 1:nrow(below_area_temp)) {
 
-        below_area_temp[j, 2] <- max(x$obs[below_area_pos[[i]]][j],
-                                     x$lo[below_area_pos[[i]]][j])
+          below_area_temp[j, 1] <- min(x$obs[below_area_pos[[i]]][j],
+                                       x$lo[below_area_pos[[i]]][j])
+
+          below_area_temp[j, 2] <- max(x$obs[below_area_pos[[i]]][j],
+                                       x$lo[below_area_pos[[i]]][j])
+        }
+
+        # convert to matrix with xy coords
+        below_area_poly_temp <- matrix(data = c(x$r[below_area_pos[[i]]], rev(x$r[below_area_pos[[i]]]),
+                                                below_area_temp[, 1], rev(below_area_temp[, 2])),
+                                       ncol = 2)
+
+        # get area
+        below_area[i] <- calc_area(below_area_poly_temp)
+
+        # add polygon to plot
+        if (plot_result) {
+          ggplot_result <- ggplot_result +
+            ggplot2::geom_polygon(data = as.data.frame(below_area_poly_temp),
+                                  ggplot2::aes(x = V1,
+                                               y = V2),
+                                  fill =  "#CC4678FF",alpha = 0.5)
+        }
       }
 
-      # convert to matrix with xy coords
-      below_area_poly_temp <- matrix(data = c(x$r[below_area_pos[[i]]], rev(x$r[below_area_pos[[i]]]),
-                                              below_area_temp[, 1], rev(below_area_temp[, 2])),
-                                     ncol = 2)
+      else {
+        # matrix for coords area below
+        below_area_poly_temp <- matrix(data = NA, nrow = 3, ncol = 2)
 
-      # get area
-      below_area[i] <- calc_area(below_area_poly_temp)
+        # first or last value r below envelope
+        if (below_area_pos[[i]] == 1 | below_area_pos[[i]] == length(x$r)) {
 
-      # add polygon to plot
-      if (plot_result) {
-        ggplot_result <- ggplot_result +
-          ggplot2::geom_polygon(data = as.data.frame(below_area_poly_temp),
-                                ggplot2::aes(x = V1,
-                                             y = V2),
-                                fill =  "#CC4678FF",alpha = 0.5)
+          # first value r below envelope
+          if (below_area_pos[[i]] == 1) {
+
+            pos <- 1
+          }
+
+          # last value r below envelope
+          else {
+
+            pos <- -1
+          }
+
+          # create polygon using three coordinates
+          below_area_poly_temp[1, 1] <- x$r[below_area_pos[[i]]]
+          below_area_poly_temp[1, 2] <- min(x$obs[below_area_pos[[i]]],
+                                            x$hi[below_area_pos[[i]]])
+
+          below_area_poly_temp[3, 1] <- x$r[below_area_pos[[i]] + pos]
+          below_area_poly_temp[3, 2] <- max(x$obs[below_area_pos[[i]] + pos],
+                                            x$hi[below_area_pos[[i]] + pos])
+
+          below_area_poly_temp[2, 1] <- x$r[below_area_pos[[i]]]
+          below_area_poly_temp[2, 2] <- max(x$obs[below_area_pos[[i]]],
+                                            x$hi[below_area_pos[[i]]])
+
+        }
+
+        # any value r below envelope
+        else {
+
+          # create polygon using three coordinates
+          below_area_poly_temp[1, 1] <- x$r[below_area_pos[[i]] - 1]
+          below_area_poly_temp[1, 2] <- max(x$obs[below_area_pos[[i]] - 1],
+                                            x$hi[below_area_pos[[i]] - 1])
+
+          below_area_poly_temp[2, 1] <- x$r[below_area_pos[[i]]]
+          below_area_poly_temp[2, 2] <- max(x$obs[below_area_pos[[i]]],
+                                            x$hi[below_area_pos[[i]]])
+
+          below_area_poly_temp[3, 1] <- x$r[below_area_pos[[i]] + 1]
+          below_area_poly_temp[3, 2] <- max(x$obs[below_area_pos[[i]] + 1],
+                                            x$hi[below_area_pos[[i]] + 1])
+        }
+
+        # get area
+        below_area_pos[i] <- calc_area(below_area_poly_temp)
+
+        # add polygon to plot
+        if (plot_result) {
+
+          ggplot_result <- ggplot_result +
+            ggplot2::geom_polygon(data = as.data.frame(below_area_poly_temp),
+                                  ggplot2::aes(x = V1,
+                                               y = V2),
+                                  fill = "#CC4678FF",alpha = 0.5)
+        }
       }
     }
   }
@@ -351,7 +491,7 @@ summarise_envelope <- function(x, seperated = FALSE, plot_result = FALSE) {
                                      rev(x$obs)), ncol = 2)
 
   # calc area
-  area_total <- calc_area(area_total_poly)
+  area_total <- calc_area(x = area_total_poly)
 
   # result #
   if (seperated) {

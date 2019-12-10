@@ -15,8 +15,11 @@
 #' @export
 calc_area <- function(x){
 
-  # close the polygon
-  x <- rbind(x, x[1, ])
+  # check if polygon is closed
+  if (x[1, 1] != x[nrow(x), 1] || x[1, 2] != x[nrow(x), 2]) {
+    # close the polygon
+    x <- rbind(x, x[1, ])
+  }
 
   # get number of rows
   nrow_x <- nrow(x)
