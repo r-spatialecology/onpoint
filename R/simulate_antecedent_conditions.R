@@ -6,7 +6,7 @@
 #' @param i Mark of points that are randomized.
 #' @param j Mark of points that do not change.
 #' @param nsim Number of patterns to simulate.
-#' @param heterogenous If TRUE points if the mark i are randomized using a heterogeneous
+#' @param heterogenous If TRUE, points with the mark i are randomized using a heterogeneous
 #' Poisson process.
 #' @param ... Arguments passed to \code{spatstat::density.ppp()}.
 #'

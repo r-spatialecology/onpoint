@@ -15,7 +15,7 @@ simulate_antecedent_conditions(x, i, j, nsim, heterogenous = FALSE, ...)
 
 \item{nsim}{Number of patterns to simulate.}
 
-\item{heterogenous}{If TRUE points if the mark i are randomized using a heterogeneous
+\item{heterogenous}{If TRUE, points with the mark i are randomized using a heterogeneous
 Poisson process.}
 
 \item{...}{Arguments passed to \code{spatstat::density.ppp()}.}
