@@ -1,0 +1,95 @@
+#' plot.env_summarised
+#'
+#' @description Plotting method for env_summarised object
+#'
+#' @param x Random patterns.
+#' @param col_poly Colours for areas above and below envelope.
+#' @param x_lab,y_lab Labels of x- and y-axis.
+#' @param base_size Base size of plot
+#' @param label If TRUE the ratios of the area above and below are added to the plot.
+#' @param ... To be generic for plotting function.
+#'
+#' @details
+#' Ploting method for summarised envelope created with \code{\link{summarise_envelope}}.
+#'
+#' @seealso
+#' \code{\link{summarise_envelope}}
+#'
+#' @examples
+#' set.seed(42)
+#' input_pattern <- spatstat::rThomas(kappa = 15, scale = 0.05, mu = 5)
+#'
+#' cluster_env <- spatstat::envelope(input_pattern, fun = "pcf", nsim = 39,
+#' funargs = list(divisor = "d", correction = "Ripley", stoyan = 0.25))
+#'
+#' x <- summarise_envelope(cluster_env)
+#' plot(x)
+#'
+#' @aliases plot.env_summarised
+#' @rdname plot.env_summarised
+
+#' @export
+plot.env_summarised <- function(x, col_poly = c("#0D0887FF", "#CC4678FF"),
+                                x_lab = NULL, y_lab = NULL, base_size = 10,
+                                label = TRUE, ...) {
+
+  # check if colour for polygons is correct
+  if (length(col_poly) != 2) {
+    warning("Please provide two colours for the polygons. Setting to default.",
+            call. = FALSE)
+
+    col_poly <- c("#0D0887FF", "#CC4678FF")
+  }
+
+  # check if lab labels are present
+  if (is.null(x_lab)) {
+    x_lab <- "r [unit]"
+  }
+
+  if (is.null(y_lab)) {
+    y_lab <- expression(italic(f(r)))
+  }
+
+  # get summary function and areas of polygons
+  summary_function <- x$internal$envelope
+  area_poly <- x$internal$area_poly
+
+  # get ratios above and below
+  ratio_above <- round(x$result_above, digits = 2)
+  ratio_below <- round(x$result_below, digits = 2)
+
+  # get position of labels
+  label_x <- max(summary_function$r) * 0.9
+  label_y <- abs(max(summary_function$obs, summary_function$hi)) * 0.9
+
+  ggplot_result <- ggplot2::ggplot(data = summary_function) +
+    ggplot2::geom_ribbon(ggplot2::aes(x = r, ymin = lo, ymax = hi,
+                                      fill = "Simulation envelope"),
+                         alpha = 0.5) +
+    ggplot2::geom_polygon(data = area_poly,
+                          ggplot2::aes(x = x, y = y, fill = type),
+                          alpha = 0.5) +
+    ggplot2::geom_line(ggplot2::aes(x = r, y = obs, linetype = "Observed function")) +
+    ggplot2::geom_line(ggplot2::aes(x = r, y = theo, linetype = "Theoretical function")) +
+    ggplot2::scale_linetype_manual(name = "", values = c(1, 2)) +
+    ggplot2::scale_fill_manual(name = "", values = c("Area above" = col_poly[1],
+                                                     "Area below" = col_poly[2],
+                                                     "Simulation envelope" = "grey75")) +
+    ggplot2::labs(x = x_lab, y = y_lab) +
+    ggplot2::theme_classic(base_size = base_size) +
+    ggplot2::theme(legend.position = "bottom")
+
+  # add label with ratios
+  if (label) {
+    ggplot_result <- ggplot_result +
+      ggplot2::annotate(geom = "label", x = label_x, y = label_y,
+                          label = paste0("Area above: ", ratio_above, "%\n",
+                                         "Area below: ",ratio_below, "%"))
+  }
+
+  # send plot to viewer
+  print(ggplot_result)
+
+  # return ggplot object
+  return(ggplot_result)
+}

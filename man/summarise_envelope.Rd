@@ -4,18 +4,15 @@
 \alias{summarise_envelope}
 \title{summarise_envelope}
 \usage{
-summarise_envelope(x, seperated = FALSE, plot_result = FALSE)
+summarise_envelope(x, plot_result = FALSE)
 }
 \arguments{
 \item{x}{fv}
 
-\item{seperated}{If TRUE one value for the relative area above and one for
-the relative area below the envelope are returned.}
-
 \item{plot_result}{A plot is drawn.}
 }
 \value{
-vector
+env_summarised
 }
 \description{
 Summarise simulation envelope

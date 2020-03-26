@@ -21,6 +21,6 @@ globalVariables(c("hi",
                   "theoretical",
                   "type",
                   "is",
-                  "V1",
-                  "V2"))
+                  "x",
+                  "y"))
 

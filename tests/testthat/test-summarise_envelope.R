@@ -23,38 +23,25 @@ regular_envelope <- spatstat::envelope(regular_pattern, fun = "pcf", nsim = 199,
                                                       stoyan = 0.25),
                                        verbose = FALSE)
 
-test_that("summarise_envelope returns at two seperated values if seperated = TRUE", {
+test_that("summarise_envelope returns at two seperated and the total value", {
 
-  result_csr <- summarise_envelope(csr_envelope, seperated = TRUE)
-  result_cluster <- summarise_envelope(cluster_envelope, seperated = TRUE)
-  result_regular <- summarise_envelope(regular_envelope, seperated = TRUE)
+  result_csr <- summarise_envelope(csr_envelope)
+  result_cluster <- summarise_envelope(cluster_envelope)
+  result_regular <- summarise_envelope(regular_envelope)
 
-  expect_length(result_csr, n = 2)
-  expect_length(result_cluster, n = 2)
-  expect_length(result_regular, n = 2)
+  expect_true(result_csr$result_total == 0)
+  expect_true(result_cluster$result_total > result_regular$result_total)
 
-  expect_true(all(c(result_csr[1], result_cluster[1], result_regular[1]) >= 0))
-  expect_true(all(c(result_csr[2], result_cluster[2], result_regular[2]) <= 0))
-})
-
-test_that("summarise_envelope returns one value if seperated = FALSE", {
-
-  result_csr <- summarise_envelope(csr_envelope, seperated = FALSE)
-  result_cluster <- summarise_envelope(cluster_envelope, seperated = FALSE)
-  result_regular <- summarise_envelope(regular_envelope, seperated = FALSE)
-
-  expect_length(result_csr, n = 1)
-  expect_length(result_cluster, n = 1)
-  expect_length(result_regular, n = 1)
+  expect_true(all(c(result_csr$result_above, result_cluster$result_above, result_regular$result_above) >= 0))
+  expect_true(all(c(result_csr$result_below, result_cluster$result_below, result_regular$result_below) <= 0))
 })
 
 test_that("summarise_envelope runs for data.frame", {
 
-  result_env <- summarise_envelope(cluster_envelope, seperated = FALSE)
-  result_df <- summarise_envelope(as.data.frame(cluster_envelope),
-                                  seperated = FALSE)
+  result_env <- summarise_envelope(cluster_envelope)
+  result_df <- summarise_envelope(as.data.frame(cluster_envelope))
 
-  expect_equal(object = result_env, expected = result_df)
+  expect_equal(object = result_env$result_total, expected = result_df$result_total)
 })
 
 
