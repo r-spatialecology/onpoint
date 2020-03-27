@@ -116,6 +116,12 @@ summarise_envelope <- function(x, plot_result = FALSE) {
 
     # get area
     area_above <- calc_area(area_above_poly_temp)
+
+    # get polygon coords
+    poly_above <- data.frame(x = area_above_poly_temp[, 1],
+                             y = area_above_poly_temp[, 2],
+                             id = 1,
+                             type = "Area above")
   }
 
   # more than one scale above envelope
@@ -146,6 +152,9 @@ summarise_envelope <- function(x, plot_result = FALSE) {
     # init vector for area
     area_above <- vector(mode = "numeric", length = length(area_above_pos))
 
+    # init vector for area
+    poly_above <- vector(mode = "list", length = length(area_above_pos))
+
     # loop through number of polygons
     for (i in 1:length(area_above)) {
 
@@ -172,6 +181,12 @@ summarise_envelope <- function(x, plot_result = FALSE) {
 
         # get area
         area_above[i] <- calc_area(area_above_poly_temp)
+
+        # get polygon coords
+        poly_above[[i]] <- data.frame(x = area_above_poly_temp[,1],
+                                      y = area_above_poly_temp[,2],
+                                      id = i,
+                                      type = "Area above")
       }
 
       else {
@@ -228,6 +243,11 @@ summarise_envelope <- function(x, plot_result = FALSE) {
 
         # get area
         area_above[i] <- calc_area(area_above_poly_temp)
+
+        poly_above[[i]] <- data.frame(x = area_above_poly_temp[, 1],
+                                      y = area_above_poly_temp[, 2],
+                                      id = i,
+                                      type = "Area above")
       }
     }
   }
@@ -296,6 +316,12 @@ summarise_envelope <- function(x, plot_result = FALSE) {
 
     # get area
     area_below <- calc_area(area_below_poly_temp)
+
+    # get polygon coords
+    poly_below <- data.frame(x = area_below_poly_temp[,1],
+                             y = area_below_poly_temp[,2],
+                             id = 1,
+                             type = "Area below")
   }
 
   # more than one value r below envelope
@@ -326,6 +352,9 @@ summarise_envelope <- function(x, plot_result = FALSE) {
     # init vector for area
     area_below <- vector(mode = "numeric", length = length(area_below_pos))
 
+    # init list for poly coords
+    poly_below <- vector(mode = "list", length = length(area_below_pos))
+
     # loop through number of polygons
     for (i in 1:length(area_below)) {
 
@@ -352,6 +381,12 @@ summarise_envelope <- function(x, plot_result = FALSE) {
 
         # get area
         area_below[i] <- calc_area(area_below_poly_temp)
+
+        # get polygon coords
+        poly_below[[i]] <- data.frame(x = area_below_poly_temp[,1],
+                                      y = area_below_poly_temp[,2],
+                                      id = i,
+                                      type = "Area below")
       }
 
       else {
@@ -407,6 +442,12 @@ summarise_envelope <- function(x, plot_result = FALSE) {
 
         # get area
         area_below_pos[i] <- calc_area(area_below_poly_temp)
+
+        # get polygon coords
+        poly_below[[i]] <- data.frame(x = area_below_poly_temp[, 1],
+                                      y = area_below_poly_temp[, 2],
+                                      id = i,
+                                      type = "Area below")
       }
     }
   }
@@ -433,40 +474,27 @@ summarise_envelope <- function(x, plot_result = FALSE) {
   }
 
   # check if area above poly is present
-  if (!exists("area_above_poly_temp")) {
-    area_above_poly_temp <- NULL
+  if (!exists("poly_above")) {
+    poly_above <- data.frame(x = NA, y = NA, id = NA, type = "Area above")
   }
 
   # check if area below poly is present
-  if (!exists("area_below_poly_temp")) {
-    area_below_poly_temp <- NULL
+  if (!exists("poly_below")) {
+    poly_below <- data.frame(x = NA, y = NA, id = NA, type = "Area below")
   }
 
-  # save area polygons into dataframes
-  area_above_poly_temp <- as.data.frame(area_above_poly_temp)
-  area_below_poly_temp <- as.data.frame(area_below_poly_temp)
-
-  # create dataframe if area is 0
-  if (nrow(area_above_poly_temp) == 0) {
-    area_above_poly_temp <- data.frame(x = 0, y = 0, type = "Area above")
+  # bind list to dataframe
+  if (inherits(x = poly_above, what = "list")) {
+    poly_above <- do.call(rbind, poly_above)
   }
 
-  else {
-    names(area_above_poly_temp) <- c("x", "y")
-    area_above_poly_temp$type <- "Area above"
-  }
-
-  if (nrow(area_below_poly_temp) == 0) {
-    area_below_poly_temp <- data.frame(x = 0, y = 0, type = "Area below")
-  }
-
-  else {
-    names(area_below_poly_temp) <- c("x", "y")
-    area_below_poly_temp$type <- "Area below"
+  # bind list to dataframe
+  if (inherits(x = poly_below, what = "list")) {
+    poly_below <- do.call(rbind, poly_below)
   }
 
   # combine to one dataframe
-  area_poly <- rbind(area_above_poly_temp, area_below_poly_temp)
+  area_poly <- rbind(poly_above, poly_below)
 
   result <- list(area_above = area_above,
                  area_below = area_below,

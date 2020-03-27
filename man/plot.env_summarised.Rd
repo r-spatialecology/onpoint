@@ -6,7 +6,7 @@
 \usage{
 \method{plot}{env_summarised}(
   x,
-  col_poly = c("#0D0887FF", "#CC4678FF"),
+  col_poly = c("#97CBDE", "#E1B0B5"),
   x_lab = NULL,
   y_lab = NULL,
   base_size = 10,
