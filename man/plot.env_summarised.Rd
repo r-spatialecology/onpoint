@@ -6,7 +6,7 @@
 \usage{
 \method{plot}{env_summarised}(
   x,
-  col_poly = c("#97CBDE", "#E1B0B5"),
+  col = c("#97CBDE", "#E1B0B5"),
   x_lab = NULL,
   y_lab = NULL,
   base_size = 10,
@@ -17,7 +17,7 @@
 \arguments{
 \item{x}{Random patterns.}
 
-\item{col_poly}{Colours for areas above and below envelope.}
+\item{col}{Colours for areas above and below envelope.}
 
 \item{x_lab, y_lab}{Labels of x- and y-axis.}
 
