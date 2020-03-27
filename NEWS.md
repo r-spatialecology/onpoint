@@ -1,3 +1,7 @@
+# onpoint 0.4
+  * Printing method for result of `summarise_envelope()`
+  * Plotting method for result of `summarise_envelope()`
+
 # onpoint 0.3
   * New function `summarise_envelope()`
 
