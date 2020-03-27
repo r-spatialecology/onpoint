@@ -510,7 +510,7 @@ summarise_envelope <- function(x, plot_result = FALSE) {
   # plot result
   if (plot_result) {
 
-    plot.env_summarised(result)
+    print(plot.env_summarised(result))
   }
 
   return(result)

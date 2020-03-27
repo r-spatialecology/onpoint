@@ -3,7 +3,7 @@
 #' @description Plotting method for env_summarised object
 #'
 #' @param x Random patterns.
-#' @param col_poly Colours for areas above and below envelope.
+#' @param col Colours for areas above and below envelope.
 #' @param x_lab,y_lab Labels of x- and y-axis.
 #' @param base_size Base size of plot
 #' @param label If TRUE the ratios of the area above and below are added to the plot.
@@ -29,16 +29,16 @@
 #' @rdname plot.env_summarised
 
 #' @export
-plot.env_summarised <- function(x, col_poly = c("#97CBDE", "#E1B0B5"),
+plot.env_summarised <- function(x, col = c("#97CBDE", "#E1B0B5"),
                                 x_lab = NULL, y_lab = NULL, base_size = 10,
                                 label = TRUE, ...) {
 
   # check if colour for polygons is correct
-  if (length(col_poly) != 2) {
+  if (length(col) != 2) {
     warning("Please provide two colours for the polygons. Setting to default.",
             call. = FALSE)
 
-    col_poly <- c("#0D0887FF", "#CC4678FF")
+    col <- c("#97CBDE", "#E1B0B5")
   }
 
   # check if lab labels are present
@@ -77,8 +77,8 @@ plot.env_summarised <- function(x, col_poly = c("#97CBDE", "#E1B0B5"),
     ggplot2::geom_line(ggplot2::aes(x = r, y = obs, linetype = "Observed function")) +
     ggplot2::geom_line(ggplot2::aes(x = r, y = theo, linetype = "Theoretical function")) +
     ggplot2::scale_linetype_manual(name = "", values = c(1, 2)) +
-    ggplot2::scale_fill_manual(name = "", values = c("Area above" = col_poly[1],
-                                                     "Area below" = col_poly[2],
+    ggplot2::scale_fill_manual(name = "", values = c("Area above" = col[1],
+                                                     "Area below" = col[2],
                                                      "Simulation envelope" = "grey85")) +
     ggplot2::labs(x = x_lab, y = y_lab) +
     ggplot2::theme_classic(base_size = base_size) +
@@ -113,9 +113,6 @@ plot.env_summarised <- function(x, col_poly = c("#97CBDE", "#E1B0B5"),
                           label = paste0("Area above: ", ratio_above, "%\n",
                                          "Area below: ",ratio_below, "%"))
   }
-
-  # send plot to viewer
-  print(ggplot_result)
 
   # return ggplot object
   return(ggplot_result)
