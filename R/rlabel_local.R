@@ -30,13 +30,13 @@
 #' pattern <- spatstat::runifpoint(n = 250, win = spatstat::owin(c(0, 100), c(0, 100)))
 #' spatstat::marks(pattern) <- runif(n = 250, min = 10, max = 120)
 #'
-#' rlabel_local(X = pattern, distance = 25, nsim = 3)
+#' rlabel_local(X = pattern, distance = 25, nsim = 19)
 #'
 #' @aliases rlabel_local
 #' @rdname rlabel_local
 
 #' @export
-rlabel_local <- function(X, distance, nsim = 1,
+rlabel_local <- function(X, distance, nsim = 19,
                          drop = TRUE, verbose = TRUE) {
 
   # check if pattern is marked
@@ -80,6 +80,7 @@ rlabel_local <- function(X, distance, nsim = 1,
     for (j in 1:n_points) {
 
       # all points within distance
+      # might be faster not to check for != 0 but remove j (diagonal)
       within_distance <- which(pair_distances[, j] < distance &
                                  pair_distances[, j] != 0, arr.ind = TRUE)
 
