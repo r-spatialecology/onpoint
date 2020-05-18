@@ -12,7 +12,9 @@
 #' @details
 #' Local random labelling function, i.e. marks will be shuffeld only across points
 #' within the specified local distance. Technically, this is achived by sampling the
-#' mark of a neighbouring point j within the distance d for the focal point i.
+#' mark of a neighbouring point j within the distance d for the focal point i. Thus,
+#' the distance d must be selected in a way that each point has at least one neighbour
+#' within d.
 #'
 #' @seealso
 #' \code{\link{rlabel}}
@@ -38,11 +40,14 @@ rlabel_local <- function(X, distance, nsim = 1,
                          drop = TRUE, verbose = TRUE) {
 
   # check if pattern is marked
-  if (!spatstat::is.marked(X) ||
+  if (!spatstat::is.marked(X) |
       !inherits(spatstat::marks(X), what = "numeric")) {
 
     stop("Please provide pattern with numeric marks.", call. = FALSE)
   }
+
+  # get number of points
+  n_points <- X$n
 
   # get marks
   original_marks <- spatstat::marks(X)
@@ -50,27 +55,29 @@ rlabel_local <- function(X, distance, nsim = 1,
   # create list for nsim
   result <- vector(mode = "list", length = nsim)
 
+  # get distances
+  pair_distances <- spatstat::pairdist(X)
+
+  # get all points with no neighbour below distance
+  below_distance <- apply(X = pair_distances, MARGIN = 2,
+                          FUN = function(x) sum(x < distance & x != 0))
+
+  # some points don't have neighbour at r < distance
+  if (any(below_distance == 0)) {
+    stop("Not all points have at least one neighbour within the specified distance.",
+         call. = FALSE)
+  }
+
   for (i in 1:nsim) {
 
     # save pattern to exchanges marks without changing original pattern
     X_rlabel <- X
 
     # vector for sampled marks
-    sample_marks <- vector(mode = "numeric", length = X$n)
+    sample_marks <- vector(mode = "numeric", length = n_points)
 
-    # get distances
-    pair_distances <- spatstat::pairdist(X)
-
-    below_distance <- apply(X = pair_distances, MARGIN = 2,
-                            FUN = function(x) sum(x < distance & x != 0))
-
-    # some points don't have neighbour at r < distance
-    if (any(below_distance == 0)) {
-      stop("Not all points have at least one neighbourh within the specified distance.",
-           call. = FALSE)
-    }
-
-    for (j in 1:ncol(pair_distances)) {
+    # new mark for each point
+    for (j in 1:n_points) {
 
       # all points within distance
       within_distance <- which(pair_distances[, j] < distance &
@@ -88,7 +95,7 @@ rlabel_local <- function(X, distance, nsim = 1,
     result[[i]] <- X_rlabel
   }
 
-  # return only ppp if drop = TRUe
+  # return only ppp if drop = TRUE
   if (drop) {
 
     # still return list if nsim > 1 but throw warning

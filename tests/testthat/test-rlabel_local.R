@@ -1,6 +1,7 @@
 context("test-rlabel_local")
 
-pattern <- spatstat::runifpoint(n = 250, win = spatstat::owin(c(0, 100), c(0, 100)))
+pattern <- spatstat::runifpoint(n = 250,
+                                win = spatstat::owin(c(0, 100), c(0, 100)))
 
 spatstat::marks(pattern) <- runif(n = 250, min = 10, max = 120)
 
@@ -40,7 +41,7 @@ test_that("rlabel_local returns error", {
 
   expect_error(rlabel_local(X = pattern, distance = 5, nsim = 19,
                             drop = FALSE),
-               regexp = "Not all points have at least one neighbourh within the specified distance.")
+               regexp = "Not all points have at least one neighbour within the specified distance.")
 
   expect_error(rlabel_local(X = spatstat::unmark(pattern),
                             distance = 5, nsim = 19,

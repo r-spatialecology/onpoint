@@ -24,7 +24,9 @@ Local random labelling of marked point pattern
 \details{
 Local random labelling function, i.e. marks will be shuffeld only across points
 within the specified local distance. Technically, this is achived by sampling the
-mark of a neighbouring point j within the distance d for the focal point i.
+mark of a neighbouring point j within the distance d for the focal point i. Thus,
+the distance d must be selected in a way that each point has at least one neighbour
+within d.
 }
 \examples{
 set.seed(42)
