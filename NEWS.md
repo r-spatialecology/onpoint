@@ -1,3 +1,6 @@
+# onpoint 0.5
+  * add `rlabel_local()`function
+
 # onpoint 0.4
   * Printing method for result of `summarise_envelope()`
   * Plotting method for result of `summarise_envelope()`
