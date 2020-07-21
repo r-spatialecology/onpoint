@@ -13,7 +13,7 @@ plot_quantums(
   title = NULL,
   xlab = NULL,
   ylab = NULL,
-  quantum_size = 5,
+  quantum_size = 0.1,
   line_size = 0.5,
   base_size = 15,
   full_fun = TRUE,

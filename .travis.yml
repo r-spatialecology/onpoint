@@ -13,6 +13,6 @@ after_success:
 notifications:
   email:
     recipients:
-      - maximilian.hesselbarth@uni-goettingen.de
+      - mhk.hesselbarth@gmail.com
     on_success: change # default: change
     on_failure: change # default: always

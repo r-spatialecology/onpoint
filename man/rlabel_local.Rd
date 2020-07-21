@@ -4,7 +4,7 @@
 \alias{rlabel_local}
 \title{rlabel_local}
 \usage{
-rlabel_local(X, distance, nsim = 1, drop = TRUE, verbose = TRUE)
+rlabel_local(X, distance, nsim = 19, drop = TRUE, verbose = TRUE)
 }
 \arguments{
 \item{X}{ppp}
@@ -33,7 +33,7 @@ set.seed(42)
 pattern <- spatstat::runifpoint(n = 250, win = spatstat::owin(c(0, 100), c(0, 100)))
 spatstat::marks(pattern) <- runif(n = 250, min = 10, max = 120)
 
-rlabel_local(X = pattern, distance = 25, nsim = 3)
+rlabel_local(X = pattern, distance = 25, nsim = 19)
 
 }
 \references{

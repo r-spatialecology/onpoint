@@ -4,10 +4,10 @@ Title: Helper functions for point pattern analysis
 Version: 0.6
 Authors@R: 
   person("Maximillian H.K.", "Hesselbarth", 
-  email = "maximilian.hesselbarth@uni-goettingen.de",
+  email = "mhk.hesselbarth@gmail.com",
   role = c("aut", "cre"), 
   comment = c(ORCID = "0000-0003-1125-9918"))
-Maintainer: Maximillian H.K. Hesselbarth <maximilian.hesselbarth@uni-goettingen.de>
+Maintainer: Maximillian H.K. Hesselbarth <mhk.hesselbarth@gmail.com>
 Description: 
   Growing collection of small helper functions for point pattern analysis. Most functions
   are designed to work with the spatstat package.
@@ -24,4 +24,4 @@ Suggests:
     covr
 LazyData: true
 Encoding: UTF-8
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1

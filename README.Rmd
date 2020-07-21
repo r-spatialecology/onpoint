@@ -129,7 +129,6 @@ To plot simulation envelopes using quantum plots (e.g. Esser et al. 2015), just 
 plot_quantums(antecedent, ylab = "g(r)")
 ```
 
-
 #### References
 Besag, J. E. 1977. Discussion on Dr. Ripley's paper. - J. R. Stat. Soc. Ser. B 39: 193-195.
 

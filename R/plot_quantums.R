@@ -53,7 +53,7 @@ plot_quantums <- function(input,
                           labels = NULL, color_scale = NULL,
                           legend_position = "bottom", quantum_position = 0.05,
                           title = NULL, xlab = NULL, ylab = NULL,
-                          quantum_size = 0.5, line_size = 0.5, base_size = 15,
+                          quantum_size = 0.1, line_size = 0.5, base_size = 15,
                           full_fun = TRUE, quantum = TRUE, standarized = FALSE) {
 
   if (!is(input, "envelope") && !is(input, "data.frame")) {
