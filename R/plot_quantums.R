@@ -50,11 +50,11 @@
 
 #' @export
 plot_quantums <- function(input,
-                          labels = NULL, color_scale = NULL, legend_position = "bottom",
-                          quantum_position = 0.05,
+                          labels = NULL, color_scale = NULL,
+                          legend_position = "bottom", quantum_position = 0.05,
                           title = NULL, xlab = NULL, ylab = NULL,
-                          quantum_size = 5, line_size = 0.5, base_size = 15,
-                          full_fun = TRUE, quantum = TRUE, standarized = FALSE){
+                          quantum_size = 0.5, line_size = 0.5, base_size = 15,
+                          full_fun = TRUE, quantum = TRUE, standarized = FALSE) {
 
   if (!is(input, "envelope") && !is(input, "data.frame")) {
 
@@ -83,7 +83,10 @@ plot_quantums <- function(input,
 
   names(color_scale) <- labels
 
-  input <- spatstat::as.data.frame.fv(input)
+  if (is(input, "envelope")) {
+
+    input <- spatstat::as.data.frame.fv(input)
+  }
 
   names(input) <- c("r", "observed", "theoretical", "low", "high")
 
@@ -108,17 +111,22 @@ plot_quantums <- function(input,
 
     if (quantum == TRUE) {
 
-      y_quantum <- min(c(input$low, input$observed)) - (max(input$high, input$observed) - min(input$low, input$observed)) * quantum_position
+      y_quantum <- min(c(input$low, input$observed)) - quantum_size * 1.5
 
       gg_plot <- ggplot2::ggplot(input) +
-        ggplot2::geom_ribbon(ggplot2::aes(x = r, ymin = low, ymax = high), fill = "grey") +
-        ggplot2::geom_line(ggplot2::aes(x = r, y = observed, linetype = "Observed"), size = line_size) +
-        ggplot2::geom_line(ggplot2::aes(x = r, y = theoretical, linetype = "Theoretical"), size = line_size) +
-        ggplot2::geom_line(ggplot2::aes(x = r, y = y_quantum, colour = type, group = "x"), size = quantum_size) +
+        ggplot2::geom_ribbon(ggplot2::aes(x = r, ymin = low, ymax = high),
+                             fill = "grey") +
+        ggplot2::geom_line(ggplot2::aes(x = r, y = observed, linetype = "Observed"),
+                           size = line_size) +
+        ggplot2::geom_line(ggplot2::aes(x = r, y = theoretical, linetype = "Theoretical"),
+                           size = line_size) +
+        ggplot2::geom_linerange(ggplot2::aes(x = r, colour = type,
+                                             ymin = y_quantum - quantum_size,
+                                             ymax = y_quantum + quantum_size)) +
         ggplot2::scale_color_manual(name = "", values = color_scale) +
         ggplot2::scale_linetype_manual(name = "", values = c(1, 2)) +
         ggplot2::labs(x = xlab, y = ylab, title = title) +
-        ggplot2::theme_bw(base_size = base_size) +
+        ggplot2::theme_classic(base_size = base_size) +
         ggplot2::theme(legend.position = legend_position)
     }
 
@@ -129,15 +137,18 @@ plot_quantums <- function(input,
         ggplot2::geom_line(ggplot2::aes(x = r, y = theoretical, linetype = "Theoretical"), size = line_size) +
         ggplot2::scale_linetype_manual(name = "", values = c(1, 2)) +
         ggplot2::labs(x = xlab, y = ylab, title = title) +
-        ggplot2::theme_bw(base_size = base_size) +
+        ggplot2::theme_classic(base_size = base_size) +
         ggplot2::theme(legend.position = legend_position)
     }
   }
 
   else{
     gg_plot <- ggplot2::ggplot(input) +
-      ggplot2::geom_line(ggplot2::aes(x = r, y = 0, colour = type, group = "x"), size = quantum_size) +
-      ggplot2::coord_cartesian(ylim = c(0, 0.1)) +
+      ggplot2::geom_linerange(ggplot2::aes(x = r, colour = type,
+                                           ymin = 0 - quantum_size,
+                                           ymax = 0 + quantum_size)) +
+      ggplot2::coord_cartesian(ylim = c(0 - quantum_size * 1.25,
+                                        0 + quantum_size * 1.25)) +
       ggplot2::scale_color_manual(name = "", values = color_scale) +
       ggplot2::labs(x = xlab, y = "", title = title) +
       ggplot2::theme_classic(base_size = base_size) +

@@ -1,5 +1,8 @@
+# onpoint 0.6
+* `plot_quantums()` uses geom_linerange()
+
 # onpoint 0.5
-  * add `rlabel_local()`function
+  * add `rlabel_local()` function
 
 # onpoint 0.4
   * Printing method for result of `summarise_envelope()`
