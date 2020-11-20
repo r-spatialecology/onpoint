@@ -5,10 +5,11 @@
 ^cran-comments\.md$
 ^docs$
 ^CODE_OF_CONDUCT.*$
-^LICENSE.*$
 ^vignettes/articles$
 ^data-raw$
 ^_pkgdown\.yml$
 ^appveyor\.yml$
 ^\.travis\.yml$
 ^codecov\.yml$
+^LICENSE\.md$
+^\.github$
