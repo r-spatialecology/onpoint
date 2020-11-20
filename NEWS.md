@@ -1,3 +1,6 @@
+# onpoint 0.6.1
+* Use GitHub actions
+
 # onpoint 0.6
 * `plot_quantums()` uses geom_linerange()
 
