@@ -1,17 +1,18 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-[![Travis build
-status](https://travis-ci.org/r-spatialecology/onpoint.svg?branch=master)](https://travis-ci.org/r-spatialecology/onpoint)
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/4bbygdureyycu51p?svg=true)](https://ci.appveyor.com/project/mhesselbarth/onpoint)
+<!-- badges: start -->
+
+![R-CMD-check](https://github.com/r-spatialecology/onpoint/workflows/R-CMD-check/badge.svg)
 [![codecov](https://codecov.io/gh/r-spatialecology/onpoint/branch/master/graph/badge.svg)](https://codecov.io/gh/r-spatialecology/onpoint)
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![License: GPL
-v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![License:
+MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+<!-- badges: end -->
 
 # onpoint
 
