@@ -9,7 +9,7 @@ estimate_o_ring(x, ...)
 \arguments{
 \item{x}{ppp}
 
-\item{...}{Arguments passed to \code{spatstat::pcf.ppp()}}
+\item{...}{Arguments passed to \code{spatstat.core::pcf.ppp()}}
 }
 \description{
 O-ring function
@@ -25,7 +25,7 @@ One advantage of the O-ring statistic is that it can be interpreted as a neighbo
 a probability density function (Wiegand & Moloney 2004).
 }
 \examples{
-input_pattern <- spatstat::runifpoint(n = 100)
+input_pattern <- spatstat.core::runifpoint(n = 100)
 estimate_o_ring(input_pattern)
 
 }

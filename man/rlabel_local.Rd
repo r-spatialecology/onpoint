@@ -30,8 +30,8 @@ within d.
 }
 \examples{
 set.seed(42)
-pattern <- spatstat::runifpoint(n = 250, win = spatstat::owin(c(0, 100), c(0, 100)))
-spatstat::marks(pattern) <- runif(n = 250, min = 10, max = 120)
+pattern <- spatstat.core::runifpoint(n = 250, win = spatstat.geom::owin(c(0, 100), c(0, 100)))
+spatstat.geom::marks(pattern) <- runif(n = 250, min = 10, max = 120)
 
 rlabel_local(X = pattern, distance = 25, nsim = 19)
 

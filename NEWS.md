@@ -1,3 +1,8 @@
+# onpoint 0.7
+* Use GPL3 license
+* Adapt to new `spatstat` structure
+* Prepare CRAN submission
+
 # onpoint 0.6.1
 * Use GitHub actions
 

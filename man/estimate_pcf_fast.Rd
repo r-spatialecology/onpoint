@@ -24,7 +24,7 @@ pair correlation function directly. It is a wrapper around `Kest` and `pcf.fv`.
 }
 \examples{
 set.seed(42)
-pattern <- spatstat::runifpoint(n = 100)
+pattern <- spatstat.core::runifpoint(n = 100)
 pcf_fast <- estimate_pcf_fast(pattern)
 
 }

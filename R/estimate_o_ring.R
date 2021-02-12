@@ -3,7 +3,7 @@
 #' @description O-ring function
 #'
 #' @param x ppp
-#' @param ... Arguments passed to \code{spatstat::pcf.ppp()}
+#' @param ... Arguments passed to \code{spatstat.core::pcf.ppp()}
 #'
 #' @details
 #' Estimates the O-ring function proposed by Wiegand and Moloney (2004). The O-ring statistic
@@ -20,7 +20,7 @@
 #' \code{\link{pcf}}
 #'
 #' @examples
-#' input_pattern <- spatstat::runifpoint(n = 100)
+#' input_pattern <- spatstat.core::runifpoint(n = 100)
 #' estimate_o_ring(input_pattern)
 #'
 #' @references
@@ -34,15 +34,15 @@
 #' @export
 estimate_o_ring <- function(x, ...) {
 
-  if(!spatstat::is.ppp(x)) {
+  if(!spatstat.geom::is.ppp(x)) {
     stop("Please provide ppp.")
   }
 
-  p_fct <- spatstat::pcf.ppp(x, ...)
+  p_fct <- spatstat.core::pcf.ppp(x, ...)
 
-  lambda <- spatstat::intensity.ppp(spatstat::unmark(x))
+  lambda <- spatstat.geom::intensity.ppp(spatstat.geom::unmark(x))
 
-  o_ring <- spatstat::eval.fv(p_fct * lambda)
+  o_ring <- spatstat.core::eval.fv(p_fct * lambda)
 
   return(o_ring)
 }

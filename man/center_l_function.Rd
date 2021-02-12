@@ -9,7 +9,7 @@ center_l_function(x, ...)
 \arguments{
 \item{x}{ppp}
 
-\item{...}{Arguments passed to \code{spatstat::Lest()}}
+\item{...}{Arguments passed to \code{spatstat.core::Lest()}}
 }
 \description{
 Centered L-function
@@ -19,10 +19,10 @@ Centers Besag's L-function to zero by calculating L(r) -r. Centering the L-funct
 allows an easier interpretation and plotting of the results (Haase 1995).
 }
 \examples{
-input_pattern <- spatstat::runifpoint(n = 100)
+input_pattern <- spatstat.core::runifpoint(n = 100)
 center_l_function(input_pattern, correction = "Ripley")
 
-lest <- spatstat::Lest(input_pattern)
+lest <- spatstat.core::Lest(input_pattern)
 center_l_function(lest)
 
 }

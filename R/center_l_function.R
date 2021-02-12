@@ -3,7 +3,7 @@
 #' @description Centered L-function
 #'
 #' @param x ppp
-#' @param ... Arguments passed to \code{spatstat::Lest()}
+#' @param ... Arguments passed to \code{spatstat.core::Lest()}
 #'
 #' @details
 #' Centers Besag's L-function to zero by calculating L(r) -r. Centering the L-function
@@ -13,10 +13,10 @@
 #' \code{\link{Lest}}
 #'
 #' @examples
-#' input_pattern <- spatstat::runifpoint(n = 100)
+#' input_pattern <- spatstat.core::runifpoint(n = 100)
 #' center_l_function(input_pattern, correction = "Ripley")
 #'
-#' lest <- spatstat::Lest(input_pattern)
+#' lest <- spatstat.core::Lest(input_pattern)
 #' center_l_function(lest)
 #'
 #' @references
@@ -33,17 +33,17 @@
 #' @export
 center_l_function <- function(x, ...) {
 
-  if(!spatstat::is.ppp(x) && !spatstat::is.fv(x)) {
+  if(!spatstat.geom::is.ppp(x) && !spatstat.geom::is.fv(x)) {
     stop("Please provide either ppp or fv object.")
   }
 
-  if(spatstat::is.ppp(x)) {
-    x <- spatstat::Lest(x, ...)
+  if(spatstat.geom::is.ppp(x)) {
+    x <- spatstat.core::Lest(x, ...)
   }
 
   r <- x$r
 
-  l_centered <- spatstat::eval.fv(x - r)
+  l_centered <- spatstat.core::eval.fv(x - r)
 
   return(l_centered)
 }

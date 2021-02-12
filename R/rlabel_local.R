@@ -27,8 +27,8 @@
 #'
 #' @examples
 #' set.seed(42)
-#' pattern <- spatstat::runifpoint(n = 250, win = spatstat::owin(c(0, 100), c(0, 100)))
-#' spatstat::marks(pattern) <- runif(n = 250, min = 10, max = 120)
+#' pattern <- spatstat.core::runifpoint(n = 250, win = spatstat.geom::owin(c(0, 100), c(0, 100)))
+#' spatstat.geom::marks(pattern) <- runif(n = 250, min = 10, max = 120)
 #'
 #' rlabel_local(X = pattern, distance = 25, nsim = 19)
 #'
@@ -40,8 +40,8 @@ rlabel_local <- function(X, distance, nsim = 19,
                          drop = TRUE, verbose = TRUE) {
 
   # check if pattern is marked
-  if (!spatstat::is.marked(X) |
-      !inherits(spatstat::marks(X), what = "numeric")) {
+  if (!spatstat.geom::is.marked(X) |
+      !inherits(spatstat.geom::marks(X), what = "numeric")) {
 
     stop("Please provide pattern with numeric marks.", call. = FALSE)
   }
@@ -50,13 +50,13 @@ rlabel_local <- function(X, distance, nsim = 19,
   n_points <- X$n
 
   # get marks
-  original_marks <- spatstat::marks(X)
+  original_marks <- spatstat.geom::marks(X)
 
   # create list for nsim
   result <- vector(mode = "list", length = nsim)
 
   # get distances
-  pair_distances <- spatstat::pairdist(X)
+  pair_distances <- spatstat.geom::pairdist(X)
 
   # get all points with no neighbour below distance
   below_distance <- apply(X = pair_distances, MARGIN = 2,
@@ -90,7 +90,7 @@ rlabel_local <- function(X, distance, nsim = 19,
     }
 
     # add new marks
-    spatstat::marks(X_rlabel) <- sample_marks
+    spatstat.geom::marks(X_rlabel) <- sample_marks
 
     # return list
     result[[i]] <- X_rlabel

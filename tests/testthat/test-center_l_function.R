@@ -2,22 +2,22 @@ context("test-center_l_function")
 
 test_that("center_l_function works for point pattern", {
 
-  input_pattern <- spatstat::runifpoint(n = 100)
+  input_pattern <- spatstat.core::runifpoint(n = 100)
 
   result <- center_l_function(input_pattern, correction = "Ripley")
 
-  expect_true(spatstat::is.fv(result))
+  expect_true(spatstat.geom::is.fv(result))
 })
 
 test_that("center_l_function works for fv object", {
 
-  input_pattern <- spatstat::runifpoint(n = 100)
+  input_pattern <- spatstat.core::runifpoint(n = 100)
 
-  lest <- spatstat::Lest(input_pattern)
+  lest <- spatstat.core::Lest(input_pattern)
 
   result <- center_l_function(lest, correction = "Ripley")
 
-  expect_true(spatstat::is.fv(result))
+  expect_true(spatstat.geom::is.fv(result))
 })
 
 test_that("center_l_function returns error", {

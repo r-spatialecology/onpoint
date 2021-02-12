@@ -2,7 +2,7 @@ context("test-simulate_heterogenous_pattern")
 
 test_that("simulate_heterogenous_pattern returns ppp", {
 
-  input_pattern <- spatstat::rpoispp(lambda = function(x , y) {100 * exp(-3 * x)}, nsim = 1)
+  input_pattern <- spatstat.core::rpoispp(lambda = function(x , y) {100 * exp(-3 * x)}, nsim = 1)
 
   result <- simulate_heterogenous_pattern(input_pattern, nsim = 9)
 
@@ -15,7 +15,7 @@ test_that("simulate_heterogenous_pattern returns ppp", {
 
 test_that("fix_n is working for simulate_heterogenous_pattern", {
 
-  input_pattern <- spatstat::rpoispp(lambda = function(x , y) {100 * exp(-3 * x)}, nsim = 1)
+  input_pattern <- spatstat.core::rpoispp(lambda = function(x , y) {100 * exp(-3 * x)}, nsim = 1)
 
   result <- simulate_heterogenous_pattern(input_pattern, nsim = 9, fix_n = TRUE)
 

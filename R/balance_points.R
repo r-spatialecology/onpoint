@@ -15,8 +15,8 @@
 #'
 #' @examples
 #' set.seed(42)
-#' input <- spatstat::rpoispp(lambda = 100)
-#' input_b <- spatstat::rpoispp(lambda = 100)
+#' input <- spatstat.core::rpoispp(lambda = 100)
+#' input_b <- spatstat.core::rpoispp(lambda = 100)
 #'
 #' balance_points(pattern = input, n = 110)
 #' balance_points(pattern = input, n = input_b)
@@ -29,14 +29,14 @@
 balance_points <- function(pattern, n, verbose = TRUE) {
 
   # check if n is valid
-  if(!spatstat::is.ppp(n)) {
+  if(!spatstat.geom::is.ppp(n)) {
     if (n %% 1 != 0) {
     stop("n must be either integer or ppp.", call. = FALSE)
     }
   }
 
   # if n is pattern - get number of points
-  if(spatstat::is.ppp(n)) {
+  if(spatstat.geom::is.ppp(n)) {
     n <- n$n
   }
 
@@ -73,13 +73,13 @@ balance_points <- function(pattern, n, verbose = TRUE) {
     difference <- n - pattern$n
 
     # create missing points
-    missing_points <- spatstat::runifpoint(n = difference,
-                                           win = pattern$window,
-                                           nsim = 1, drop = TRUE)
+    missing_points <- spatstat.core::runifpoint(n = difference,
+                                                win = pattern$window,
+                                                nsim = 1, drop = TRUE)
 
     # add missing points to simulated
-    pattern <- spatstat::superimpose(pattern, missing_points,
-                                     W = pattern$window)
+    pattern <- spatstat.geom::superimpose(pattern, missing_points,
+                                          W = pattern$window)
   }
 
   return(pattern)

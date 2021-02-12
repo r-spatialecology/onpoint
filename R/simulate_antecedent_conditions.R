@@ -8,10 +8,10 @@
 #' @param nsim Number of patterns to simulate.
 #' @param heterogenous If TRUE, points with the mark i are randomized using a heterogeneous
 #' Poisson process.
-#' @param ... Arguments passed to \code{spatstat::density.ppp()}.
+#' @param ... Arguments passed to \code{spatstat.core::density.ppp()}.
 #'
 #' @details
-#' Simulate point patterns as null model data for \code{spatstat::envelope()} using
+#' Simulate point patterns as null model data for \code{spatstat.core::envelope()} using
 #' antecendet conditions as null model. \code{x} must be marked point pattern.
 #' Antecedent conditions are suitable as a null model if points of type j may influence
 #' points of type i, but not the other way around (Velazquez et al 2016). One example are
@@ -27,14 +27,14 @@
 #'
 #' @examples
 #' set.seed(42)
-#' pattern_a <- spatstat::runifpoint(n = 20)
-#' spatstat::marks(pattern_a) <- "a"
-#' pattern_b <- spatstat::runifpoint(n = 100)
-#' spatstat::marks(pattern_b) <- "b"
-#' pattern <- spatstat::superimpose(pattern_a, pattern_b)
+#' pattern_a <- spatstat.core::runifpoint(n = 20)
+#' spatstat.geom::marks(pattern_a) <- "a"
+#' pattern_b <- spatstat.core::runifpoint(n = 100)
+#' spatstat.geom::marks(pattern_b) <- "b"
+#' pattern <- spatstat.geom::superimpose(pattern_a, pattern_b)
 #'
 #' null_model <- simulate_antecedent_conditions(x = pattern, i = "b", j = "a", nsim = 19)
-#' spatstat::envelope(Y = pattern, fun = spatstat::pcf, nsim = 19, simulate = null_model)
+#' spatstat.core::envelope(Y = pattern, fun = spatstat.core::pcf, nsim = 19, simulate = null_model)
 #'
 #' @aliases simulate_antecedent_conditions
 #' @rdname simulate_antecedent_conditions
@@ -44,29 +44,29 @@ simulate_antecedent_conditions <- function(x, i, j, nsim, heterogenous = FALSE, 
 
 
   # check if pattern ist marked
-  if (!spatstat::is.marked(x)) {
+  if (!spatstat.geom::is.marked(x)) {
     stop("Please provide marked point pattern.", call. = FALSE)
   }
 
   # check if more than 2 types are present
-  if (length(unique(spatstat::marks(x))) > 2) {
+  if (length(unique(spatstat.geom::marks(x))) > 2) {
     stop("Currently only bivariate point patterns are supported.", call. = FALSE)
   }
 
   # check if i and j are valid marks
-  if (!all(unique(spatstat::marks(x)) %in% c(i, j))) {
+  if (!all(unique(spatstat.geom::marks(x)) %in% c(i, j))) {
     stop("i and j must be marks of x.", call. = FALSE)
   }
 
   # only points with mark j
-  pattern_j <- spatstat::subset.ppp(x, marks == j, drop = TRUE)
+  pattern_j <- spatstat.geom::subset.ppp(x, marks == j, drop = TRUE)
 
   # only points with mark i
-  pattern_i <- spatstat::subset.ppp(x, marks == i, drop = TRUE)
+  pattern_i <- spatstat.geom::subset.ppp(x, marks == i, drop = TRUE)
 
   if (heterogenous) {
 
-    lambda_xy <- spatstat::density.ppp(pattern_i, ...)
+    lambda_xy <- spatstat.core::density.ppp(pattern_i, ...)
   }
 
   # create nsim patterns
@@ -75,28 +75,28 @@ simulate_antecedent_conditions <- function(x, i, j, nsim, heterogenous = FALSE, 
     if (!heterogenous) {
 
       # random pattern i
-      random_i <- spatstat::rpoint(n = pattern_i$n,
-                                   win = pattern_i$window)
+      random_i <- spatstat.core::rpoint(n = pattern_i$n,
+                                        win = pattern_i$window)
     }
 
     else {
 
       # random pattern i
-      random_i <- spatstat::rpoint(n = pattern_i$n,
-                                   f = lambda_xy,
-                                   win = x$window)
+      random_i <- spatstat.core::rpoint(n = pattern_i$n,
+                                        f = lambda_xy,
+                                        win = x$window)
     }
 
     # assign same marks again
-    spatstat::marks(random_i) <- spatstat::marks(pattern_i)
+    spatstat.geom::marks(random_i) <- spatstat.geom::marks(pattern_i)
 
     # combine random i with original j
-    pattern_combined <- spatstat::superimpose(j = pattern_j,
-                                              i = random_i,
-                                              W = pattern_j$window)
+    pattern_combined <- spatstat.geom::superimpose(j = pattern_j,
+                                                   i = random_i,
+                                                   W = pattern_j$window)
 
     # select only original marks
-    spatstat::subset.ppp(pattern_combined, select = "origMarks")
+    spatstat.geom::subset.ppp(pattern_combined, select = "origMarks")
 
   })
 

@@ -1,9 +1,9 @@
 context("test-rlabel_local")
 
-pattern <- spatstat::runifpoint(n = 250,
-                                win = spatstat::owin(c(0, 100), c(0, 100)))
+pattern <- spatstat.core::runifpoint(n = 250,
+                                     win = spatstat.geom::owin(c(0, 100), c(0, 100)))
 
-spatstat::marks(pattern) <- runif(n = 250, min = 10, max = 120)
+spatstat.geom::marks(pattern) <- runif(n = 250, min = 10, max = 120)
 
 test_that("rlabel_local returns nsim raster", {
 
@@ -18,10 +18,10 @@ test_that("rlabel_local randomizes marks", {
   null_model <- rlabel_local(X = pattern, distance = 25, nsim = 19,
                              drop = FALSE)
 
-  marks_original <- spatstat::marks(pattern)
+  marks_original <- spatstat.geom::marks(pattern)
 
   check <- any(vapply(X = null_model,
-                      FUN = function(x) all(spatstat::marks(x) == marks_original),
+                      FUN = function(x) all(spatstat.geom::marks(x) == marks_original),
                       FUN.VALUE = logical(1)))
 
   expect_false(check)
@@ -43,7 +43,7 @@ test_that("rlabel_local returns error", {
                             drop = FALSE),
                regexp = "Not all points have at least one neighbour within the specified distance.")
 
-  expect_error(rlabel_local(X = spatstat::unmark(pattern),
+  expect_error(rlabel_local(X = spatstat.geom::unmark(pattern),
                             distance = 5, nsim = 19,
                             drop = FALSE),
                regexp = "Please provide pattern with numeric marks.")

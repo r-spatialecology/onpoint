@@ -18,7 +18,7 @@
 #'
 #' @examples
 #' set.seed(42)
-#' pattern <- spatstat::runifpoint(n = 100)
+#' pattern <- spatstat.core::runifpoint(n = 100)
 #' pcf_fast <- estimate_pcf_fast(pattern)
 #'
 #' @aliases estimate_pcf_fast
@@ -32,9 +32,9 @@
 #' @export
 estimate_pcf_fast <- function(pattern, ...){
 
-  k_fun <- suppressMessages(spatstat::Kest(X = pattern, ...)) # estimate K-fct
+  k_fun <- suppressMessages(spatstat.core::Kest(X = pattern, ...)) # estimate K-fct
 
-  result <- spatstat::pcf.fv(X = k_fun, ...) # estimate pcf from K-fct
+  result <- spatstat.core::pcf.fv(X = k_fun, ...) # estimate pcf from K-fct
 
   return(result)
 }
