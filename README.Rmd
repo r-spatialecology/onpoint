@@ -32,13 +32,13 @@ knitr::opts_chunk$set(
 
 You can install the released version of shar from CRAN with:
 
-```{r installation, eval = FALSE}
+```{r installation_cran, eval = FALSE}
 install.packages("onpoint")
 ```
 
 You can install the development version of `onpoint` from [Github](https://github.com/r-spatialecology/onpoint) with:
 
-```{r installation, eval = FALSE}
+```{r installation_github, eval = FALSE}
 remotes::install_github("r-spatialecology/onpoint")
 ```
 
