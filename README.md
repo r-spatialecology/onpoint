@@ -4,13 +4,13 @@
 <!-- badges: start -->
 
 ![R-CMD-check](https://github.com/r-spatialecology/onpoint/workflows/R-CMD-check/badge.svg)
-[![codecov](https://codecov.io/gh/r-spatialecology/onpoint/branch/master/graph/badge.svg)](https://codecov.io/gh/r-spatialecology/onpoint)
+[![codecov](https://codecov.io/gh/r-spatialecology/onpoint/branch/main/graph/badge.svg)](https://codecov.io/gh/r-spatialecology/onpoint)
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![License:
-MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+[![License: GPL
+v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 <!-- badges: end -->
 
@@ -21,16 +21,23 @@ point pattern analysis and [spatstat](http://spatstat.org/).
 
 ## Installation
 
+You can install the released version of shar from CRAN with:
+
+``` r
+install.packages("onpoint")
+```
+
 You can install the development version of `onpoint` from
 [Github](https://github.com/r-spatialecology/onpoint) with:
 
 ``` r
-devtools::install_github("r-spatialecology/onpoint")
+remotes::install_github("r-spatialecology/onpoint")
 ```
 
 ``` r
 library(onpoint)
-library(spatstat)
+library(spatstat.core)
+library(spatstat.data)
 
 data(spruces)
 ```
