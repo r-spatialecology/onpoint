@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home"></span>
+    <span class="fas fa-home"></span>
      
     Home
   </a>
@@ -89,28 +89,28 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
-    <span class="fa fa-gears"></span>
+    <span class="fas fa-gears"></span>
      
     Functions
   </a>
 </li>
 <li>
   <a href="../news/index.html">
-    <span class="fa fa-newspaper-o"></span>
+    <span class="fas fa-newspaper-o"></span>
      
     News
   </a>
 </li>
 <li>
   <a href="https://github.com/r-spatialecology/onpoint">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
     Github
   </a>
 </li>
 <li>
   <a href="https://mhesselbarth.rbind.io">
-    <span class="fa fa-user"></span>
+    <span class="fas fa-user"></span>
      
     Contact
   </a>
@@ -165,13 +165,13 @@ Poisson process.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Arguments passed to <code><a href='https://rdrr.io/pkg/spatstat/man/density.ppp.html'>spatstat::density.ppp()</a></code>.</p></td>
+      <td><p>Arguments passed to <code><a href='https://rdrr.io/pkg/spatstat.core/man/density.ppp.html'>spatstat.core::density.ppp()</a></code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Simulate point patterns as null model data for <code><a href='https://rdrr.io/pkg/spatstat/man/envelope.html'>spatstat::envelope()</a></code> using
+    <p>Simulate point patterns as null model data for <code><a href='https://rdrr.io/pkg/spatstat.core/man/envelope.html'>spatstat.core::envelope()</a></code> using
 antecendet conditions as null model. <code>x</code> must be marked point pattern.
 Antecedent conditions are suitable as a null model if points of type j may influence
 points of type i, but not the other way around (Velazquez et al 2016). One example are
@@ -186,14 +186,14 @@ the positions of seedlings that may be influenced by the position of mature tree
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>42</span><span class='op'>)</span>
-<span class='va'>pattern_a</span> <span class='op'>&lt;-</span> <span class='fu'>spatstat</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/spatstat/man/runifpoint.html'>runifpoint</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span>
-<span class='fu'>spatstat</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/spatstat/man/marks.html'>marks</a></span><span class='op'>(</span><span class='va'>pattern_a</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='st'>"a"</span>
-<span class='va'>pattern_b</span> <span class='op'>&lt;-</span> <span class='fu'>spatstat</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/spatstat/man/runifpoint.html'>runifpoint</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>100</span><span class='op'>)</span>
-<span class='fu'>spatstat</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/spatstat/man/marks.html'>marks</a></span><span class='op'>(</span><span class='va'>pattern_b</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='st'>"b"</span>
-<span class='va'>pattern</span> <span class='op'>&lt;-</span> <span class='fu'>spatstat</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/spatstat/man/superimpose.html'>superimpose</a></span><span class='op'>(</span><span class='va'>pattern_a</span>, <span class='va'>pattern_b</span><span class='op'>)</span>
+<span class='va'>pattern_a</span> <span class='op'>&lt;-</span> <span class='fu'>spatstat.core</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/spatstat.core/man/runifpoint.html'>runifpoint</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span>
+<span class='fu'>spatstat.geom</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/spatstat.geom/man/marks.html'>marks</a></span><span class='op'>(</span><span class='va'>pattern_a</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='st'>"a"</span>
+<span class='va'>pattern_b</span> <span class='op'>&lt;-</span> <span class='fu'>spatstat.core</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/spatstat.core/man/runifpoint.html'>runifpoint</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>100</span><span class='op'>)</span>
+<span class='fu'>spatstat.geom</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/spatstat.geom/man/marks.html'>marks</a></span><span class='op'>(</span><span class='va'>pattern_b</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='st'>"b"</span>
+<span class='va'>pattern</span> <span class='op'>&lt;-</span> <span class='fu'>spatstat.geom</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/spatstat.geom/man/superimpose.html'>superimpose</a></span><span class='op'>(</span><span class='va'>pattern_a</span>, <span class='va'>pattern_b</span><span class='op'>)</span>
 
 <span class='va'>null_model</span> <span class='op'>&lt;-</span> <span class='fu'>simulate_antecedent_conditions</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>pattern</span>, i <span class='op'>=</span> <span class='st'>"b"</span>, j <span class='op'>=</span> <span class='st'>"a"</span>, nsim <span class='op'>=</span> <span class='fl'>19</span><span class='op'>)</span>
-<span class='fu'>spatstat</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/spatstat/man/envelope.html'>envelope</a></span><span class='op'>(</span>Y <span class='op'>=</span> <span class='va'>pattern</span>, fun <span class='op'>=</span> <span class='fu'>spatstat</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/spatstat/man/pcf.html'>pcf</a></span>, nsim <span class='op'>=</span> <span class='fl'>19</span>, simulate <span class='op'>=</span> <span class='va'>null_model</span><span class='op'>)</span>
+<span class='fu'>spatstat.core</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/spatstat.core/man/envelope.html'>envelope</a></span><span class='op'>(</span>Y <span class='op'>=</span> <span class='va'>pattern</span>, fun <span class='op'>=</span> <span class='fu'>spatstat.core</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/spatstat.core/man/pcf.html'>pcf</a></span>, nsim <span class='op'>=</span> <span class='fl'>19</span>, simulate <span class='op'>=</span> <span class='va'>null_model</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; Extracting 19 point patterns from list  ...
 #&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,  19.
 #&gt; 
