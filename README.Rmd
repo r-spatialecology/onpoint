@@ -44,7 +44,8 @@ remotes::install_github("r-spatialecology/onpoint")
 
 ```{r, message = FALSE}
 library(onpoint)
-library(spatstat)
+library(spatstat.core)
+library(spatstat.data)
 
 data(spruces)
 ```
