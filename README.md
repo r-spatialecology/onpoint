@@ -11,11 +11,8 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 [![codecov](https://codecov.io/gh/r-spatialecology/onpoint/branch/main/graph/badge.svg)](https://codecov.io/gh/r-spatialecology/onpoint)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/onpoint)](https://CRAN.R-project.org/package=onpoint)
-[![CRAN
-logs](https://cranlogs.r-pkg.org/badges/grand-total/onpoint)](https://CRAN.R-project.org/package=onpoint)
 [![License: GPL
 v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-
 <!-- badges: end -->
 
 # onpoint
