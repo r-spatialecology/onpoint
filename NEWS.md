@@ -1,4 +1,4 @@
-# onpoint 0.7
+# onpoint 1.0
 * Use GPL3 license
 * Adapt to new `spatstat` structure
 * Prepare CRAN submission
