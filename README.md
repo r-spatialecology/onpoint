@@ -17,11 +17,11 @@ v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/li
 # onpoint
 
 `onpoint` is a growing collection of helper functions mainly related to
-point pattern analysis and [spatstat](http://spatstat.org/).
+point pattern analysis and the [spatstat](http://spatstat.org/) package.
 
 ## Installation
 
-You can install the released version of shar from CRAN with:
+You can install the released version of `onpoint` from CRAN with:
 
 ``` r
 install.packages("onpoint")
