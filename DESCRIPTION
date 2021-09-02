@@ -1,7 +1,7 @@
 Type: Package
 Package: onpoint
 Title: Helper Functions for Point Pattern Analysis
-Version: 0.6.1
+Version: 1.0
 Authors@R: 
   person("Maximillian H.K.", "Hesselbarth", 
   email = "mhk.hesselbarth@gmail.com",
@@ -10,7 +10,7 @@ Authors@R:
 Maintainer: Maximillian H.K. Hesselbarth <mhk.hesselbarth@gmail.com>
 Description: 
   Growing collection of small helper functions for point pattern analysis. Most functions
-  are designed to work with the spatstat package.
+  are designed to work with the 'spatstat' package.
 URL: https://r-spatialecology.github.io/onpoint/
 BugReports: https://github.com/r-spatialecology/onpoint/issues
 License: GPL (>= 3)
