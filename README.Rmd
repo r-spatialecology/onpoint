@@ -30,7 +30,7 @@ knitr::opts_chunk$set(
 
 ## Installation
 
-You can install the released version of shar from CRAN with:
+You can install the released version of `onpoint` from CRAN with:
 
 ```{r installation_cran, eval = FALSE}
 install.packages("onpoint")
