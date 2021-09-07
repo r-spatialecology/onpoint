@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">onpoint | Helper functions for spatstat</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1</span>
       </span>
     </div>
 
@@ -152,18 +152,25 @@
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>fv.object</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Estimates the O-ring function proposed by Wiegand and Moloney (2004). The O-ring statistic
-is defined as:</p>
+    <p>Estimates the O-ring function proposed by Wiegand and Moloney (2004). The
+O-ring statistic is defined as:</p>
 <p>$$O(r) = \lambda * g(r)$$</p>
-<p>Generally speaking, O(r) scales the pair correlation g(r) function with help of the intensity \(\lambda\).
-One advantage of the O-ring statistic is that it can be interpreted as a neighborhood density because it is
-a probability density function (Wiegand &amp; Moloney 2004).</p>
+<p>Generally speaking, O(r) scales the pair correlation g(r) function with help
+of the intensity \(\lambda\). One advantage of the O-ring statistic is that
+it can be interpreted as a neighborhood density because it is a probability density
+function (Wiegand &amp; Moloney 2004, 2014).</p>
+<p>Returns an 'Function value object' of the <code>spatstat</code> package.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Wiegand, T. and Moloney, K. A. 2014. Handbook of spatial point-pattern analysis in ecology. - Chapman and Hall/CRC Press.</p>
-<p>Wiegand, T. and Moloney, K. A. 2004. Rings, circles, and null models for point pattern analysis in ecology. - Oikos 104: 209-229.</p>
+    <p>Wiegand, T., Moloney, K.A., 2014. Handbook of spatial point-pattern analysis
+in ecology. Chapman and Hall/CRC Press, Boca Raton.</p>
+<p>Wiegand, T., Moloney, K.A., 2004. Rings, circles, and null models for point pattern
+analysis in ecology. Oikos 104, 209–229. https://doi.org/10.1111/j.0030-1299.2004.12497.x</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/spatstat.core/man/density.ppp.html'>density.ppp</a></code> <br />

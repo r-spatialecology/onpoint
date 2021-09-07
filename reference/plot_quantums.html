@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">onpoint | Helper functions for spatstat</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1</span>
       </span>
     </div>
 
@@ -211,6 +211,9 @@
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>ggplot</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This functions provides a plotting style for envelope objects of the spatstat
@@ -218,17 +221,20 @@ package (for more information please see <code><a href='https://rdrr.io/pkg/spat
 observed value in relation to the simulation envelope of the null model input is
 indicated by an additional colour bar at the bottom of the plot. If <code>standarized = TRUE</code>,
 all values are standarized by subtracting the theoretical value for CSR</p>
-<p>Labels must be a vector including labels for the following three cases. The color scale vector is used in the same order.
+<p>Labels must be a vector including labels for the following three cases. The color
+scale vector is used in the same order.
 <br /> 1 = observed &gt; high
 <br /> 2 = low &lt; observed &lt; high
 <br /> 3 = observed &lt; low</p>
 <p>To adjust the position of the quantum bar, use <code>quantum_position</code>. Larger values increase
 the distance from the lower part of the envelope. <code>quantum_position = 0</code> puts the quantum
 bar on the minium value of the simulation envelope, negative value shift above that value.</p>
+<p>Returns a <code>ggplot</code> object.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Esser, D. S. et al. 2015. Spatial scales of interactions among bacteria and between
-bacteria and the leaf surface. - FEMS Microbiol. Ecol. 91: fiu034.</p>
+    <p>Esser, D.S., Leveau, J.H.J., Meyer, K.M., Wiegand, K., 2015. Spatial scales of
+interactions among bacteria and between bacteria and the leaf surface.
+FEMS Microbiology Ecology 91, 1–13. https://doi.org/10.1093/femsec/fiu034</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/spatstat.core/man/envelope.html'>envelope</a></code></p></div>

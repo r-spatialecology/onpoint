@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">onpoint | Helper functions for spatstat</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1</span>
       </span>
     </div>
 
@@ -169,17 +169,24 @@ Poisson process.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>list</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Simulate point patterns as null model data for <code><a href='https://rdrr.io/pkg/spatstat.core/man/envelope.html'>spatstat.core::envelope()</a></code> using
-antecendet conditions as null model. <code>x</code> must be marked point pattern.
+antecedent conditions as null model. <code>x</code> must be marked point pattern.
 Antecedent conditions are suitable as a null model if points of type j may influence
 points of type i, but not the other way around (Velazquez et al 2016). One example are
 the positions of seedlings that may be influenced by the position of mature trees.</p>
+<p>Returns a <code>list</code> with <code>ppp</code> objects.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Velazquez, E. et al. 2016. An evaluation of the state of spatial point pattern analysis in ecology. - Ecography (Cop.). 39: 1-14.</p>
-<p>Wiegand, T. and Moloney, K. A. 2004. Rings, circles, and null models for point pattern analysis in ecology. - Oikos 104: 209-229.</p>
+    <p>Velázquez, E., Martínez, I., Getzin, S., Moloney, K.A., Wiegand, T., 2016. An
+evaluation of the state of spatial point pattern analysis in ecology.
+Ecography 39, 1–14. https://doi.org/10.1111/ecog.01579</p>
+<p>Wiegand, T., Moloney, K.A., 2014. Handbook of spatial point-pattern analysis in
+ecology. Chapman and Hall/CRC Press, Boca Raton.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/spatstat.core/man/envelope.html'>envelope</a></code></p></div>

@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="simulate_heterogenous_pattern — simulate_heterogenous_pattern" />
-<meta property="og:description" content="Simulate heterogenous pattern" />
+<meta property="og:description" content="Simulate heterogeneous pattern" />
 
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">onpoint | Helper functions for spatstat</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1</span>
       </span>
     </div>
 
@@ -134,7 +134,7 @@
     </div>
 
     <div class="ref-description">
-    <p>Simulate heterogenous pattern</p>
+    <p>Simulate heterogeneous pattern</p>
     </div>
 
     <pre class="usage"><span class='fu'>simulate_heterogenous_pattern</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>nsim</span>, fix_n <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span></pre>
@@ -160,15 +160,21 @@
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>list</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Simulate heterogenous point patterns as null model data for <code><a href='https://rdrr.io/pkg/spatstat.core/man/envelope.html'>spatstat.core::envelope()</a></code>.
-A heterogenous Poisson process is used, meaning that there are no interaction between points,
+    <p>Simulate heterogeneous point patterns as null model data for <code><a href='https://rdrr.io/pkg/spatstat.core/man/envelope.html'>spatstat.core::envelope()</a></code>.
+A heterogeneous Poisson process is used, meaning that there are no interaction between points,
 however, the simulated coordinates depend on the intensity \(\lambda\) of the input pattern.</p>
+<p>Returns a <code>list</code> with <code>ppp</code> objects.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Baddeley, A. et al. 2015. Spatial Point Patterns: Methodology and Applications with R. - Chapman and Hall/CRC Press.</p>
-<p>Wiegand, T. and Moloney, K. A. 2014. Handbook of spatial point-pattern analysis in ecology. - Chapman and Hall/CRC Press.</p>
+    <p>Baddeley, A., Rubak, E., Turner, R., 2015. Spatial point patterns: Methodology and
+applications with R. Chapman and Hall/CRC Press, London.</p>
+<p>Wiegand, T., Moloney, K.A., 2014. Handbook of spatial point-pattern analysis in
+ecology. Chapman and Hall/CRC Press, Boca Raton.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/spatstat.core/man/envelope.html'>envelope</a></code> <br />
