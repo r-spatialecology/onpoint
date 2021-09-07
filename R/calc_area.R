@@ -2,10 +2,17 @@
 #'
 #' @description Calculate area of polygon
 #'
-#' @param x matrix
+#' @param x matrix with x,y coordinates.
 #'
 #' @details
-#' Calculate area of polygon
+#' Calculate area of polygon in input units. If the polygon is not closed, the first
+#' coordinate is used as last coordinate to close it.
+#'
+#' @return numeric
+#'
+#' @examples
+#' dat <- matrix(data = c(0, 0, 0, 10, 10, 10, 10, 0), ncol = 2, byrow = TRUE)
+#' calc_area(x = dat)
 #'
 #' @aliases calc_area
 #' @rdname calc_area

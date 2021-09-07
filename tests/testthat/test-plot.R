@@ -23,9 +23,9 @@ regular_envelope <- spatstat.core::envelope(regular_pattern, fun = "pcf", nsim =
                                                            stoyan = 0.25),
                                             verbose = FALSE)
 
-result_csr <- summarise_envelope(csr_envelope)
-result_cluster <- summarise_envelope(cluster_envelope)
-result_regular <- summarise_envelope(regular_envelope)
+result_csr <- summarize_envelope(csr_envelope)
+result_cluster <- summarize_envelope(cluster_envelope)
+result_regular <- summarize_envelope(regular_envelope)
 
 test_that("plot returns a ggplot object", {
 

@@ -18,6 +18,9 @@ rather than a list containing a point pattern.}
 
 \item{verbose}{If TRUE warning messages are printed.}
 }
+\value{
+list
+}
 \description{
 Local random labelling of marked point pattern
 }
@@ -27,6 +30,8 @@ within the specified local distance. Technically, this is achived by sampling th
 mark of a neighbouring point j within the distance d for the focal point i. Thus,
 the distance d must be selected in a way that each point has at least one neighbour
 within d.
+
+Returns a \code{list} with \code{ppp} objects.
 }
 \examples{
 set.seed(42)
@@ -37,7 +42,9 @@ rlabel_local(X = pattern, distance = 25, nsim = 19)
 
 }
 \references{
-Velazquez, E. et al. 2016. An evaluation of the state of spatial point pattern analysis in ecology. - Ecography (Cop.). 39: 1-14.
+Velázquez, E., Martínez, I., Getzin, S., Moloney, K.A., Wiegand, T., 2016. An
+evaluation of the state of spatial point pattern analysis in ecology.
+Ecography 39, 1–14. https://doi.org/10.1111/ecog.01579
 
 Wiegand, T., Moloney, K.A., 2014. Handbook of spatial point-pattern analysis in
 ecology. Chapman and Hall/CRC Press, Boca Raton.

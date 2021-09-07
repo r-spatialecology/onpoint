@@ -8,7 +8,7 @@
 #'
 #' @details
 #' The function balances out the number of points in the input pattern to either
-#' the provided number of points as integer or the same number of points if a ppp
+#' the provided number of points as integer or the same number of points if a \code{ppp}
 #' object is provided.
 #'
 #' @return ppp
@@ -20,7 +20,6 @@
 #'
 #' balance_points(pattern = input, n = 110)
 #' balance_points(pattern = input, n = input_b)
-
 #'
 #' @aliases balance_points
 #' @rdname balance_points
@@ -29,24 +28,24 @@
 balance_points <- function(pattern, n, verbose = TRUE) {
 
   # check if n is valid
-  if(!spatstat.geom::is.ppp(n)) {
+  if (!spatstat.geom::is.ppp(n)) {
     if (n %% 1 != 0) {
     stop("n must be either integer or ppp.", call. = FALSE)
     }
   }
 
   # if n is pattern - get number of points
-  if(spatstat.geom::is.ppp(n)) {
+  if (spatstat.geom::is.ppp(n)) {
     n <- n$n
   }
 
-  if(verbose) {
+  if (verbose) {
 
     difference_rel <- abs((pattern$n - n)) / pattern$n
 
     message("> Relative difference between pattern and n: ", round(difference_rel, 2))
 
-    if(difference_rel > 0.33) {
+    if (difference_rel > 0.33) {
       warning("Differences between pattern and n more than 0.33.", call. = FALSE)
     }
   }
@@ -54,7 +53,7 @@ balance_points <- function(pattern, n, verbose = TRUE) {
   abs((pattern$n - n))
 
   # remove points because more points in simulated
-  if(pattern$n > n) {
+  if (pattern$n > n) {
 
     # difference between patterns
     difference <- pattern$n - n
@@ -67,7 +66,7 @@ balance_points <- function(pattern, n, verbose = TRUE) {
   }
 
   # add points because less points in simulated
-  else if(pattern$n < n) {
+  else if (pattern$n < n) {
 
     # difference between patterns
     difference <- n - pattern$n

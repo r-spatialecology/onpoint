@@ -9,7 +9,7 @@ csr_envelope <- spatstat.core::envelope(csr_pattern, fun = "pcf", nsim = 199,
                                                        stoyan = 0.25),
                                         verbose = FALSE)
 
-result_csr <- summarise_envelope(csr_envelope)
+result_csr <- summarize_envelope(csr_envelope)
 
 testthat::test_that("print.env_summarised works", {
 

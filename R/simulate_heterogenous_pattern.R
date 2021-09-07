@@ -1,6 +1,6 @@
 #' simulate_heterogenous_pattern
 #'
-#' @description Simulate heterogenous pattern
+#' @description Simulate heterogeneous pattern
 #'
 #' @param x ppp
 #' @param nsim Number of patterns to simulate.
@@ -8,9 +8,13 @@
 #' @param ... Arguments passed to \code{spatstat.core::density.ppp()}.
 #'
 #' @details
-#' Simulate heterogenous point patterns as null model data for \code{spatstat.core::envelope()}.
-#' A heterogenous Poisson process is used, meaning that there are no interaction between points,
+#' Simulate heterogeneous point patterns as null model data for \code{spatstat.core::envelope()}.
+#' A heterogeneous Poisson process is used, meaning that there are no interaction between points,
 #' however, the simulated coordinates depend on the intensity \eqn{\lambda} of the input pattern.
+#'
+#' Returns a \code{list} with \code{ppp} objects.
+#'
+#' @return list
 #'
 #' @seealso
 #' \code{\link{envelope}} \cr
@@ -24,10 +28,11 @@
 #' simulate = null_model)
 #'
 #' @references
-#' Baddeley, A. et al. 2015. Spatial Point Patterns: Methodology and Applications with R. - Chapman and Hall/CRC Press.
+#' Baddeley, A., Rubak, E., Turner, R., 2015. Spatial point patterns: Methodology and
+#' applications with R. Chapman and Hall/CRC Press, London.
 #'
-#' Wiegand, T. and Moloney, K. A. 2014. Handbook of spatial point-pattern analysis in ecology. - Chapman and Hall/CRC Press.
-#'
+#' Wiegand, T., Moloney, K.A., 2014. Handbook of spatial point-pattern analysis in
+#' ecology. Chapman and Hall/CRC Press, Boca Raton.
 #'
 #' @aliases simulate_heterogenous_pattern
 #' @rdname simulate_heterogenous_pattern

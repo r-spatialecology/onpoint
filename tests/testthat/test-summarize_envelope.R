@@ -1,4 +1,4 @@
-context("test-summarise_envelope")
+context("test-summarize_envelope")
 
 set.seed(42)
 csr_pattern <- spatstat.core::runifpoint(n = 100)
@@ -23,11 +23,11 @@ regular_envelope <- spatstat.core::envelope(regular_pattern, fun = "pcf", nsim =
                                                            stoyan = 0.25),
                                             verbose = FALSE)
 
-test_that("summarise_envelope returns at two seperated and the total value", {
+test_that("summarize_envelope returns at two seperated and the total value", {
 
-  result_csr <- summarise_envelope(csr_envelope)
-  result_cluster <- summarise_envelope(cluster_envelope)
-  result_regular <- summarise_envelope(regular_envelope)
+  result_csr <- summarize_envelope(csr_envelope)
+  result_cluster <- summarize_envelope(cluster_envelope)
+  result_regular <- summarize_envelope(regular_envelope)
 
   expect_true(result_csr$result_total == 0)
   expect_true(result_cluster$result_total > result_regular$result_total)
@@ -36,22 +36,22 @@ test_that("summarise_envelope returns at two seperated and the total value", {
   expect_true(all(c(result_csr$result_below, result_cluster$result_below, result_regular$result_below) <= 0))
 })
 
-test_that("summarise_envelope runs for data.frame", {
+test_that("summarize_envelope runs for data.frame", {
 
-  result_env <- summarise_envelope(cluster_envelope)
-  result_df <- summarise_envelope(as.data.frame(cluster_envelope))
+  result_env <- summarize_envelope(cluster_envelope)
+  result_df <- summarize_envelope(as.data.frame(cluster_envelope))
 
   expect_equal(object = result_env$result_total, expected = result_df$result_total)
 })
 
 
-test_that("summarise_envelope returns errors", {
+test_that("summarize_envelope returns errors", {
 
-  expect_error(summarise_envelope(1:10),
+  expect_error(summarize_envelope(1:10),
                regexp = "Please provide envelope object or data frame.",
                fixed = TRUE)
 
-  expect_error(summarise_envelope(data.frame(x = 1:10, y = 10:1)),
+  expect_error(summarize_envelope(data.frame(x = 1:10, y = 10:1)),
                regexp = "Data frame must have columns: 'r', 'obs', 'theo', 'lo', 'hi'.",
                fixed = TRUE)
 })
