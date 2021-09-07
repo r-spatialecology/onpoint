@@ -7,12 +7,21 @@
 calc_area(x)
 }
 \arguments{
-\item{x}{matrix}
+\item{x}{matrix with x,y coordinates.}
+}
+\value{
+numeric
 }
 \description{
 Calculate area of polygon
 }
 \details{
-Calculate area of polygon
+Calculate area of polygon in input units. If the polygon is not closed, the first
+coordinate is used as last coordinate to close it.
+}
+\examples{
+dat <- matrix(data = c(0, 0, 0, 10, 10, 10, 10, 0), ncol = 2, byrow = TRUE)
+calc_area(x = dat)
+
 }
 \keyword{internal}

@@ -1,3 +1,7 @@
+# onpoint 1.0.1
+* Improve documentation for CRAN submission
+* Renamed `summarise_envelope` to `summarize_envelope`
+
 # onpoint 1.0
 * Use GPL3 license
 * Adapt to new `spatstat` structure

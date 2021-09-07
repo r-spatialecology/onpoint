@@ -48,6 +48,9 @@ plot_quantums(
 
 \item{standarized}{If true observed value is standardized. See details for more details.}
 }
+\value{
+ggplot
+}
 \description{
 Plot simulation envelopes
 }
@@ -58,7 +61,8 @@ observed value in relation to the simulation envelope of the null model input is
 indicated by an additional colour bar at the bottom of the plot. If \code{standarized = TRUE},
 all values are standarized by subtracting the theoretical value for CSR
 
-Labels must be a vector including labels for the following three cases. The color scale vector is used in the same order.
+Labels must be a vector including labels for the following three cases. The color
+scale vector is used in the same order.
 \cr 1 = observed > high
 \cr 2 = low < observed < high
 \cr 3 = observed < low
@@ -66,6 +70,8 @@ Labels must be a vector including labels for the following three cases. The colo
 To adjust the position of the quantum bar, use \code{quantum_position}. Larger values increase
 the distance from the lower part of the envelope. \code{quantum_position = 0} puts the quantum
 bar on the minium value of the simulation envelope, negative value shift above that value.
+
+Returns a \code{ggplot} object.
 }
 \examples{
 set.seed(42)
@@ -75,8 +81,9 @@ plot_quantums(csr_envelope, ylab = "g(r)")
 
 }
 \references{
-Esser, D. S. et al. 2015. Spatial scales of interactions among bacteria and between
-bacteria and the leaf surface. - FEMS Microbiol. Ecol. 91: fiu034.
+Esser, D.S., Leveau, J.H.J., Meyer, K.M., Wiegand, K., 2015. Spatial scales of
+interactions among bacteria and between bacteria and the leaf surface.
+FEMS Microbiology Ecology 91, 1–13. https://doi.org/10.1093/femsec/fiu034
 }
 \seealso{
 \code{\link{envelope}}

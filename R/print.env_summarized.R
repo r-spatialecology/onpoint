@@ -1,6 +1,6 @@
-#' print.env_summarised
+#' print.env_summarized
 #'
-#' @description Print method for env_summarised object
+#' @description Print method for env_summarized object
 #'
 #' @param x Random patterns.
 #' @param return_area If true, not the ratio but the area is returned.
@@ -8,10 +8,12 @@
 #' @param ... Arguments passed to cat
 #'
 #' @details
-#' Printing method for summarised envelope created with \code{\link{summarise_envelope}}.
+#' Printing method for summarized envelope created with \code{\link{summarize_envelope}}.
+#'
+#' @return No return value
 #'
 #' @seealso
-#' \code{\link{summarise_envelope}}
+#' \code{\link{summarize_envelope}}
 #'
 #' @examples
 #' set.seed(42)
@@ -20,14 +22,14 @@
 #' cluster_env <- spatstat.core::envelope(input_pattern, fun = "pcf", nsim = 39,
 #' funargs = list(divisor = "d", correction = "Ripley", stoyan = 0.25))
 #'
-#' x <- summarise_envelope(cluster_env)
+#' x <- summarize_envelope(cluster_env)
 #' print(x)
 #'
-#' @aliases print.env_summarised
-#' @rdname print.env_summarised
+#' @aliases print.env_summarized
+#' @rdname print.env_summarized
 
 #' @export
-print.env_summarised <- function(x, return_area = FALSE, digits = 2, ...) {
+print.env_summarized <- function(x, return_area = FALSE, digits = 2, ...) {
 
   # printing area
   if (return_area) {

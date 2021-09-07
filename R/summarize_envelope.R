@@ -1,6 +1,6 @@
-#' summarise_envelope
+#' summarize_envelope
 #'
-#' @description Summarise simulation envelope
+#' @description Summarize simulation envelope
 #'
 #' @param x fv
 #' @param plot_result A plot is drawn.
@@ -14,7 +14,11 @@
 #' the envelope. If the value is negative, the area under the envelope is larger than
 #' the value above the envelope.
 #'
-#' @return env_summarised
+#' The returned \code{env_summarized} object includes information about the area
+#' under the curve where the summary function observed pattern is above or below
+#' the null model envelopes.
+#'
+#' @return env_summarized
 #'
 #' @seealso
 #' \code{\link{envelope}}
@@ -26,13 +30,13 @@
 #' cluster_env <- spatstat.core::envelope(input_pattern, fun = "pcf", nsim = 39,
 #' funargs = list(divisor = "d", correction = "Ripley", stoyan = 0.25))
 #'
-#' summarise_envelope(cluster_env)
+#' summarize_envelope(cluster_env)
 #'
-#' @aliases summarise_envelope
-#' @rdname summarise_envelope
+#' @aliases summarize_envelope
+#' @rdname summarize_envelope
 
 #' @export
-summarise_envelope <- function(x, plot_result = FALSE) {
+summarize_envelope <- function(x, plot_result = FALSE) {
 
   if (inherits(x = x, what = "envelope")) {
 
@@ -505,12 +509,12 @@ summarise_envelope <- function(x, plot_result = FALSE) {
                  internal = list(envelope = x,
                                  area_poly = area_poly))
 
-  class(result) <- "env_summarised"
+  class(result) <- "env_summarized"
 
   # plot result
   if (plot_result) {
 
-    print(plot.env_summarised(result))
+    print(plot.env_summarized(result))
   }
 
   return(result)

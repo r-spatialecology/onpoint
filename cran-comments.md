@@ -1,3 +1,13 @@
+# onpoint 1.0.1
+
+Please add some more details about the package functionality and implemented methods in your Description text.
+
+* Done as suggested
+
+Please add \value to .Rd files regarding exported methods and explain the functions results in the documentation. [...]
+
+* Done as suggested
+
 # onpoint 1.0
 
 * First submission to CRAN

@@ -1,19 +1,23 @@
-#' plot.env_summarised
+#' plot.env_summarized
 #'
-#' @description Plotting method for env_summarised object
+#' @description Plotting method for \code{env_summarized} object
 #'
 #' @param x Random patterns.
-#' @param col Colours for areas above and below envelope.
+#' @param col Colors for areas above and below envelope.
 #' @param x_lab,y_lab Labels of x- and y-axis.
 #' @param base_size Base size of plot
 #' @param label If TRUE the ratios of the area above and below are added to the plot.
 #' @param ... To be generic for plotting function.
 #'
 #' @details
-#' Ploting method for summarised envelope created with \code{\link{summarise_envelope}}.
+#' Plotting method for summarized envelope created with \code{\link{summarize_envelope}}.
+#'
+#' Returns a \code{ggplot} object.
+#'
+#' @return ggplot
 #'
 #' @seealso
-#' \code{\link{summarise_envelope}}
+#' \code{\link{summarize_envelope}}
 #'
 #' @examples
 #' set.seed(42)
@@ -22,18 +26,18 @@
 #' cluster_env <- spatstat.core::envelope(input_pattern, fun = "pcf", nsim = 39,
 #' funargs = list(divisor = "d", correction = "Ripley", stoyan = 0.25))
 #'
-#' x <- summarise_envelope(cluster_env)
+#' x <- summarize_envelope(cluster_env)
 #' plot(x)
 #'
-#' @aliases plot.env_summarised
-#' @rdname plot.env_summarised
+#' @aliases plot.env_summarized
+#' @rdname plot.env_summarized
 
 #' @export
-plot.env_summarised <- function(x, col = c("#97CBDE", "#E1B0B5"),
+plot.env_summarized <- function(x, col = c("#97CBDE", "#E1B0B5"),
                                 x_lab = NULL, y_lab = NULL, base_size = 10,
                                 label = TRUE, ...) {
 
-  # check if colour for polygons is correct
+  # check if color for polygons is correct
   if (length(col) != 2) {
     warning("Please provide two colours for the polygons. Setting to default.",
             call. = FALSE)

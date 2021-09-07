@@ -1,7 +1,7 @@
 Type: Package
 Package: onpoint
 Title: Helper Functions for Point Pattern Analysis
-Version: 1.0
+Version: 1.0.1
 Authors@R: 
   person("Maximillian H.K.", "Hesselbarth", 
   email = "mhk.hesselbarth@gmail.com",
@@ -9,8 +9,11 @@ Authors@R:
   comment = c(ORCID = "0000-0003-1125-9918"))
 Maintainer: Maximillian H.K. Hesselbarth <mhk.hesselbarth@gmail.com>
 Description: 
-  Growing collection of small helper functions for point pattern analysis. Most functions
-  are designed to work with the 'spatstat' package.
+  Growing collection of helper functions for point pattern analysis. Most functions
+  are designed to work with the 'spatstat' (<http://spatstat.org>) package. The focues of 
+  most functions are either null models or summary functions for spatial point patterns. 
+  For a detailed describtion of all null models and summary functions, see 
+  Wiegand and Moloney (2014, ISBN:9781420082548).
 URL: https://r-spatialecology.github.io/onpoint/
 BugReports: https://github.com/r-spatialecology/onpoint/issues
 License: GPL (>= 3)

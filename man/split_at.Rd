@@ -9,10 +9,20 @@ split_at(x, pos)
 \arguments{
 \item{x}{vector with positions to split.}
 }
+\value{
+list
+}
 \description{
 Split vector
 }
 \details{
-Split vector at position(s).
+Split vector at position(s). Returns a \code{list} with all elements before and
+after the split position.
+}
+\examples{
+set.seed(42)
+x <- sample(x = 1:10, size = 5)
+split_at(x = x, pos = 3)
+
 }
 \keyword{internal}

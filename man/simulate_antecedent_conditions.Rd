@@ -20,15 +20,20 @@ Poisson process.}
 
 \item{...}{Arguments passed to \code{spatstat.core::density.ppp()}.}
 }
+\value{
+list
+}
 \description{
 Simulate heterogenous pattern
 }
 \details{
 Simulate point patterns as null model data for \code{spatstat.core::envelope()} using
-antecendet conditions as null model. \code{x} must be marked point pattern.
+antecedent conditions as null model. \code{x} must be marked point pattern.
 Antecedent conditions are suitable as a null model if points of type j may influence
 points of type i, but not the other way around (Velazquez et al 2016). One example are
 the positions of seedlings that may be influenced by the position of mature trees.
+
+Returns a \code{list} with \code{ppp} objects.
 }
 \examples{
 set.seed(42)
@@ -43,9 +48,12 @@ spatstat.core::envelope(Y = pattern, fun = spatstat.core::pcf, nsim = 19, simula
 
 }
 \references{
-Velazquez, E. et al. 2016. An evaluation of the state of spatial point pattern analysis in ecology. - Ecography (Cop.). 39: 1-14.
+Velázquez, E., Martínez, I., Getzin, S., Moloney, K.A., Wiegand, T., 2016. An
+evaluation of the state of spatial point pattern analysis in ecology.
+Ecography 39, 1–14. https://doi.org/10.1111/ecog.01579
 
-Wiegand, T. and Moloney, K. A. 2004. Rings, circles, and null models for point pattern analysis in ecology. - Oikos 104: 209-229.
+Wiegand, T., Moloney, K.A., 2014. Handbook of spatial point-pattern analysis in
+ecology. Chapman and Hall/CRC Press, Boca Raton.
 }
 \seealso{
 \code{\link{envelope}}
