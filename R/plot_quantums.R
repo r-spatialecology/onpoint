@@ -6,10 +6,9 @@
 #' @param labels Name of the labels. See details for more information.
 #' @param color_scale Colors used with labels.
 #' @param legend_position The position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector)
-#' @param quantum_position Position of the quantum relative to the simulation envelopes.
+#' @param quantum_position Vector with minimum and maximum y value of the quantum bar.
 #' @param title Plot title.
 #' @param xlab,ylab axis labels.
-#' @param quantum_size Size of the colour bar.
 #' @param line_size Size of the lines.
 #' @param base_size Base font size.
 #' @param full_fun If true observed value and envelope is plotted.
@@ -29,9 +28,7 @@
 #' \cr 2 = low < observed < high
 #' \cr 3 = observed < low
 #'
-#' To adjust the position of the quantum bar, use \code{quantum_position}. Larger values increase
-#' the distance from the lower part of the envelope. \code{quantum_position = 0} puts the quantum
-#' bar on the minium value of the simulation envelope, negative value shift above that value.
+#' To adjust the position of the quantum bar, use \code{quantum_position}.
 #'
 #' Returns a \code{ggplot} object.
 #'
@@ -57,9 +54,9 @@
 #' @export
 plot_quantums <- function(input,
                           labels = NULL, color_scale = NULL,
-                          legend_position = "bottom", quantum_position = 0.05,
+                          legend_position = "bottom", quantum_position = NULL,
                           title = NULL, xlab = NULL, ylab = NULL,
-                          quantum_size = 0.1, line_size = 0.5, base_size = 15,
+                          line_size = 0.5, base_size = 15,
                           full_fun = TRUE, quantum = TRUE, standarized = FALSE) {
 
   if (!is(input, "envelope") && !is(input, "data.frame")) {
@@ -97,10 +94,10 @@ plot_quantums <- function(input,
   names(input) <- c("r", "observed", "theoretical", "low", "high")
 
   if (standarized == TRUE) {
-    input$observed <- input$observed - theoretical
-    input$low <- input$low - theoretical
-    input$high <- input$high - theoretical
-    input$theoretical <- input$theoretical - theoretical
+    input$observed <- input$observed - input$theoretical
+    input$low <- input$low - input$theoretical
+    input$high <- input$high - input$theoretical
+    input$theoretical <- input$theoretical - input$theoretical
   }
 
   # get rid of stats
@@ -113,11 +110,16 @@ plot_quantums <- function(input,
   # really needed
   input <- input[!is.na(input$type), ]
 
+  if (is.null(quantum_position)) {
+
+    quantum_position <- c(min(c(input$low, input$observed)) - min(c(input$low, input$observed)) * 0.25,
+                          min(c(input$low, input$observed)))
+
+  }
+
   if (full_fun == TRUE) {
 
     if (quantum == TRUE) {
-
-      y_quantum <- min(c(input$low, input$observed)) - quantum_size * 1.5
 
       gg_plot <- ggplot2::ggplot(input) +
         ggplot2::geom_ribbon(ggplot2::aes(x = r, ymin = low, ymax = high),
@@ -127,8 +129,7 @@ plot_quantums <- function(input,
         ggplot2::geom_line(ggplot2::aes(x = r, y = theoretical, linetype = "Theoretical"),
                            size = line_size) +
         ggplot2::geom_linerange(ggplot2::aes(x = r, colour = type,
-                                             ymin = y_quantum - quantum_size,
-                                             ymax = y_quantum + quantum_size)) +
+                                             ymin = quantum_position[1], ymax = quantum_position[2])) +
         ggplot2::scale_color_manual(name = "", values = color_scale) +
         ggplot2::scale_linetype_manual(name = "", values = c(1, 2)) +
         ggplot2::labs(x = xlab, y = ylab, title = title) +
@@ -151,10 +152,8 @@ plot_quantums <- function(input,
   else{
     gg_plot <- ggplot2::ggplot(input) +
       ggplot2::geom_linerange(ggplot2::aes(x = r, colour = type,
-                                           ymin = 0 - quantum_size,
-                                           ymax = 0 + quantum_size)) +
-      ggplot2::coord_cartesian(ylim = c(0 - quantum_size * 1.25,
-                                        0 + quantum_size * 1.25)) +
+                                           ymin = quantum_position[1], ymax = quantum_position[2])) +
+      ggplot2::coord_cartesian(ylim = c(quantum_position[1] * 0.75, quantum_position[2] * 1.25)) +
       ggplot2::scale_color_manual(name = "", values = color_scale) +
       ggplot2::labs(x = xlab, y = "", title = title) +
       ggplot2::theme_classic(base_size = base_size) +
