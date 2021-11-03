@@ -166,18 +166,20 @@ the provided number of points as integer or the same number of points if a <code
 object is provided.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>42</span><span class='op'>)</span>
-<span class='va'>input</span> <span class='op'>&lt;-</span> <span class='fu'>spatstat.core</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/spatstat.core/man/rpoispp.html'>rpoispp</a></span><span class='op'>(</span>lambda <span class='op'>=</span> <span class='fl'>100</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Registered S3 method overwritten by 'spatstat.geom':</span>
-#&gt; <span class='message'>  method     from</span>
-#&gt; <span class='message'>  print.boxx cli </span></div><div class='input'><span class='va'>input_b</span> <span class='op'>&lt;-</span> <span class='fu'>spatstat.core</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/spatstat.core/man/rpoispp.html'>rpoispp</a></span><span class='op'>(</span>lambda <span class='op'>=</span> <span class='fl'>100</span><span class='op'>)</span>
-
-<span class='fu'>balance_points</span><span class='op'>(</span>pattern <span class='op'>=</span> <span class='va'>input</span>, n <span class='op'>=</span> <span class='fl'>110</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>&gt; Relative difference between pattern and n: 0.03</span></div><div class='output co'>#&gt; Planar point pattern: 110 points
-#&gt; window: rectangle = [0, 1] x [0, 1] units</div><div class='input'><span class='fu'>balance_points</span><span class='op'>(</span>pattern <span class='op'>=</span> <span class='va'>input</span>, n <span class='op'>=</span> <span class='va'>input_b</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>&gt; Relative difference between pattern and n: 0.27</span></div><div class='output co'>#&gt; Planar point pattern: 83 points
-#&gt; window: rectangle = [0, 1] x [0, 1] units</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>42</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>input</span> <span class='op'>&lt;-</span> <span class='fu'>spatstat.core</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/spatstat.core/man/rpoispp.html'>rpoispp</a></span><span class='op'>(</span>lambda <span class='op'>=</span> <span class='fl'>100</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>input_b</span> <span class='op'>&lt;-</span> <span class='fu'>spatstat.core</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/spatstat.core/man/rpoispp.html'>rpoispp</a></span><span class='op'>(</span>lambda <span class='op'>=</span> <span class='fl'>100</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>balance_points</span><span class='op'>(</span>pattern <span class='op'>=</span> <span class='va'>input</span>, n <span class='op'>=</span> <span class='fl'>110</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> &gt; Relative difference between pattern and n: 0.03</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Planar point pattern: 110 points</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> window: rectangle = [0, 1] x [0, 1] units</span>
+<span class='r-in'><span class='fu'>balance_points</span><span class='op'>(</span>pattern <span class='op'>=</span> <span class='va'>input</span>, n <span class='op'>=</span> <span class='va'>input_b</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> &gt; Relative difference between pattern and n: 0.27</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Planar point pattern: 83 points</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> window: rectangle = [0, 1] x [0, 1] units</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

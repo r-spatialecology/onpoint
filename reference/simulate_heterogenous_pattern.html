@@ -181,34 +181,36 @@ ecology. Chapman and Hall/CRC Press, Boca Raton.</p>
 <code><a href='https://rdrr.io/pkg/spatstat.core/man/density.ppp.html'>density.ppp</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>42</span><span class='op'>)</span>
-<span class='va'>input_pattern</span> <span class='op'>&lt;-</span> <span class='fu'>spatstat.core</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/spatstat.core/man/rpoispp.html'>rpoispp</a></span><span class='op'>(</span>lambda <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span> , <span class='va'>y</span><span class='op'>)</span> <span class='op'>{</span><span class='fl'>100</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>exp</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>3</span> <span class='op'>*</span> <span class='va'>x</span><span class='op'>)</span><span class='op'>}</span>, nsim <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
-<span class='va'>null_model</span> <span class='op'>&lt;-</span> <span class='fu'>simulate_heterogenous_pattern</span><span class='op'>(</span><span class='va'>input_pattern</span>, nsim <span class='op'>=</span> <span class='fl'>19</span><span class='op'>)</span>
-<span class='fu'>spatstat.core</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/spatstat.core/man/envelope.html'>envelope</a></span><span class='op'>(</span>Y <span class='op'>=</span> <span class='va'>input_pattern</span>, fun <span class='op'>=</span> <span class='fu'>spatstat.core</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/spatstat.core/man/pcf.html'>pcf</a></span>, nsim <span class='op'>=</span> <span class='fl'>19</span>,
-simulate <span class='op'>=</span> <span class='va'>null_model</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Extracting 19 point patterns from list  ...
-#&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,  19.
-#&gt; 
-#&gt; Done.</div><div class='output co'>#&gt; Pointwise critical envelopes for g(r)
-#&gt; and observed value for ‘input_pattern’
-#&gt; Edge correction: “iso”
-#&gt; Obtained from 19 point pattern datasets in user-supplied list
-#&gt; Alternative: two.sided
-#&gt; Significance level of pointwise Monte Carlo test: 2/20 = 0.1
-#&gt; ......................................................................
-#&gt;       Math.label     Description                                      
-#&gt; r     r              distance argument r                              
-#&gt; obs   hat(g)[obs](r) observed value of g(r) for data pattern          
-#&gt; mmean bar(g)(r)      sample mean of g(r) from simulations             
-#&gt; lo    hat(g)[lo](r)  lower pointwise envelope of g(r) from simulations
-#&gt; hi    hat(g)[hi](r)  upper pointwise envelope of g(r) from simulations
-#&gt; ......................................................................
-#&gt; Default plot formula:  .~r
-#&gt; where “.” stands for ‘obs’, ‘mmean’, ‘hi’, ‘lo’
-#&gt; Columns ‘lo’ and ‘hi’ will be plotted as shading (by default)
-#&gt; Recommended range of argument r: [0, 0.25]
-#&gt; Available range of argument r: [0, 0.25]</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>42</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>input_pattern</span> <span class='op'>&lt;-</span> <span class='fu'>spatstat.core</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/spatstat.core/man/rpoispp.html'>rpoispp</a></span><span class='op'>(</span>lambda <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span> , <span class='va'>y</span><span class='op'>)</span> <span class='op'>{</span><span class='fl'>100</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>exp</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>3</span> <span class='op'>*</span> <span class='va'>x</span><span class='op'>)</span><span class='op'>}</span>, nsim <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>null_model</span> <span class='op'>&lt;-</span> <span class='fu'>simulate_heterogenous_pattern</span><span class='op'>(</span><span class='va'>input_pattern</span>, nsim <span class='op'>=</span> <span class='fl'>19</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>spatstat.core</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/spatstat.core/man/envelope.html'>envelope</a></span><span class='op'>(</span>Y <span class='op'>=</span> <span class='va'>input_pattern</span>, fun <span class='op'>=</span> <span class='fu'>spatstat.core</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/spatstat.core/man/pcf.html'>pcf</a></span>, nsim <span class='op'>=</span> <span class='fl'>19</span>,</span>
+<span class='r-in'>simulate <span class='op'>=</span> <span class='va'>null_model</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Extracting 19 point patterns from list  ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,  19.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Done.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Pointwise critical envelopes for g(r)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> and observed value for ‘input_pattern’</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Edge correction: “iso”</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Obtained from 19 point pattern datasets in user-supplied list</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Alternative: two.sided</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Significance level of pointwise Monte Carlo test: 2/20 = 0.1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ......................................................................</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       Math.label     Description                                      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> r     r              distance argument r                              </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> obs   hat(g)[obs](r) observed value of g(r) for data pattern          </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> mmean bar(g)(r)      sample mean of g(r) from simulations             </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> lo    hat(g)[lo](r)  lower pointwise envelope of g(r) from simulations</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> hi    hat(g)[hi](r)  upper pointwise envelope of g(r) from simulations</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ......................................................................</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Default plot formula:  .~r</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> where “.” stands for ‘obs’, ‘mmean’, ‘hi’, ‘lo’</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Columns ‘lo’ and ‘hi’ will be plotted as shading (by default)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Recommended range of argument r: [0, 0.25]</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Available range of argument r: [0, 0.25]</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

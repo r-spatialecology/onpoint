@@ -176,37 +176,39 @@ https://doi.org/10.2307/3236356</p>
     <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/spatstat.core/man/Lest.html'>Lest</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>input_pattern</span> <span class='op'>&lt;-</span> <span class='fu'>spatstat.core</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/spatstat.core/man/runifpoint.html'>runifpoint</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>100</span><span class='op'>)</span>
-<span class='fu'>center_l_function</span><span class='op'>(</span><span class='va'>input_pattern</span>, correction <span class='op'>=</span> <span class='st'>"Ripley"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Function value object (class ‘fv’)
-#&gt; for the function r -&gt; L(r)-r
-#&gt; ............................................................
-#&gt;      Math.label       Description                           
-#&gt; r    r                distance argument r                   
-#&gt; theo L[pois](r)-r     theoretical Poisson L(r)-r            
-#&gt; iso  hat(L)[iso](r)-r isotropic-corrected estimate of L(r)-r
-#&gt; ............................................................
-#&gt; Default plot formula:  .~.x
-#&gt; where “.” stands for ‘iso’, ‘theo’
-#&gt; Recommended range of argument r: [0, 0.25]
-#&gt; Available range of argument r: [0, 0.25]</div><div class='input'>
-<span class='va'>lest</span> <span class='op'>&lt;-</span> <span class='fu'>spatstat.core</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/spatstat.core/man/Lest.html'>Lest</a></span><span class='op'>(</span><span class='va'>input_pattern</span><span class='op'>)</span>
-<span class='fu'>center_l_function</span><span class='op'>(</span><span class='va'>lest</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Function value object (class ‘fv’)
-#&gt; for the function r -&gt; L(r)-r
-#&gt; ..................................................................
-#&gt;        Math.label         Description                             
-#&gt; r      r                  distance argument r                     
-#&gt; theo   L[pois](r)-r       theoretical Poisson L(r)-r              
-#&gt; border hat(L)[bord](r)-r  border-corrected estimate of L(r)-r     
-#&gt; trans  hat(L)[trans](r)-r translation-corrected estimate of L(r)-r
-#&gt; iso    hat(L)[iso](r)-r   isotropic-corrected estimate of L(r)-r  
-#&gt; ..................................................................
-#&gt; Default plot formula:  .~.x
-#&gt; where “.” stands for ‘iso’, ‘trans’, ‘border’, ‘theo’
-#&gt; Recommended range of argument r: [0, 0.25]
-#&gt; Available range of argument r: [0, 0.25]</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>input_pattern</span> <span class='op'>&lt;-</span> <span class='fu'>spatstat.core</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/spatstat.core/man/runifpoint.html'>runifpoint</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>100</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>center_l_function</span><span class='op'>(</span><span class='va'>input_pattern</span>, correction <span class='op'>=</span> <span class='st'>"Ripley"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Function value object (class ‘fv’)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> for the function r -&gt; L(r)-r</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ............................................................</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      Math.label       Description                           </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> r    r                distance argument r                   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> theo L[pois](r)-r     theoretical Poisson L(r)-r            </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> iso  hat(L)[iso](r)-r isotropic-corrected estimate of L(r)-r</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ............................................................</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Default plot formula:  .~.x</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> where “.” stands for ‘iso’, ‘theo’</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Recommended range of argument r: [0, 0.25]</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Available range of argument r: [0, 0.25]</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>lest</span> <span class='op'>&lt;-</span> <span class='fu'>spatstat.core</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/spatstat.core/man/Lest.html'>Lest</a></span><span class='op'>(</span><span class='va'>input_pattern</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>center_l_function</span><span class='op'>(</span><span class='va'>lest</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Function value object (class ‘fv’)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> for the function r -&gt; L(r)-r</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ..................................................................</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        Math.label         Description                             </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> r      r                  distance argument r                     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> theo   L[pois](r)-r       theoretical Poisson L(r)-r              </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> border hat(L)[bord](r)-r  border-corrected estimate of L(r)-r     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> trans  hat(L)[trans](r)-r translation-corrected estimate of L(r)-r</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> iso    hat(L)[iso](r)-r   isotropic-corrected estimate of L(r)-r  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ..................................................................</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Default plot formula:  .~.x</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> where “.” stands for ‘iso’, ‘trans’, ‘border’, ‘theo’</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Recommended range of argument r: [0, 0.25]</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Available range of argument r: [0, 0.25]</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
