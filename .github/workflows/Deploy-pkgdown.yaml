@@ -3,7 +3,7 @@
 
 on:
   push:
-    branches: [main, development]
+    branches: [CRAN, main, development]
     tags: ['*']
 
 name: Deploy-pkgdown
