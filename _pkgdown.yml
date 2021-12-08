@@ -25,7 +25,6 @@ reference:
       - plot.env_summarized
       - print.env_summarized
 
-
 navbar:
   structure:
     left:  [reference, news]
