@@ -14,19 +14,19 @@
 * `plot_quantums()` uses geom_linerange()
 
 # onpoint 0.5
-  * add `rlabel_local()` function
+* add `rlabel_local()` function
 
 # onpoint 0.4
-  * Printing method for result of `summarise_envelope()`
-  * Plotting method for result of `summarise_envelope()`
+* Printing method for result of `summarise_envelope()`
+* Plotting method for result of `summarise_envelope()`
 
 # onpoint 0.3
-  * New function `summarise_envelope()`
+* New function `summarise_envelope()`
 
 # onpoint 0.2.1
- * Better size arguments for lines and base_size for `plot_quantums()`
- * Generic labels for `plot_quantums()`
- * Use fix_n argument in `simulate_heterogenous_patter()`
+* Better size arguments for lines and base_size for `plot_quantums()`
+* Generic labels for `plot_quantums()`
+* Use fix_n argument in `simulate_heterogenous_patter()`
 
 # onpoint 0.2.0
 * Added `simulate_antecedent_conditions`.
