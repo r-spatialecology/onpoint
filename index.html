@@ -11,7 +11,7 @@
   most functions are either null models or summary functions for spatial point patterns. 
   For a detailed description of all null models and summary functions, see 
   Wiegand and Moloney (2014, ISBN:9781420082548).">
-<title>Helper Functions for Point Pattern Analysis • onpoint | Helper functions for spatstat</title>
+<title>Helper Functions for Point Pattern Analysis • onpoint</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -34,7 +34,7 @@
 
     <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
     
-    <a class="navbar-brand me-2" href="index.html">onpoint | Helper functions for spatstat</a>
+    <a class="navbar-brand me-2" href="index.html">onpoint</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1</small>
 
@@ -108,7 +108,7 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"r-spatialecology/onpoint"</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatialecology.github.io/onpoint/" class="external-link">onpoint</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatialecology.github.io/onpoint/">onpoint</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://spatstat.org/" class="external-link">spatstat.core</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://spatstat.org/" class="external-link">spatstat.data</a></span><span class="op">)</span>
 
@@ -125,14 +125,14 @@
 <span class="co"># center L-function to zero</span>
 <span class="co"># center_l_function &lt;- center_l_function(l_function)</span>
 <span class="va">l_function_centered</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/center_l_function.html">center_l_function</a></span><span class="op">(</span><span class="va">spruces</span>, correction <span class="op">=</span> <span class="st">"Ripley"</span><span class="op">)</span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-3-1.png" style="display: block; margin: auto;"></p>
+<p><img src="reference/figures/README-plot_lfun-1.png" style="display: block; margin: auto;"></p>
 <p>The O-ring statistic O(r) (Wiegand &amp; Moloney 2004) can be calculated using <code><a href="reference/estimate_o_ring.html">estimate_o_ring()</a></code>. Generally speaking, O(r) scales the pair correlation g(r) function with help of the intensity . One advantage of the O-ring statistic is that it can be interpreted as a neighborhood density because it is a probability density function (Wiegand &amp; Moloney 2004).</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">o_ring</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/estimate_o_ring.html">estimate_o_ring</a></span><span class="op">(</span><span class="va">spruces</span><span class="op">)</span></code></pre></div>
 <p>Of course, both summary functions can be used in combination with <code>spatstat</code>’s <code><a href="https://rdrr.io/pkg/spatstat.core/man/envelope.html" class="external-link">envelope()</a></code> function.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">oring_envelope</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/spatstat.core/man/envelope.html" class="external-link">envelope</a></span><span class="op">(</span><span class="va">spruces</span>, fun <span class="op">=</span> <span class="va">estimate_o_ring</span>, nsim <span class="op">=</span> <span class="fl">199</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-6-1.png" style="display: block; margin: auto;"></p>
+<p><img src="reference/figures/README-plot_oring-1.png" style="display: block; margin: auto;"></p>
 <p><code><a href="reference/estimate_pcf_fast.html">estimate_pcf_fast()</a></code> estimates the pair-correlation function based on Ripley’s K-function, which is faster than estimation the pair-correlation function directly.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/estimate_pcf_fast.html">estimate_pcf_fast</a></span><span class="op">(</span><span class="va">spruces</span><span class="op">)</span>
@@ -162,7 +162,7 @@
                    funargs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>correction <span class="op">=</span> <span class="st">"Ripley"</span>, divisor <span class="op">=</span> <span class="st">"d"</span><span class="op">)</span>,
                    simulate <span class="op">=</span> <span class="va">null_model_hetero</span>, nsim <span class="op">=</span> <span class="fl">199</span>, 
                    verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-9-1.png" style="display: block; margin: auto;"></p>
+<p><img src="reference/figures/README-plot_hetero-1.png" style="display: block; margin: auto;"></p>
 <p>To simulate antecedent conditions in which only one pattern influences the other, but not the other way around (Wiegand &amp; Moloney 2004, Velazquez et al. 2016), <code><a href="reference/simulate_antecedent_conditions.html">simulate_antecedent_conditions()</a></code> can be used. This null model randomizes only one type of points (e.g. seedlings), while keeping the other type of points constant (e.g. mature trees) to check for associations between the two.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/spatstat.geom/man/marks.html" class="external-link">marks</a></span><span class="op">(</span><span class="va">spruces</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.geom/man/marks.html" class="external-link">marks</a></span><span class="op">(</span><span class="va">spruces</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0.3</span>, yes <span class="op">=</span> <span class="st">"adult"</span>, no <span class="op">=</span> <span class="st">"seedling"</span><span class="op">)</span>
@@ -174,7 +174,7 @@
                        funargs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>correction <span class="op">=</span> <span class="st">"Ripley"</span>, divisor <span class="op">=</span> <span class="st">"d"</span><span class="op">)</span>,
                        simulate <span class="op">=</span> <span class="va">null_model_antecedent</span>, nsim <span class="op">=</span> <span class="fl">199</span>, 
                        verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-11-1.png" style="display: block; margin: auto;"></p>
+<p><img src="reference/figures/README-plot_antecedent-1.png" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level3">
 <h3 id="various">Various<a class="anchor" aria-label="anchor" href="#various"></a>
@@ -182,15 +182,15 @@
 <p>To plot simulation envelopes using quantum plots (e.g. Esser et al. 2015), just pass an <code>envelope</code> object as input to <code><a href="reference/plot_quantums.html">plot_quantums()</a></code>.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/plot_quantums.html">plot_quantums</a></span><span class="op">(</span><span class="va">antecedent</span>, ylab <span class="op">=</span> <span class="st">"g(r)"</span><span class="op">)</span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-12-1.png" style="display: block; margin: auto;"></p>
+<p><img src="reference/figures/README-plot_quantums-1.png" style="display: block; margin: auto;"></p>
 <div class="section level4">
 <h4 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h4>
-<p>Besag, J. E. 1977. Discussion on Dr. Ripley’s paper. - J. R. Stat. Soc. Ser. B 39: 193-195.</p>
-<p>Esser, D. S. et al. 2015. Spatial scales of interactions among bacteria and between bacteria and the leaf surface. - FEMS Microbiol. Ecol. 91: fiu034.</p>
-<p>Haase, P. 1995. Spatial pattern analysis in ecology based on Ripley’s K-function: Introduction and methods of edge correction. - J. Veg. Sci. 6: 575-582.</p>
-<p>Velazquez, E. et al. 2016. An evaluation of the state of spatial point pattern analysis in ecology. - Ecography (Cop.). 39: 1-14.</p>
-<p>Wiegand, T. and Moloney, K. A. 2004. Rings, circles, and null models for point pattern analysis in ecology. - Oikos 104: 209-229.</p>
+<p>Besag, J.E., 1977. Discussion on Dr. Ripley’s paper. Journal of the Royal Statistical Society. Series B (Methodological) 39, 193–195. <a href="https://doi.org/10.1111/j.2517-6161.1977.tb01616.x" class="external-link uri">https://doi.org/10.1111/j.2517-6161.1977.tb01616.x</a></p>
+<p>Esser, D.S., Leveau, J.H.J., Meyer, K.M., Wiegand, K., 2015. Spatial scales of interactions among bacteria and between bacteria and the leaf surface. FEMS Microbiology Ecology 91, 1–13. <a href="https://doi.org/10.1093/femsec/fiu034" class="external-link uri">https://doi.org/10.1093/femsec/fiu034</a></p>
+<p>Haase, P., 1995. Spatial pattern analysis in ecology based on Ripley’s K-function: Introduction and methods of edge correction. Journal of Vegetation Science 6, 575–582. <a href="https://doi.org/10.2307/3236356" class="external-link uri">https://doi.org/10.2307/3236356</a></p>
+<p>Velázquez, E., Martínez, I., Getzin, S., Moloney, K.A., Wiegand, T., 2016. An evaluation of the state of spatial point pattern analysis in ecology. Ecography 39, 1–14. <a href="https://doi.org/10.1111/ecog.01579" class="external-link uri">https://doi.org/10.1111/ecog.01579</a></p>
+<p>Wiegand, T., Moloney, K.A., 2004. Rings, circles, and null models for point pattern analysis in ecology. Oikos 104, 209–229. <a href="https://doi.org/10.1111/j.0030-1299.2004.12497.x" class="external-link uri">https://doi.org/10.1111/j.0030-1299.2004.12497.x</a></p>
 </div>
 </div>
 </div>

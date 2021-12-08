@@ -1,66 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>https://r-spatialecology.github.io/onpoint/404.html</loc>
   </url>
   <url>
-    <loc>/CODE_OF_CONDUCT.html</loc>
+    <loc>https://r-spatialecology.github.io/onpoint/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>/LICENSE.html</loc>
+    <loc>https://r-spatialecology.github.io/onpoint/LICENSE.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>https://r-spatialecology.github.io/onpoint/authors.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>https://r-spatialecology.github.io/onpoint/index.html</loc>
   </url>
   <url>
-    <loc>/news/index.html</loc>
+    <loc>https://r-spatialecology.github.io/onpoint/news/index.html</loc>
   </url>
   <url>
-    <loc>/reference/balance_points.html</loc>
+    <loc>https://r-spatialecology.github.io/onpoint/reference/balance_points.html</loc>
   </url>
   <url>
-    <loc>/reference/calc_area.html</loc>
+    <loc>https://r-spatialecology.github.io/onpoint/reference/calc_area.html</loc>
   </url>
   <url>
-    <loc>/reference/center_l_function.html</loc>
+    <loc>https://r-spatialecology.github.io/onpoint/reference/center_l_function.html</loc>
   </url>
   <url>
-    <loc>/reference/estimate_o_ring.html</loc>
+    <loc>https://r-spatialecology.github.io/onpoint/reference/estimate_o_ring.html</loc>
   </url>
   <url>
-    <loc>/reference/estimate_pcf_fast.html</loc>
+    <loc>https://r-spatialecology.github.io/onpoint/reference/estimate_pcf_fast.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>https://r-spatialecology.github.io/onpoint/reference/index.html</loc>
   </url>
   <url>
-    <loc>/reference/onpoint.html</loc>
+    <loc>https://r-spatialecology.github.io/onpoint/reference/onpoint.html</loc>
   </url>
   <url>
-    <loc>/reference/plot.env_summarized.html</loc>
+    <loc>https://r-spatialecology.github.io/onpoint/reference/plot.env_summarized.html</loc>
   </url>
   <url>
-    <loc>/reference/plot_quantums.html</loc>
+    <loc>https://r-spatialecology.github.io/onpoint/reference/plot_quantums.html</loc>
   </url>
   <url>
-    <loc>/reference/print.env_summarized.html</loc>
+    <loc>https://r-spatialecology.github.io/onpoint/reference/print.env_summarized.html</loc>
   </url>
   <url>
-    <loc>/reference/rlabel_local.html</loc>
+    <loc>https://r-spatialecology.github.io/onpoint/reference/rlabel_local.html</loc>
   </url>
   <url>
-    <loc>/reference/simulate_antecedent_conditions.html</loc>
+    <loc>https://r-spatialecology.github.io/onpoint/reference/simulate_antecedent_conditions.html</loc>
   </url>
   <url>
-    <loc>/reference/simulate_heterogenous_pattern.html</loc>
+    <loc>https://r-spatialecology.github.io/onpoint/reference/simulate_heterogenous_pattern.html</loc>
   </url>
   <url>
-    <loc>/reference/split_at.html</loc>
+    <loc>https://r-spatialecology.github.io/onpoint/reference/split_at.html</loc>
   </url>
   <url>
-    <loc>/reference/summarize_envelope.html</loc>
+    <loc>https://r-spatialecology.github.io/onpoint/reference/summarize_envelope.html</loc>
   </url>
 </urlset>
