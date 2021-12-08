@@ -24,21 +24,20 @@
 #' center_l_function(lest)
 #'
 #' @references
-#' Besag, J.E., 1977. Discussion on Dr. Ripley’s paper. Journal of the Royal
-#' Statistical Society. Series B (Methodological) 39, 193–195.
-#' https://doi.org/10.1111/j.2517-6161.1977.tb01616.x
+#' Besag, J.E., 1977. Discussion on Dr. Ripley’s paper. Journal of the Royal Statistical
+#' Society. Series B (Methodological) 39, 193–195.
+#' <https://doi.org/10.1111/j.2517-6161.1977.tb01616.x>
 #'
-#' Ripley, B.D., 1977. Modelling spatial patterns. Journal of the Royal Statistical
-#' Society. Series B (Methodological) 39, 172–192.
-#' https://doi.org/10.1111/j.2517-6161.1977.tb01615.x
+#' Ripley, B.D., 1977. Modelling spatial patterns. Journal of the Royal Statistical Society.
+#' Series B (Methodological) 39, 172–192. <https://doi.org/10.1111/j.2517-6161.1977.tb01615.x>
 #'
 #' Haase, P., 1995. Spatial pattern analysis in ecology based on Ripley’s K-function:
 #' Introduction and methods of edge correction. Journal of Vegetation Science 6, 575–582.
-#' https://doi.org/10.2307/3236356
+#' <https://doi.org/10.2307/3236356>
 #'
 #' @aliases center_l_function
 #' @rdname center_l_function
-
+#'
 #' @export
 center_l_function <- function(x, ...) {
 

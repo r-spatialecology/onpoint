@@ -36,11 +36,11 @@ estimate_o_ring(input_pattern)
 
 }
 \references{
-Wiegand, T., Moloney, K.A., 2014. Handbook of spatial point-pattern analysis
-in ecology. Chapman and Hall/CRC Press, Boca Raton.
-
 Wiegand, T., Moloney, K.A., 2004. Rings, circles, and null models for point pattern
-analysis in ecology. Oikos 104, 209–229. https://doi.org/10.1111/j.0030-1299.2004.12497.x
+analysis in ecology. Oikos 104, 209–229. <https://doi.org/10.1111/j.0030-1299.2004.12497.x>
+
+Wiegand, T., Moloney, K.A., 2014. Handbook of spatial point-pattern analysis in
+ecology. Chapman and Hall/CRC Press, Boca Raton, USA. <isbn:978-1-4200-8254-8>
 }
 \seealso{
 \code{\link{density.ppp}} \cr

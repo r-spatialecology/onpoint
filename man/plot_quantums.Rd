@@ -78,7 +78,7 @@ plot_quantums(csr_envelope, ylab = "g(r)")
 \references{
 Esser, D.S., Leveau, J.H.J., Meyer, K.M., Wiegand, K., 2015. Spatial scales of
 interactions among bacteria and between bacteria and the leaf surface.
-FEMS Microbiology Ecology 91, 1–13. https://doi.org/10.1093/femsec/fiu034
+FEMS Microbiology Ecology 91, 1–13. <https://doi.org/10.1093/femsec/fiu034>
 }
 \seealso{
 \code{\link{envelope}}

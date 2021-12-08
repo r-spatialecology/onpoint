@@ -37,20 +37,20 @@
 #' @seealso
 #' \code{\link{envelope}}
 #'
-#' @references
-#' Esser, D.S., Leveau, J.H.J., Meyer, K.M., Wiegand, K., 2015. Spatial scales of
-#' interactions among bacteria and between bacteria and the leaf surface.
-#' FEMS Microbiology Ecology 91, 1–13. https://doi.org/10.1093/femsec/fiu034
-#'
 #' @examples
 #' set.seed(42)
 #' pattern <- spatstat.core::rThomas(kappa = 50, scale = 0.025, mu = 5)
 #' csr_envelope <- spatstat.core::envelope(pattern, fun = spatstat.core::pcf, nsim = 19)
 #' plot_quantums(csr_envelope, ylab = "g(r)")
 #'
+#' @references
+#' Esser, D.S., Leveau, J.H.J., Meyer, K.M., Wiegand, K., 2015. Spatial scales of
+#' interactions among bacteria and between bacteria and the leaf surface.
+#' FEMS Microbiology Ecology 91, 1–13. <https://doi.org/10.1093/femsec/fiu034>
+#'
 #' @aliases plot_quantums
 #' @rdname plot_quantums
-
+#'
 #' @export
 plot_quantums <- function(input,
                           labels = NULL, color_scale = NULL,

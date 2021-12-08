@@ -23,7 +23,7 @@
 #'
 #' @aliases balance_points
 #' @rdname balance_points
-
+#'
 #' @export
 balance_points <- function(pattern, n, verbose = TRUE) {
 

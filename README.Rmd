@@ -55,7 +55,7 @@ Currently, `onpoint` provides three second-order summary functions, namely Besag
 
 Centering Besag's L-function to zero has the advantage of an easier interpretation and plotting (Haase 1995). The function `center_l_function()` can either deal with a point pattern and calculated the centered L-function directly, or center the L-function afterwards it was calculating using `spatstat`s `Lest()`.
 
-```{r}
+```{r calc_lfun}
 # calculate L-function
 l_function <- Lest(spruces, correction = "Ripley")
 
@@ -64,7 +64,7 @@ l_function <- Lest(spruces, correction = "Ripley")
 l_function_centered <- center_l_function(spruces, correction = "Ripley")
 ```
 
-```{r, echo = FALSE, fig.width = 10, fig.height = 5, fig.align = "center"}
+```{r plot_lfun, echo = FALSE, fig.width = 10, fig.height = 5, fig.align = "center"}
 par(mfrow = c(1, 2))
 plot(l_function, main = "Besag's L-function")
 plot(l_function_centered, main = "centered Besag's L-function")
@@ -73,23 +73,23 @@ par(mfrow = c(1, 1))
 
 The O-ring statistic O(r) (Wiegand & Moloney 2004) can be calculated using `estimate_o_ring()`. Generally speaking, O(r) scales the pair correlation g(r) function with help of the intensity \eqn{\lambda}. One advantage of the O-ring statistic is that it can be interpreted as a neighborhood density because it is a probability density function (Wiegand & Moloney 2004).
 
-```{r}
+```{r calc_oring}
 o_ring <- estimate_o_ring(spruces)
 ```
 
 Of course, both summary functions can be used in combination with `spatstat`'s `envelope()` function.
 
-```{r}
+```{r env_oring}
 oring_envelope <- envelope(spruces, fun = estimate_o_ring, nsim = 199, verbose = FALSE)
 ```
 
-```{r, echo = FALSE, fig.width = 7.5, fig.height = 5, fig.align = "center"}
+```{r plot_oring, echo = FALSE, fig.width = 7.5, fig.height = 5, fig.align = "center"}
 plot(oring_envelope, main = "O-ring statistic")
 ```
 
 `estimate_pcf_fast()` estimates the pair-correlation function based on Ripley's K-function, which is faster than estimation the pair-correlation function directly.
 
-```{r, collapse = TRUE}
+```{r calc_fast, collapse = TRUE}
 estimate_pcf_fast(spruces)
 ```
 
@@ -99,7 +99,7 @@ estimate_pcf_fast(spruces)
 
 `simulate_heterogenous_pattern()` is a convienent wrapper around a few `spatstat` functions to straighforward simulate a heterogeneous Poisson process.
 
-```{r}
+```{r calc_hetero}
 null_model_hetero <- simulate_heterogenous_pattern(spruces, nsim = 199)
 
 hetero <- envelope(spruces, fun = pcf, 
@@ -108,13 +108,13 @@ hetero <- envelope(spruces, fun = pcf,
                    verbose = FALSE)
 ```
 
-```{r, echo = FALSE, fig.width = 7.5, fig.height = 5, fig.align = "center"}
+```{r plot_hetero, echo = FALSE, fig.width = 7.5, fig.height = 5, fig.align = "center"}
 plot(hetero, main = "Heterogeneous Poisson process")
 ```
 
 To simulate antecedent conditions in which only one pattern influences the other, but not the other way around (Wiegand & Moloney 2004, Velazquez et al. 2016), `simulate_antecedent_conditions()` can be used. This null model randomizes only one type of points (e.g. seedlings), while keeping the other type of points constant (e.g. mature trees) to check for associations between the two.
 
-```{r}
+```{r calc_antecedent}
 marks(spruces) <- ifelse(marks(spruces) > 0.3, yes = "adult", no = "seedling")
 
 null_model_antecedent <- simulate_antecedent_conditions(spruces, 
@@ -126,7 +126,7 @@ antecedent <- envelope(spruces, fun = pcf,
                        verbose = FALSE)
 ```
 
-```{r, echo = FALSE, fig.width = 7.5, fig.height = 5, fig.align = "center"}
+```{r plot_antecedent, echo = FALSE, fig.width = 7.5, fig.height = 5, fig.align = "center"}
 plot(antecedent, main = "Antecedent conditions")
 ```
 
@@ -134,18 +134,18 @@ plot(antecedent, main = "Antecedent conditions")
 
 To plot simulation envelopes using quantum plots (e.g. Esser et al. 2015), just pass an `envelope` object as input to `plot_quantums()`.
 
-```{r, fig.width = 7.5, fig.height = 5, fig.align = "center"}
+```{r plot_quantums, fig.width = 7.5, fig.height = 5, fig.align = "center"}
 plot_quantums(antecedent, ylab = "g(r)")
 ```
 
 #### References
-Besag, J. E. 1977. Discussion on Dr. Ripley's paper. - J. R. Stat. Soc. Ser. B 39: 193-195.
+Besag, J.E., 1977. Discussion on Dr. Ripley’s paper. Journal of the Royal Statistical Society. Series B (Methodological) 39, 193–195. <https://doi.org/10.1111/j.2517-6161.1977.tb01616.x>
 
-Esser, D. S. et al. 2015. Spatial scales of interactions among bacteria and between bacteria and the leaf surface. - FEMS Microbiol. Ecol. 91: fiu034.
+Esser, D.S., Leveau, J.H.J., Meyer, K.M., Wiegand, K., 2015. Spatial scales of interactions among bacteria and between bacteria and the leaf surface. FEMS Microbiology Ecology 91, 1–13. <https://doi.org/10.1093/femsec/fiu034>
 
-Haase, P. 1995. Spatial pattern analysis in ecology based on Ripley's K-function: Introduction and methods of edge correction. - J. Veg. Sci. 6: 575-582.
+Haase, P., 1995. Spatial pattern analysis in ecology based on Ripley’s K-function: Introduction and methods of edge correction. Journal of Vegetation Science 6, 575–582. <https://doi.org/10.2307/3236356>
 
-Velazquez, E. et al. 2016. An evaluation of the state of spatial point pattern analysis in ecology. - Ecography (Cop.). 39: 1-14.
+Velázquez, E., Martínez, I., Getzin, S., Moloney, K.A., Wiegand, T., 2016. An evaluation of the state of spatial point pattern analysis in ecology. Ecography 39, 1–14. <https://doi.org/10.1111/ecog.01579>
 
-Wiegand, T. and Moloney, K. A. 2004. Rings, circles, and null models for point pattern analysis in ecology. - Oikos 104: 209-229.
+Wiegand, T., Moloney, K.A., 2004. Rings, circles, and null models for point pattern analysis in ecology. Oikos 104, 209–229. <https://doi.org/10.1111/j.0030-1299.2004.12497.x>
 

@@ -1,22 +1,29 @@
 title: onpoint | Helper functions for spatstat
 
 template:
-  params:
-    bootswatch: sandstone
+  bootstrap: 5
+  bootswatch: sketchy
 
 reference:
+  - contents:
+      - onpoint
   - title: Summary functions
     contents:
       - center_l_function
       - estimate_o_ring
       - estimate_pcf_fast
+      - summarize_envelope
   - title: Null models
     contents:
+      - rlabel_local
       - simulate_heterogenous_pattern
       - simulate_antecedent_conditions
   - title: Various
     contents:
+      - balance_points
       - plot_quantums
+      - plot.env_summarized
+      - print.env_summarized
 
 navbar:
   title: onpoint

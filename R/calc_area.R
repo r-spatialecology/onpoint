@@ -18,8 +18,6 @@
 #' @rdname calc_area
 #'
 #' @keywords internal
-#'
-#' @export
 calc_area <- function(x){
 
   # check if polygon is closed

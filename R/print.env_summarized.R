@@ -27,7 +27,7 @@
 #'
 #' @aliases print.env_summarized
 #' @rdname print.env_summarized
-
+#'
 #' @export
 print.env_summarized <- function(x, return_area = FALSE, digits = 2, ...) {
 

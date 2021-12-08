@@ -34,7 +34,7 @@
 #'
 #' @aliases summarize_envelope
 #' @rdname summarize_envelope
-
+#'
 #' @export
 summarize_envelope <- function(x, plot_result = FALSE) {
 

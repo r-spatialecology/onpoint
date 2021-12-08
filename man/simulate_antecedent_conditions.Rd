@@ -48,12 +48,12 @@ spatstat.core::envelope(Y = pattern, fun = spatstat.core::pcf, nsim = 19, simula
 
 }
 \references{
-Velázquez, E., Martínez, I., Getzin, S., Moloney, K.A., Wiegand, T., 2016. An
-evaluation of the state of spatial point pattern analysis in ecology.
-Ecography 39, 1–14. https://doi.org/10.1111/ecog.01579
+Velázquez, E., Martínez, I., Getzin, S., Moloney, K.A., Wiegand, T., 2016. An evaluation
+of the state of spatial point pattern analysis in ecology. Ecography 39, 1–14.
+<https://doi.org/10.1111/ecog.01579>
 
 Wiegand, T., Moloney, K.A., 2014. Handbook of spatial point-pattern analysis in
-ecology. Chapman and Hall/CRC Press, Boca Raton.
+ecology. Chapman and Hall/CRC Press, Boca Raton, USA. <isbn:978-1-4200-8254-8>
 }
 \seealso{
 \code{\link{envelope}}
