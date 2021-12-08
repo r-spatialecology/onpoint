@@ -5,19 +5,19 @@ template:
   bootswatch: sketchy
 
 reference:
-  - contents:
-      - onpoint
   - title: Summary functions
     contents:
       - center_l_function
       - estimate_o_ring
       - estimate_pcf_fast
       - summarize_envelope
+
   - title: Null models
     contents:
       - rlabel_local
       - simulate_heterogenous_pattern
       - simulate_antecedent_conditions
+
   - title: Various
     contents:
       - balance_points
@@ -25,22 +25,26 @@ reference:
       - plot.env_summarized
       - print.env_summarized
 
+
 navbar:
-  title: onpoint
-  left:
-    - icon: fa-home
-      text: "Home"
-      href: index.html
-  right:
-    - icon: fa-gears
+  structure:
+    left:  [reference, news]
+    right: [github, contact, search]
+  components:
+    reference:
+      icon: fa-gears
       text: "Functions"
       href: reference/index.html
-    - icon: fa-newspaper-o
+
+    news:
+      icon: fa-newspaper-o
       text: "News"
       href: news/index.html
-    - icon: fa-github fa-lg
-      text: "Github"
-      href: https://github.com/r-spatialecology/onpoint
-    - icon: fa-user
-      text: "Contact"
+
+    contact:
+      icon: fa-user
       hreft: https://mhesselbarth.rbind.io
+
+home:
+  sidebar:
+    structure: [authors, license]

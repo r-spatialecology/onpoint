@@ -14,16 +14,18 @@ knitr::opts_chunk$set(
 )
 ```
 
+# onpoint
+
 <!-- badges: start -->
+
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![R-CMD-check](https://github.com/r-spatialecology/onpoint/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-spatialecology/onpoint/actions/workflows/R-CMD-check.yaml)
 [![codecov](https://codecov.io/gh/r-spatialecology/onpoint/branch/main/graph/badge.svg?token=RkgCfHnPyf)](https://codecov.io/gh/r-spatialecology/onpoint)
 [![CRAN status](https://www.r-pkg.org/badges/version/onpoint)](https://CRAN.R-project.org/package=onpoint)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-<!-- badges: end -->
 
-# onpoint
+<!-- badges: end -->
 
 `onpoint` is a growing collection of helper functions mainly related to point pattern analysis and the  [spatstat](http://spatstat.org/) package.
 
