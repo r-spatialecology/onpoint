@@ -20,8 +20,10 @@ Calculate area of polygon in input units. If the polygon is not closed, the firs
 coordinate is used as last coordinate to close it.
 }
 \examples{
+\dontrun{
 dat <- matrix(data = c(0, 0, 0, 10, 10, 10, 10, 0), ncol = 2, byrow = TRUE)
 calc_area(x = dat)
+}
 
 }
 \keyword{internal}
