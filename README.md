@@ -160,6 +160,16 @@ plot_quantums(antecedent, ylab = "g(r)")
 
 <img src="man/figures/README-plot_quantums-1.png" style="display: block; margin: auto;" />
 
+### Contributing
+
+Please note that the **onpoint** package is released with a [Contributor
+Code of
+Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
+
+To see how to contribute to this project, please see the [Contributing
+guidelines](CONTRIBUTING.md).
+
 #### References
 
 Besag, J.E., 1977. Discussion on Dr. Ripley’s paper. Journal of the
