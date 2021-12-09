@@ -140,6 +140,12 @@ To plot simulation envelopes using quantum plots (e.g. Esser et al. 2015), just 
 plot_quantums(antecedent, ylab = "g(r)")
 ```
 
+### Contributing
+
+Please note that the **onpoint** package is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
+
+To see how to contribute to this project, please see the [Contributing guidelines](CONTRIBUTING.md).
+
 #### References
 Besag, J.E., 1977. Discussion on Dr. Ripley’s paper. Journal of the Royal Statistical Society. Series B (Methodological) 39, 193–195. <https://doi.org/10.1111/j.2517-6161.1977.tb01616.x>
 

@@ -46,4 +46,4 @@ navbar:
 
 home:
   sidebar:
-    structure: [authors, license]
+    structure: [authors, license, community]
