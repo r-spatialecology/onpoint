@@ -163,9 +163,8 @@ plot_quantums(antecedent, ylab = "g(r)")
 ### Contributing
 
 Please note that the **onpoint** package is released with a [Contributor
-Code of
-Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
-By contributing to this project, you agree to abide by its terms.
+Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project,
+you agree to abide by its terms.
 
 To see how to contribute to this project, please see the [Contributing
 guidelines](CONTRIBUTING.md).
