@@ -25,7 +25,7 @@
 #' \code{\link{pcf}}
 #'
 #' @examples
-#' input_pattern <- spatstat.core::runifpoint(n = 100)
+#' input_pattern <- spatstat.random::runifpoint(n = 100)
 #' estimate_o_ring(input_pattern)
 #'
 #' @references

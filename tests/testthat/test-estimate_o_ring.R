@@ -2,7 +2,7 @@ context("test-estimate_o_ring")
 
 test_that("estimate_o_ring returns fv", {
 
-  input_pattern <- spatstat.core::runifpoint(n = 100)
+  input_pattern <- spatstat.random::runifpoint(n = 100)
 
   result <- estimate_o_ring(x = input_pattern)
 

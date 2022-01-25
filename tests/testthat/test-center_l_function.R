@@ -2,7 +2,7 @@ context("test-center_l_function")
 
 test_that("center_l_function works for point pattern", {
 
-  input_pattern <- spatstat.core::runifpoint(n = 100)
+  input_pattern <- spatstat.random::runifpoint(n = 100)
 
   result <- center_l_function(input_pattern, correction = "Ripley")
 
@@ -11,7 +11,7 @@ test_that("center_l_function works for point pattern", {
 
 test_that("center_l_function works for fv object", {
 
-  input_pattern <- spatstat.core::runifpoint(n = 100)
+  input_pattern <- spatstat.random::runifpoint(n = 100)
 
   lest <- spatstat.core::Lest(input_pattern)
 

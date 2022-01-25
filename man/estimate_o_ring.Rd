@@ -31,7 +31,7 @@ function (Wiegand & Moloney 2004, 2014).
 Returns an 'Function value object' of the \code{spatstat} package.
 }
 \examples{
-input_pattern <- spatstat.core::runifpoint(n = 100)
+input_pattern <- spatstat.random::runifpoint(n = 100)
 estimate_o_ring(input_pattern)
 
 }

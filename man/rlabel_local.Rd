@@ -35,7 +35,7 @@ Returns a \code{list} with \code{ppp} objects.
 }
 \examples{
 set.seed(42)
-pattern <- spatstat.core::runifpoint(n = 250, win = spatstat.geom::owin(c(0, 100), c(0, 100)))
+pattern <- spatstat.random::runifpoint(n = 250, win = spatstat.geom::owin(c(0, 100), c(0, 100)))
 spatstat.geom::marks(pattern) <- runif(n = 250, min = 10, max = 120)
 
 rlabel_local(X = pattern, distance = 25, nsim = 19)

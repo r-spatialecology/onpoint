@@ -39,7 +39,7 @@
 #'
 #' @examples
 #' set.seed(42)
-#' pattern <- spatstat.core::rThomas(kappa = 50, scale = 0.025, mu = 5)
+#' pattern <- spatstat.random::rThomas(kappa = 50, scale = 0.025, mu = 5)
 #' csr_envelope <- spatstat.core::envelope(pattern, fun = spatstat.core::pcf, nsim = 19)
 #' plot_quantums(csr_envelope, ylab = "g(r)")
 #'
