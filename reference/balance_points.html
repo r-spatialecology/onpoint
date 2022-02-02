@@ -17,7 +17,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-2">
+    <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">
     <span class="fa fa-gears"></span>
@@ -91,8 +91,23 @@ object is provided.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">input</span> <span class="op">&lt;-</span> <span class="fu">spatstat.core</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.core/man/rpoispp.html" class="external-link">rpoispp</a></span><span class="op">(</span>lambda <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">input_b</span> <span class="op">&lt;-</span> <span class="fu">spatstat.core</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.core/man/rpoispp.html" class="external-link">rpoispp</a></span><span class="op">(</span>lambda <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">input</span> <span class="op">&lt;-</span> <span class="fu">spatstat.random</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.random/man/rpoispp.html" class="external-link">rpoispp</a></span><span class="op">(</span>lambda <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Registered S3 methods overwritten by 'spatstat.random':</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   method                  from         </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   as.owin.rmhmodel        spatstat.core</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   domain.rmhmodel         spatstat.core</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   print.rmhcontrol        spatstat.core</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   print.rmhexpand         spatstat.core</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   print.rmhInfoList       spatstat.core</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   print.rmhmodel          spatstat.core</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   print.rmhstart          spatstat.core</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   print.summary.rmhexpand spatstat.core</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   rjitter.psp             spatstat.core</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   summary.rmhexpand       spatstat.core</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   update.rmhcontrol       spatstat.core</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   update.rmhstart         spatstat.core</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   Window.rmhmodel         spatstat.core</span>
+<span class="r-in"><span class="va">input_b</span> <span class="op">&lt;-</span> <span class="fu">spatstat.random</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.random/man/rpoispp.html" class="external-link">rpoispp</a></span><span class="op">(</span>lambda <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu">balance_points</span><span class="op">(</span>pattern <span class="op">=</span> <span class="va">input</span>, n <span class="op">=</span> <span class="fl">110</span><span class="op">)</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> &gt; Relative difference between pattern and n: 0.03</span>
@@ -114,7 +129,7 @@ object is provided.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
     </footer></div>
