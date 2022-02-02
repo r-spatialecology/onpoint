@@ -1,3 +1,6 @@
+# onpoint 1.0.2
+* Adapt new `spatstat` package structure
+
 # onpoint 1.0.1
 * Improve documentation for CRAN submission
 * Renamed `summarise_envelope` to `summarize_envelope`

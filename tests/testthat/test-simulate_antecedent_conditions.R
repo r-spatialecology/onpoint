@@ -8,7 +8,7 @@ spatstat.geom::marks(pattern_b) <- "b"
 
 pattern <- spatstat.geom::superimpose(pattern_a, pattern_b)
 
-test_that("simulate_antecedent_conditions returns nsim raster", {
+test_that("simulate_antecedent_conditions returns nsim", {
 
   null_model <- simulate_antecedent_conditions(x = pattern,
                                                i = "b", j = "a",

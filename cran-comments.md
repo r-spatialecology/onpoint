@@ -1,5 +1,5 @@
 # onpoint 1.0.2
-Some minor improvements
+Adapt new `spatstat` package structure
 
 # onpoint 1.0.1
 Please add some more details about the package functionality and implemented methods in your Description text.
