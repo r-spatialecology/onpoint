@@ -26,8 +26,8 @@ object is provided.
 }
 \examples{
 set.seed(42)
-input <- spatstat.core::rpoispp(lambda = 100)
-input_b <- spatstat.core::rpoispp(lambda = 100)
+input <- spatstat.random::rpoispp(lambda = 100)
+input_b <- spatstat.random::rpoispp(lambda = 100)
 
 balance_points(pattern = input, n = 110)
 balance_points(pattern = input, n = input_b)

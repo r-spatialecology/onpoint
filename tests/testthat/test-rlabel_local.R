@@ -1,6 +1,6 @@
 context("test-rlabel_local")
 
-pattern <- spatstat.core::runifpoint(n = 250,
+pattern <- spatstat.random::runifpoint(n = 250,
                                      win = spatstat.geom::owin(c(0, 100), c(0, 100)))
 
 spatstat.geom::marks(pattern) <- runif(n = 250, min = 10, max = 120)

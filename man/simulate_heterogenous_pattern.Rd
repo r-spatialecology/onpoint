@@ -30,7 +30,7 @@ Returns a \code{list} with \code{ppp} objects.
 }
 \examples{
 set.seed(42)
-input_pattern <- spatstat.core::rpoispp(lambda = function(x , y) {100 * exp(-3 * x)}, nsim = 1)
+input_pattern <- spatstat.random::rpoispp(lambda = function(x , y) {100 * exp(-3 * x)}, nsim = 1)
 null_model <- simulate_heterogenous_pattern(input_pattern, nsim = 19)
 spatstat.core::envelope(Y = input_pattern, fun = spatstat.core::pcf, nsim = 19,
 simulate = null_model)

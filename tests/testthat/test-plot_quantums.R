@@ -2,7 +2,7 @@ context("test-plot_quantums")
 
 test_that("plot_quantums returns ggplot", {
 
-  pattern <- spatstat.core::rThomas(kappa = 50, scale = 0.025, mu = 5)
+  pattern <- spatstat.random::rThomas(kappa = 50, scale = 0.025, mu = 5)
 
   csr_envelope <- spatstat.core::envelope(pattern,
                                           fun = spatstat.core::pcf, nsim = 9,
@@ -19,7 +19,7 @@ test_that("plot_quantums returns ggplot", {
 
 test_that("plot_quantums returns ggplot (only quantum)", {
 
-  pattern <- spatstat.core::rThomas(kappa = 50, scale = 0.025, mu = 5)
+  pattern <- spatstat.random::rThomas(kappa = 50, scale = 0.025, mu = 5)
 
   csr_envelope <- spatstat.core::envelope(pattern,
                                           fun = spatstat.core::pcf, nsim = 9,
@@ -35,7 +35,7 @@ test_that("plot_quantums returns ggplot (only quantum)", {
 
 test_that("plot_quantums returns ggplot only function", {
 
-  pattern <- spatstat.core::rThomas(kappa = 50, scale = 0.025, mu = 5)
+  pattern <- spatstat.random::rThomas(kappa = 50, scale = 0.025, mu = 5)
 
   csr_envelope <- spatstat.core::envelope(pattern,
                                           fun = spatstat.core::pcf, nsim = 9,
@@ -51,7 +51,7 @@ test_that("plot_quantums returns ggplot only function", {
 
 test_that("plot_quantums creates labels if not provided", {
 
-  pattern <- spatstat.core::rThomas(kappa = 50, scale = 0.025, mu = 5)
+  pattern <- spatstat.random::rThomas(kappa = 50, scale = 0.025, mu = 5)
 
   csr_envelope <- spatstat.core::envelope(pattern,
                                           fun = spatstat.core::pcf, nsim = 9,
@@ -66,7 +66,7 @@ test_that("plot_quantums creates labels if not provided", {
 
 test_that("plot_quantums returns error", {
 
-  pattern <- spatstat.core::rThomas(kappa = 50, scale = 0.025, mu = 5)
+  pattern <- spatstat.random::rThomas(kappa = 50, scale = 0.025, mu = 5)
 
   expect_error(plot_quantums(pattern, ylab = "g(r)"),
                regexp = "Please provide envelope or data frame.")

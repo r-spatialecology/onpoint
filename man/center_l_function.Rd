@@ -24,7 +24,7 @@ allows an easier interpretation and plotting of the results (Haase 1995).
 Returns an 'Function value object' of the \code{spatstat} package.
 }
 \examples{
-input_pattern <- spatstat.core::runifpoint(n = 100)
+input_pattern <- spatstat.random::runifpoint(n = 100)
 center_l_function(input_pattern, correction = "Ripley")
 
 lest <- spatstat.core::Lest(input_pattern)

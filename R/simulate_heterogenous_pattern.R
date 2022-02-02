@@ -22,7 +22,7 @@
 #'
 #' @examples
 #' set.seed(42)
-#' input_pattern <- spatstat.core::rpoispp(lambda = function(x , y) {100 * exp(-3 * x)}, nsim = 1)
+#' input_pattern <- spatstat.random::rpoispp(lambda = function(x , y) {100 * exp(-3 * x)}, nsim = 1)
 #' null_model <- simulate_heterogenous_pattern(input_pattern, nsim = 19)
 #' spatstat.core::envelope(Y = input_pattern, fun = spatstat.core::pcf, nsim = 19,
 #' simulate = null_model)
@@ -49,14 +49,14 @@ simulate_heterogenous_pattern <- function(x, nsim, fix_n = FALSE, ...) {
   # check if exactly same number of points
   if (fix_n) {
 
-    simulated_pattern <- spatstat.core::rpoint(n = x$n ,
+    simulated_pattern <- spatstat.random::rpoint(n = x$n ,
                                           f = lambda_xy,
                                           nsim = nsim)
   }
 
   else {
 
-    simulated_pattern <- spatstat.core::rpoispp(lambda = lambda_xy,
+    simulated_pattern <- spatstat.random::rpoispp(lambda = lambda_xy,
                                            nsim = nsim)
   }
 

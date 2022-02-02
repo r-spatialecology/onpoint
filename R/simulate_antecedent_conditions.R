@@ -26,9 +26,9 @@
 #'
 #' @examples
 #' set.seed(42)
-#' pattern_a <- spatstat.core::runifpoint(n = 20)
+#' pattern_a <- spatstat.random::runifpoint(n = 20)
 #' spatstat.geom::marks(pattern_a) <- "a"
-#' pattern_b <- spatstat.core::runifpoint(n = 100)
+#' pattern_b <- spatstat.random::runifpoint(n = 100)
 #' spatstat.geom::marks(pattern_b) <- "b"
 #' pattern <- spatstat.geom::superimpose(pattern_a, pattern_b)
 #'
@@ -81,14 +81,14 @@ simulate_antecedent_conditions <- function(x, i, j, nsim, heterogenous = FALSE, 
     if (!heterogenous) {
 
       # random pattern i
-      random_i <- spatstat.core::rpoint(n = pattern_i$n,
+      random_i <- spatstat.random::rpoint(n = pattern_i$n,
                                         win = pattern_i$window)
     }
 
     else {
 
       # random pattern i
-      random_i <- spatstat.core::rpoint(n = pattern_i$n,
+      random_i <- spatstat.random::rpoint(n = pattern_i$n,
                                         f = lambda_xy,
                                         win = x$window)
     }

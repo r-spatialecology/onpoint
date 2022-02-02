@@ -17,7 +17,7 @@
 #' \code{\link{Lest}}
 #'
 #' @examples
-#' input_pattern <- spatstat.core::runifpoint(n = 100)
+#' input_pattern <- spatstat.random::runifpoint(n = 100)
 #' center_l_function(input_pattern, correction = "Ripley")
 #'
 #' lest <- spatstat.core::Lest(input_pattern)
