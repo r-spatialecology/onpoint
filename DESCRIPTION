@@ -26,7 +26,7 @@ Imports:
   stats
 Suggests: 
     covr,
-    spatstat,
+    spatstat (>= 2.0.0),
     testthat
 LazyData: true
 Encoding: UTF-8

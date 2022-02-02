@@ -14,7 +14,7 @@
 * Use GitHub actions
 
 # onpoint 0.6
-* `plot_quantums()` uses geom_linerange()
+* `plot_quantums()` uses `geom_linerange()`
 
 # onpoint 0.5
 * add `rlabel_local()` function
