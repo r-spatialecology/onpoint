@@ -1,11 +1,11 @@
 context("test-rlabel_local")
 
-pattern <- spatstat.core::runifpoint(n = 250,
+pattern <- spatstat.random::runifpoint(n = 250,
                                      win = spatstat.geom::owin(c(0, 100), c(0, 100)))
 
 spatstat.geom::marks(pattern) <- runif(n = 250, min = 10, max = 120)
 
-test_that("rlabel_local returns nsim raster", {
+test_that("rlabel_local returns nsim", {
 
   null_model <- rlabel_local(X = pattern, distance = 25, nsim = 19,
                              drop = FALSE)

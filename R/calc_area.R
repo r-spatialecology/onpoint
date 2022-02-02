@@ -11,15 +11,15 @@
 #' @return numeric
 #'
 #' @examples
+#' \dontrun{
 #' dat <- matrix(data = c(0, 0, 0, 10, 10, 10, 10, 0), ncol = 2, byrow = TRUE)
 #' calc_area(x = dat)
+#' }
 #'
 #' @aliases calc_area
 #' @rdname calc_area
 #'
 #' @keywords internal
-#'
-#' @export
 calc_area <- function(x){
 
   # check if polygon is closed

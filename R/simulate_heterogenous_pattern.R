@@ -22,21 +22,21 @@
 #'
 #' @examples
 #' set.seed(42)
-#' input_pattern <- spatstat.core::rpoispp(lambda = function(x , y) {100 * exp(-3 * x)}, nsim = 1)
+#' input_pattern <- spatstat.random::rpoispp(lambda = function(x , y) {100 * exp(-3 * x)}, nsim = 1)
 #' null_model <- simulate_heterogenous_pattern(input_pattern, nsim = 19)
 #' spatstat.core::envelope(Y = input_pattern, fun = spatstat.core::pcf, nsim = 19,
 #' simulate = null_model)
 #'
 #' @references
-#' Baddeley, A., Rubak, E., Turner, R., 2015. Spatial point patterns: Methodology and
-#' applications with R. Chapman and Hall/CRC Press, London.
+#' Baddeley, A., Rubak, E., Turner, R., 2015. Spatial point patterns: Methodology
+#' and applications with R. Chapman and Hall/CRC Press, London, UK. <isbn:978-1-4822-1020-0>
 #'
 #' Wiegand, T., Moloney, K.A., 2014. Handbook of spatial point-pattern analysis in
-#' ecology. Chapman and Hall/CRC Press, Boca Raton.
+#' ecology. Chapman and Hall/CRC Press, Boca Raton, USA. <isbn:978-1-4200-8254-8>
 #'
 #' @aliases simulate_heterogenous_pattern
 #' @rdname simulate_heterogenous_pattern
-
+#'
 #' @export
 simulate_heterogenous_pattern <- function(x, nsim, fix_n = FALSE, ...) {
 
@@ -49,14 +49,14 @@ simulate_heterogenous_pattern <- function(x, nsim, fix_n = FALSE, ...) {
   # check if exactly same number of points
   if (fix_n) {
 
-    simulated_pattern <- spatstat.core::rpoint(n = x$n ,
+    simulated_pattern <- spatstat.random::rpoint(n = x$n ,
                                           f = lambda_xy,
                                           nsim = nsim)
   }
 
   else {
 
-    simulated_pattern <- spatstat.core::rpoispp(lambda = lambda_xy,
+    simulated_pattern <- spatstat.random::rpoispp(lambda = lambda_xy,
                                            nsim = nsim)
   }
 

@@ -9,11 +9,10 @@ plot_quantums(
   labels = NULL,
   color_scale = NULL,
   legend_position = "bottom",
-  quantum_position = 0.05,
+  quantum_position = NULL,
   title = NULL,
   xlab = NULL,
   ylab = NULL,
-  quantum_size = 0.1,
   line_size = 0.5,
   base_size = 15,
   full_fun = TRUE,
@@ -30,13 +29,11 @@ plot_quantums(
 
 \item{legend_position}{The position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector)}
 
-\item{quantum_position}{Position of the quantum relative to the simulation envelopes.}
+\item{quantum_position}{Vector with minimum and maximum y value of the quantum bar.}
 
 \item{title}{Plot title.}
 
 \item{xlab, ylab}{axis labels.}
-
-\item{quantum_size}{Size of the colour bar.}
 
 \item{line_size}{Size of the lines.}
 
@@ -67,15 +64,13 @@ scale vector is used in the same order.
 \cr 2 = low < observed < high
 \cr 3 = observed < low
 
-To adjust the position of the quantum bar, use \code{quantum_position}. Larger values increase
-the distance from the lower part of the envelope. \code{quantum_position = 0} puts the quantum
-bar on the minium value of the simulation envelope, negative value shift above that value.
+To adjust the position of the quantum bar, use \code{quantum_position}.
 
 Returns a \code{ggplot} object.
 }
 \examples{
 set.seed(42)
-pattern <- spatstat.core::rThomas(kappa = 50, scale = 0.025, mu = 5)
+pattern <- spatstat.random::rThomas(kappa = 50, scale = 0.025, mu = 5)
 csr_envelope <- spatstat.core::envelope(pattern, fun = spatstat.core::pcf, nsim = 19)
 plot_quantums(csr_envelope, ylab = "g(r)")
 
@@ -83,7 +78,7 @@ plot_quantums(csr_envelope, ylab = "g(r)")
 \references{
 Esser, D.S., Leveau, J.H.J., Meyer, K.M., Wiegand, K., 2015. Spatial scales of
 interactions among bacteria and between bacteria and the leaf surface.
-FEMS Microbiology Ecology 91, 1–13. https://doi.org/10.1093/femsec/fiu034
+FEMS Microbiology Ecology 91, 1–13. <https://doi.org/10.1093/femsec/fiu034>
 }
 \seealso{
 \code{\link{envelope}}

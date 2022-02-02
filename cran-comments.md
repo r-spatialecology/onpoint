@@ -1,5 +1,7 @@
-# onpoint 1.0.1
+# onpoint 1.0.2
+Adapt new `spatstat` package structure
 
+# onpoint 1.0.1
 Please add some more details about the package functionality and implemented methods in your Description text.
 
 * Done as suggested
@@ -9,7 +11,6 @@ Please add \value to .Rd files regarding exported methods and explain the functi
 * Done as suggested
 
 # onpoint 1.0
-
 * First submission to CRAN
 
 ## Test environments

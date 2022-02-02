@@ -6,6 +6,7 @@
 #'
 #' @name onpoint
 #' @docType package
+#' @keywords internal
 "_PACKAGE"
 
 # Global variables

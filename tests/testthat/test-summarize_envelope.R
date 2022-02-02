@@ -1,9 +1,9 @@
 context("test-summarize_envelope")
 
 set.seed(42)
-csr_pattern <- spatstat.core::runifpoint(n = 100)
-cluster_pattern <- spatstat.core::rThomas(kappa = 15, scale = 0.05, mu = 5)
-regular_pattern <- spatstat.core::rHardcore(beta = 200, R = 0.05)
+csr_pattern <- spatstat.random::runifpoint(n = 100)
+cluster_pattern <- spatstat.random::rThomas(kappa = 15, scale = 0.05, mu = 5)
+regular_pattern <- spatstat.random::rHardcore(beta = 200, R = 0.05)
 
 csr_envelope <- spatstat.core::envelope(csr_pattern, fun = "pcf", nsim = 199,
                                         funargs = list(divisor = "d",

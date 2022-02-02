@@ -1,7 +1,7 @@
 Type: Package
 Package: onpoint
 Title: Helper Functions for Point Pattern Analysis
-Version: 1.0.1
+Version: 1.0.2
 Authors@R: 
   person("Maximillian H.K.", "Hesselbarth", 
   email = "mhk.hesselbarth@gmail.com",
@@ -22,11 +22,12 @@ Imports:
   ggplot2,
   spatstat.core, 
   spatstat.geom,
+  spatstat.random,
   stats
 Suggests: 
     covr,
-    spatstat,
+    spatstat (>= 2.0.0),
     testthat
 LazyData: true
 Encoding: UTF-8
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2

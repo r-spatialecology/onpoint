@@ -15,15 +15,15 @@
 #'
 #' @examples
 #' set.seed(42)
-#' input <- spatstat.core::rpoispp(lambda = 100)
-#' input_b <- spatstat.core::rpoispp(lambda = 100)
+#' input <- spatstat.random::rpoispp(lambda = 100)
+#' input_b <- spatstat.random::rpoispp(lambda = 100)
 #'
 #' balance_points(pattern = input, n = 110)
 #' balance_points(pattern = input, n = input_b)
 #'
 #' @aliases balance_points
 #' @rdname balance_points
-
+#'
 #' @export
 balance_points <- function(pattern, n, verbose = TRUE) {
 
@@ -72,7 +72,7 @@ balance_points <- function(pattern, n, verbose = TRUE) {
     difference <- n - pattern$n
 
     # create missing points
-    missing_points <- spatstat.core::runifpoint(n = difference,
+    missing_points <- spatstat.random::runifpoint(n = difference,
                                                 win = pattern$window,
                                                 nsim = 1, drop = TRUE)
 

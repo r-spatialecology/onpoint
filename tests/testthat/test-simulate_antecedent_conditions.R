@@ -1,14 +1,14 @@
 context("test-simulate_antecedent_conditions")
 
-pattern_a <- spatstat.core::runifpoint(n = 20)
+pattern_a <- spatstat.random::runifpoint(n = 20)
 spatstat.geom::marks(pattern_a) <- "a"
 
-pattern_b <- spatstat.core::runifpoint(n = 100)
+pattern_b <- spatstat.random::runifpoint(n = 100)
 spatstat.geom::marks(pattern_b) <- "b"
 
 pattern <- spatstat.geom::superimpose(pattern_a, pattern_b)
 
-test_that("simulate_antecedent_conditions returns nsim raster", {
+test_that("simulate_antecedent_conditions returns nsim", {
 
   null_model <- simulate_antecedent_conditions(x = pattern,
                                                i = "b", j = "a",
@@ -57,7 +57,7 @@ test_that("simulate_antecedent_conditions uses heterogenous process", {
 
 test_that("simulate_antecedent_conditions returns error", {
 
-  pattern_unmarked <- spatstat.core::runifpoint(n = 100)
+  pattern_unmarked <- spatstat.random::runifpoint(n = 100)
 
   expect_error(simulate_antecedent_conditions(x = pattern_unmarked),
                regexp = "Please provide marked point pattern.")

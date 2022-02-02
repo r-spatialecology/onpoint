@@ -12,16 +12,16 @@
 #' @return list
 #'
 #' @examples
+#' \dontrun{
 #' set.seed(42)
 #' x <- sample(x = 1:10, size = 5)
 #' split_at(x = x, pos = 3)
+#' }
 #'
 #' @aliases split_at
 #' @rdname split_at
 #'
 #' @keywords internal
-
-#' @export
 split_at <- function(x, pos) {
 
   unname(split(x, cumsum(seq_along(x) %in% pos)))

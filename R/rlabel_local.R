@@ -23,24 +23,24 @@
 #' @seealso
 #' \code{\link{rlabel}}
 #'
-#' @references
-#' Velázquez, E., Martínez, I., Getzin, S., Moloney, K.A., Wiegand, T., 2016. An
-#' evaluation of the state of spatial point pattern analysis in ecology.
-#' Ecography 39, 1–14. https://doi.org/10.1111/ecog.01579
-#'
-#' Wiegand, T., Moloney, K.A., 2014. Handbook of spatial point-pattern analysis in
-#' ecology. Chapman and Hall/CRC Press, Boca Raton.
-#'
 #' @examples
 #' set.seed(42)
-#' pattern <- spatstat.core::runifpoint(n = 250, win = spatstat.geom::owin(c(0, 100), c(0, 100)))
+#' pattern <- spatstat.random::runifpoint(n = 250, win = spatstat.geom::owin(c(0, 100), c(0, 100)))
 #' spatstat.geom::marks(pattern) <- runif(n = 250, min = 10, max = 120)
 #'
 #' rlabel_local(X = pattern, distance = 25, nsim = 19)
 #'
+#' @references
+#' Velázquez, E., Martínez, I., Getzin, S., Moloney, K.A., Wiegand, T., 2016. An evaluation
+#' of the state of spatial point pattern analysis in ecology. Ecography 39, 1–14.
+#' <https://doi.org/10.1111/ecog.01579>
+#'
+#' Wiegand, T., Moloney, K.A., 2014. Handbook of spatial point-pattern analysis in
+#' ecology. Chapman and Hall/CRC Press, Boca Raton, USA. <isbn:978-1-4200-8254-8>
+#'
 #' @aliases rlabel_local
 #' @rdname rlabel_local
-
+#'
 #' @export
 rlabel_local <- function(X, distance, nsim = 19,
                          drop = TRUE, verbose = TRUE) {

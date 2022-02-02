@@ -17,7 +17,7 @@
 #'
 #' @examples
 #' set.seed(42)
-#' input_pattern <- spatstat.core::rThomas(kappa = 15, scale = 0.05, mu = 5)
+#' input_pattern <- spatstat.random::rThomas(kappa = 15, scale = 0.05, mu = 5)
 #'
 #' cluster_env <- spatstat.core::envelope(input_pattern, fun = "pcf", nsim = 39,
 #' funargs = list(divisor = "d", correction = "Ripley", stoyan = 0.25))
@@ -27,7 +27,7 @@
 #'
 #' @aliases print.env_summarized
 #' @rdname print.env_summarized
-
+#'
 #' @export
 print.env_summarized <- function(x, return_area = FALSE, digits = 2, ...) {
 
