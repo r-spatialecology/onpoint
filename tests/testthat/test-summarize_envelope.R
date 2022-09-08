@@ -44,6 +44,20 @@ test_that("summarize_envelope runs for data.frame", {
   expect_equal(object = result_env$result_total, expected = result_df$result_total)
 })
 
+test_that("summarize_envelope runs for exceptions", {
+
+  single_above <- spatstat.core::as.data.frame.fv(csr_envelope)
+  single_below <- spatstat.core::as.data.frame.fv(csr_envelope)
+
+  single_above[nrow(single_above), "obs"] <- single_above[nrow(single_above), "hi"] * 1.5
+  single_below[nrow(single_below), "obs"] <- single_below[nrow(single_below), "lo"] * 0.5
+
+  result_above <- summarize_envelope(single_above)
+  result_below <- summarize_envelope(single_below)
+
+  expect_true(result_above$result_above != 0)
+  expect_true(result_below$result_below != 0)
+})
 
 test_that("summarize_envelope returns errors", {
 

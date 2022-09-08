@@ -40,7 +40,7 @@
 #' @export
 simulate_heterogenous_pattern <- function(x, nsim, fix_n = FALSE, ...) {
 
-  if (class(x) != "ppp") {
+  if (!inherits(x = x, what = "ppp")) {
     stop("Please provide ppp object.", call. = FALSE)
   }
 

@@ -1,7 +1,7 @@
 Type: Package
 Package: onpoint
 Title: Helper Functions for Point Pattern Analysis
-Version: 1.0.2
+Version: 1.0.3
 Authors@R: 
   person("Maximillian H.K.", "Hesselbarth", 
   email = "mhk.hesselbarth@gmail.com",
@@ -30,4 +30,4 @@ Suggests:
     testthat
 LazyData: true
 Encoding: UTF-8
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.1

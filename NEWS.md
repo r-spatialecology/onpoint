@@ -1,3 +1,6 @@
+# onpoint 1.0.3
+* Small updates to internal code structure
+
 # onpoint 1.0.2
 * Adapt new `spatstat` package structure
 
