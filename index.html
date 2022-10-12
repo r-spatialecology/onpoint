@@ -84,114 +84,13 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="onpoint">onpoint<a class="anchor" aria-label="anchor" href="#onpoint"></a>
-</h1></div>
-<!-- badges: start --><p><a href="https://github.com/r-spatialecology/onpoint/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/r-spatialecology/onpoint/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a> <a href="https://codecov.io/gh/r-spatialecology/onpoint" class="external-link"><img src="https://codecov.io/gh/r-spatialecology/onpoint/branch/main/graph/badge.svg?token=RkgCfHnPyf" alt="codecov"></a> <a href="https://www.repostatus.org/#active" class="external-link"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Project Status"></a> <a href="https://www.tidyverse.org/lifecycle/#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="lifecycle"></a> <a href="https://CRAN.R-project.org/package=onpoint" class="external-link"><img src="https://www.r-pkg.org/badges/version/onpoint" alt="CRAN status"></a> <a href="http://cran.rstudio.com/web/packages/onpoint/index.html" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/grand-total/onpoint" alt="CRAN logs"></a> <a href="https://www.gnu.org/licenses/gpl-3.0" class="external-link"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License"></a></p>
-<!-- badges: end --><p><code>onpoint</code> is a growing collection of helper functions mainly related to point pattern analysis and the <a href="http://spatstat.org/" class="external-link">spatstat</a> package.</p>
-<div class="section level2">
-<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
-</h2>
-<p>You can install the released version of <code>onpoint</code> from CRAN with:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"onpoint"</span><span class="op">)</span></span></code></pre></div>
-<p>You can install the development version of <code>onpoint</code> from <a href="https://github.com/r-spatialecology/onpoint" class="external-link">Github</a> with:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"r-spatialecology/onpoint"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatialecology.github.io/onpoint/">onpoint</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://spatstat.org/" class="external-link">spatstat.core</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://spatstat.org/" class="external-link">spatstat.data</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">spruces</span><span class="op">)</span></span></code></pre></div>
-<div class="section level3">
-<h3 id="summary-functions">Summary functions<a class="anchor" aria-label="anchor" href="#summary-functions"></a>
-</h3>
-<p>Currently, <code>onpoint</code> provides three second-order summary functions, namely Besag’s L-function centered to zero and the O-ring statistic and a fast estimation of the pair-correlation function.</p>
-<p>Centering Besag’s L-function to zero has the advantage of an easier interpretation and plotting (Haase 1995). The function <code><a href="reference/center_l_function.html">center_l_function()</a></code> can either deal with a point pattern and calculated the centered L-function directly, or center the L-function afterwards it was calculating using <code>spatstat</code>s <code><a href="https://rdrr.io/pkg/spatstat.core/man/Lest.html" class="external-link">Lest()</a></code>.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># calculate L-function</span></span>
-<span><span class="va">l_function</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/spatstat.core/man/Lest.html" class="external-link">Lest</a></span><span class="op">(</span><span class="va">spruces</span>, correction <span class="op">=</span> <span class="st">"Ripley"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># center L-function to zero</span></span>
-<span><span class="co"># center_l_function &lt;- center_l_function(l_function)</span></span>
-<span><span class="va">l_function_centered</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/center_l_function.html">center_l_function</a></span><span class="op">(</span><span class="va">spruces</span>, correction <span class="op">=</span> <span class="st">"Ripley"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-plot_lfun-1.png" style="display: block; margin: auto;"></p>
-<p>The O-ring statistic O(r) (Wiegand &amp; Moloney 2004) can be calculated using <code><a href="reference/estimate_o_ring.html">estimate_o_ring()</a></code>. Generally speaking, O(r) scales the pair correlation g(r) function with help of the intensity . One advantage of the O-ring statistic is that it can be interpreted as a neighborhood density because it is a probability density function (Wiegand &amp; Moloney 2004).</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">o_ring</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/estimate_o_ring.html">estimate_o_ring</a></span><span class="op">(</span><span class="va">spruces</span><span class="op">)</span></span></code></pre></div>
-<p>Of course, both summary functions can be used in combination with <code>spatstat</code>’s <code><a href="https://rdrr.io/pkg/spatstat.core/man/envelope.html" class="external-link">envelope()</a></code> function.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">oring_envelope</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/spatstat.core/man/envelope.html" class="external-link">envelope</a></span><span class="op">(</span><span class="va">spruces</span>, fun <span class="op">=</span> <span class="va">estimate_o_ring</span>, nsim <span class="op">=</span> <span class="fl">199</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-plot_oring-1.png" style="display: block; margin: auto;"></p>
-<p><code><a href="reference/estimate_pcf_fast.html">estimate_pcf_fast()</a></code> estimates the pair-correlation function based on Ripley’s K-function, which is faster than estimation the pair-correlation function directly.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/estimate_pcf_fast.html">estimate_pcf_fast</a></span><span class="op">(</span><span class="va">spruces</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Function value object (class 'fv')</span></span>
-<span><span class="co">#&gt; for the function r -&gt; g(r)</span></span>
-<span><span class="co">#&gt; .............................................................</span></span>
-<span><span class="co">#&gt;      Math.label Description                                  </span></span>
-<span><span class="co">#&gt; r    r          distance argument r                          </span></span>
-<span><span class="co">#&gt; theo g[pois](r) theoretical Poisson value of g(r)            </span></span>
-<span><span class="co">#&gt; pcf  g(r)       estimate of g(r) by numerical differentiation</span></span>
-<span><span class="co">#&gt; .............................................................</span></span>
-<span><span class="co">#&gt; Default plot formula:  .~r</span></span>
-<span><span class="co">#&gt; where "." stands for 'pcf', 'theo'</span></span>
-<span><span class="co">#&gt; Recommended range of argument r: [0, 9.5]</span></span>
-<span><span class="co">#&gt; Available range of argument r: [0, 9.5]</span></span>
-<span><span class="co">#&gt; Unit of length: 1 metre</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="null-models">Null models<a class="anchor" aria-label="anchor" href="#null-models"></a>
-</h3>
-<p><code>onpoint</code> includes two functions to simulate null model patterns.</p>
-<p><code><a href="reference/simulate_heterogenous_pattern.html">simulate_heterogenous_pattern()</a></code> is a convienent wrapper around a few <code>spatstat</code> functions to straighforward simulate a heterogeneous Poisson process.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">null_model_hetero</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/simulate_heterogenous_pattern.html">simulate_heterogenous_pattern</a></span><span class="op">(</span><span class="va">spruces</span>, nsim <span class="op">=</span> <span class="fl">199</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">hetero</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/spatstat.core/man/envelope.html" class="external-link">envelope</a></span><span class="op">(</span><span class="va">spruces</span>, fun <span class="op">=</span> <span class="va">pcf</span>, </span>
-<span>                   funargs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>correction <span class="op">=</span> <span class="st">"Ripley"</span>, divisor <span class="op">=</span> <span class="st">"d"</span><span class="op">)</span>,</span>
-<span>                   simulate <span class="op">=</span> <span class="va">null_model_hetero</span>, nsim <span class="op">=</span> <span class="fl">199</span>, </span>
-<span>                   verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-plot_hetero-1.png" style="display: block; margin: auto;"></p>
-<p>To simulate antecedent conditions in which only one pattern influences the other, but not the other way around (Wiegand &amp; Moloney 2004, Velazquez et al. 2016), <code><a href="reference/simulate_antecedent_conditions.html">simulate_antecedent_conditions()</a></code> can be used. This null model randomizes only one type of points (e.g. seedlings), while keeping the other type of points constant (e.g. mature trees) to check for associations between the two.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.geom/man/marks.html" class="external-link">marks</a></span><span class="op">(</span><span class="va">spruces</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.geom/man/marks.html" class="external-link">marks</a></span><span class="op">(</span><span class="va">spruces</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0.3</span>, yes <span class="op">=</span> <span class="st">"adult"</span>, no <span class="op">=</span> <span class="st">"seedling"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">null_model_antecedent</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/simulate_antecedent_conditions.html">simulate_antecedent_conditions</a></span><span class="op">(</span><span class="va">spruces</span>, </span>
-<span>                                                        i <span class="op">=</span> <span class="st">"seedling"</span>, j <span class="op">=</span> <span class="st">"adult"</span>, nsim <span class="op">=</span> <span class="fl">199</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">antecedent</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/spatstat.core/man/envelope.html" class="external-link">envelope</a></span><span class="op">(</span><span class="va">spruces</span>, fun <span class="op">=</span> <span class="va">pcf</span>, </span>
-<span>                       funargs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>correction <span class="op">=</span> <span class="st">"Ripley"</span>, divisor <span class="op">=</span> <span class="st">"d"</span><span class="op">)</span>,</span>
-<span>                       simulate <span class="op">=</span> <span class="va">null_model_antecedent</span>, nsim <span class="op">=</span> <span class="fl">199</span>, </span>
-<span>                       verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-plot_antecedent-1.png" style="display: block; margin: auto;"></p>
-</div>
-<div class="section level3">
-<h3 id="various">Various<a class="anchor" aria-label="anchor" href="#various"></a>
-</h3>
-<p>To plot simulation envelopes using quantum plots (e.g. Esser et al. 2015), just pass an <code>envelope</code> object as input to <code><a href="reference/plot_quantums.html">plot_quantums()</a></code>.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/plot_quantums.html">plot_quantums</a></span><span class="op">(</span><span class="va">antecedent</span>, ylab <span class="op">=</span> <span class="st">"g(r)"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-plot_quantums-1.png" style="display: block; margin: auto;"></p>
-</div>
-<div class="section level3">
-<h3 id="contributing">Contributing<a class="anchor" aria-label="anchor" href="#contributing"></a>
-</h3>
-<p>Please note that the <strong>onpoint</strong> package is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
-<p>To see how to contribute to this project, please see the <a href="CONTRIBUTING.html">Contributing guidelines</a>.</p>
-<div class="section level4">
-<h4 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
-</h4>
-<p>Besag, J.E., 1977. Discussion on Dr. Ripley’s paper. Journal of the Royal Statistical Society. Series B (Methodological) 39, 193–195. <a href="https://doi.org/10.1111/j.2517-6161.1977.tb01616.x" class="external-link uri">https://doi.org/10.1111/j.2517-6161.1977.tb01616.x</a></p>
-<p>Esser, D.S., Leveau, J.H.J., Meyer, K.M., Wiegand, K., 2015. Spatial scales of interactions among bacteria and between bacteria and the leaf surface. FEMS Microbiology Ecology 91, 1–13. <a href="https://doi.org/10.1093/femsec/fiu034" class="external-link uri">https://doi.org/10.1093/femsec/fiu034</a></p>
-<p>Haase, P., 1995. Spatial pattern analysis in ecology based on Ripley’s K-function: Introduction and methods of edge correction. Journal of Vegetation Science 6, 575–582. <a href="https://doi.org/10.2307/3236356" class="external-link uri">https://doi.org/10.2307/3236356</a></p>
-<p>Velázquez, E., Martínez, I., Getzin, S., Moloney, K.A., Wiegand, T., 2016. An evaluation of the state of spatial point pattern analysis in ecology. Ecography 39, 1–14. <a href="https://doi.org/10.1111/ecog.01579" class="external-link uri">https://doi.org/10.1111/ecog.01579</a></p>
-<p>Wiegand, T., Moloney, K.A., 2004. Rings, circles, and null models for point pattern analysis in ecology. Oikos 104, 209–229. <a href="https://doi.org/10.1111/j.0030-1299.2004.12497.x" class="external-link uri">https://doi.org/10.1111/j.0030-1299.2004.12497.x</a></p>
-</div>
-</div>
-</div>
-</div>
+  <main id="main" class="col-md-9">
+
+  Growing collection of helper functions for point pattern analysis. Most functions
+  are designed to work with the 'spatstat' (&lt;<a href="http://spatstat.org" class="external-link">http://spatstat.org</a>&gt;) package. The focus of 
+  most functions are either null models or summary functions for spatial point patterns. 
+  For a detailed description of all null models and summary functions, see 
+  Wiegand and Moloney (2014, ISBN:9781420082548).
   </main><aside class="col-md-3"><div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
