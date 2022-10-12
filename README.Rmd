@@ -32,13 +32,13 @@ knitr::opts_chunk$set(
 
 ## Installation
 
-You can install the released version of `onpoint` from CRAN with:
+You can install the released version of `onpoint` from CRAN using:
 
 ```{r installation_cran, eval = FALSE}
 install.packages("onpoint")
 ```
 
-You can install the development version of `onpoint` from [Github](https://github.com/r-spatialecology/onpoint) with:
+You can install the development version of `onpoint` from [Github](https://github.com/r-spatialecology/onpoint) using:
 
 ```{r installation_github, eval = FALSE}
 # install.packages("remotes")

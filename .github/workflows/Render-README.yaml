@@ -24,7 +24,7 @@ jobs:
       - uses: r-lib/actions/setup-renv@v2
 
       - name: Install dependencies
-        run: Rscript -e 'install.packages(c("rmarkdown", "onpoint", "spatstat.core", "spatstat.data"))
+        run: Rscript -e 'install.packages(c("rmarkdown", "onpoint", "spatstat.core", "spatstat.data"))'
 
       - name: Render README files
         run: Rscript -e 'rmarkdown::render("README.Rmd")'
