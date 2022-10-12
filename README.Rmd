@@ -1,7 +1,7 @@
 ---
-output: github_document
-editor_options: 
-  chunk_output_type: console
+output: 
+    github_document:
+      html_preview: false
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -41,6 +41,7 @@ install.packages("onpoint")
 You can install the development version of `onpoint` from [Github](https://github.com/r-spatialecology/onpoint) with:
 
 ```{r installation_github, eval = FALSE}
+# install.packages("remotes")
 remotes::install_github("r-spatialecology/onpoint")
 ```
 
