@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+Last updated: 2022-11-01
+
 [![R-CMD-check](https://github.com/r-spatialecology/onpoint/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-spatialecology/onpoint/actions/workflows/R-CMD-check.yaml)
 [![codecov](https://codecov.io/gh/r-spatialecology/onpoint/branch/main/graph/badge.svg?token=RkgCfHnPyf)](https://codecov.io/gh/r-spatialecology/onpoint)
 [![Project
@@ -39,8 +41,7 @@ remotes::install_github("r-spatialecology/onpoint")
 
 ``` r
 library(onpoint)
-library(spatstat.core)
-library(spatstat.data)
+library(spatstat)
 
 data(spruces)
 ```
