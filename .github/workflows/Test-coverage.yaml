@@ -3,21 +3,23 @@
 
 on:
   push:
-    branches: [CRAN, main, development]
+    branches: [main, development]
   pull_request:
-    branches: [CRAN, main]
+    branches: [main]
+  workflow_dispatch:
 
-name: Test-coverage
+name: test-coverage
 
 jobs:
   test-coverage:
     if: "!contains(github.event.commits[0].message, '[skip-ci]')"
     runs-on: ubuntu-latest
+
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - uses: r-lib/actions/setup-r@v2
         with:
