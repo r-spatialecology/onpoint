@@ -27,7 +27,7 @@
 #' set.seed(42)
 #' input_pattern <- spatstat.random::rThomas(kappa = 15, scale = 0.05, mu = 5)
 #'
-#' cluster_env <- spatstat.core::envelope(input_pattern, fun = "pcf", nsim = 39,
+#' cluster_env <- spatstat.explore::envelope(input_pattern, fun = "pcf", nsim = 39,
 #' funargs = list(divisor = "d", correction = "Ripley", stoyan = 0.25))
 #'
 #' summarize_envelope(cluster_env)
@@ -40,7 +40,7 @@ summarize_envelope <- function(x, plot_result = FALSE) {
 
   if (inherits(x = x, what = "envelope")) {
 
-    x <- spatstat.core::as.data.frame.fv(x)
+    x <- spatstat.explore::as.data.frame.fv(x)
   }
 
   else if (!inherits(x = x, what = "data.frame")) {

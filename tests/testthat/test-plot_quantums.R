@@ -4,8 +4,8 @@ test_that("plot_quantums returns ggplot", {
 
   pattern <- spatstat.random::rThomas(kappa = 50, scale = 0.025, mu = 5)
 
-  csr_envelope <- spatstat.core::envelope(pattern,
-                                          fun = spatstat.core::pcf, nsim = 9,
+  csr_envelope <- spatstat.explore::envelope(pattern,
+                                          fun = spatstat.explore::pcf, nsim = 9,
                                           funargs = list(divisor = "d",
                                                          correction = "Ripley"),
                                           verbose = FALSE)
@@ -21,8 +21,8 @@ test_that("plot_quantums returns ggplot (only quantum)", {
 
   pattern <- spatstat.random::rThomas(kappa = 50, scale = 0.025, mu = 5)
 
-  csr_envelope <- spatstat.core::envelope(pattern,
-                                          fun = spatstat.core::pcf, nsim = 9,
+  csr_envelope <- spatstat.explore::envelope(pattern,
+                                          fun = spatstat.explore::pcf, nsim = 9,
                                           funargs = list(divisor = "d",
                                                          correction = "Ripley"),
                                           verbose = FALSE)
@@ -37,8 +37,8 @@ test_that("plot_quantums returns ggplot only function", {
 
   pattern <- spatstat.random::rThomas(kappa = 50, scale = 0.025, mu = 5)
 
-  csr_envelope <- spatstat.core::envelope(pattern,
-                                          fun = spatstat.core::pcf, nsim = 9,
+  csr_envelope <- spatstat.explore::envelope(pattern,
+                                          fun = spatstat.explore::pcf, nsim = 9,
                                           funargs = list(divisor = "d",
                                                          correction = "Ripley"),
                                           verbose = FALSE)
@@ -53,8 +53,8 @@ test_that("plot_quantums creates labels if not provided", {
 
   pattern <- spatstat.random::rThomas(kappa = 50, scale = 0.025, mu = 5)
 
-  csr_envelope <- spatstat.core::envelope(pattern,
-                                          fun = spatstat.core::pcf, nsim = 9,
+  csr_envelope <- spatstat.explore::envelope(pattern,
+                                          fun = spatstat.explore::pcf, nsim = 9,
                                           funargs = list(divisor = "d",
                                                          correction = "Ripley"),
                                           verbose = FALSE)
