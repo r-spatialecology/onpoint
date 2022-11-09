@@ -33,7 +33,8 @@
 #' pattern <- spatstat.geom::superimpose(pattern_a, pattern_b)
 #'
 #' null_model <- simulate_antecedent_conditions(x = pattern, i = "b", j = "a", nsim = 19)
-#' spatstat.explore::envelope(Y = pattern, fun = spatstat.explore::pcf, nsim = 19, simulate = null_model)
+#' spatstat.explore::envelope(Y = pattern, fun = spatstat.explore::pcf,
+#' nsim = 19, simulate = null_model)
 #'
 #' @references
 #' Velázquez, E., Martínez, I., Getzin, S., Moloney, K.A., Wiegand, T., 2016. An evaluation

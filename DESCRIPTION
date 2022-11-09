@@ -28,6 +28,5 @@ Suggests:
     covr,
     spatstat (>= 2.0.0),
     testthat
-LazyData: true
 Encoding: UTF-8
 RoxygenNote: 7.2.1
