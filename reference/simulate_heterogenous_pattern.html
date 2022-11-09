@@ -83,7 +83,7 @@
 
 
 <dt>...</dt>
-<dd><p>Arguments passed to <code><a href="https://rdrr.io/pkg/spatstat.core/man/density.ppp.html" class="external-link">spatstat.core::density.ppp()</a></code>.</p></dd>
+<dd><p>Arguments passed to <code><a href="https://rdrr.io/pkg/spatstat.explore/man/density.ppp.html" class="external-link">spatstat.explore::density.ppp()</a></code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -94,7 +94,7 @@
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>Simulate heterogeneous point patterns as null model data for <code><a href="https://rdrr.io/pkg/spatstat.core/man/envelope.html" class="external-link">spatstat.core::envelope()</a></code>.
+    <p>Simulate heterogeneous point patterns as null model data for <code><a href="https://rdrr.io/pkg/spatstat.explore/man/envelope.html" class="external-link">spatstat.explore::envelope()</a></code>.
 A heterogeneous Poisson process is used, meaning that there are no interaction between points,
 however, the simulated coordinates depend on the intensity \(\lambda\) of the input pattern.</p>
 <p>Returns a <code>list</code> with <code>ppp</code> objects.</p>
@@ -116,7 +116,7 @@ ecology. Chapman and Hall/CRC Press, Boca Raton, USA. &lt;isbn:978-1-4200-8254-8
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">input_pattern</span> <span class="op">&lt;-</span> <span class="fu">spatstat.random</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.random/man/rpoispp.html" class="external-link">rpoispp</a></span><span class="op">(</span>lambda <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span> , <span class="va">y</span><span class="op">)</span> <span class="op">{</span><span class="fl">100</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span> <span class="op">*</span> <span class="va">x</span><span class="op">)</span><span class="op">}</span>, nsim <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">null_model</span> <span class="op">&lt;-</span> <span class="fu">simulate_heterogenous_pattern</span><span class="op">(</span><span class="va">input_pattern</span>, nsim <span class="op">=</span> <span class="fl">19</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">spatstat.core</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.core/man/envelope.html" class="external-link">envelope</a></span><span class="op">(</span>Y <span class="op">=</span> <span class="va">input_pattern</span>, fun <span class="op">=</span> <span class="fu">spatstat.core</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/spatstat.core/man/pcf.html" class="external-link">pcf</a></span>, nsim <span class="op">=</span> <span class="fl">19</span>,</span></span>
+<span class="r-in"><span><span class="fu">spatstat.explore</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.explore/man/envelope.html" class="external-link">envelope</a></span><span class="op">(</span>Y <span class="op">=</span> <span class="va">input_pattern</span>, fun <span class="op">=</span> <span class="fu">spatstat.explore</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/spatstat.explore/man/pcf.html" class="external-link">pcf</a></span>, nsim <span class="op">=</span> <span class="fl">19</span>,</span></span>
 <span class="r-in"><span>simulate <span class="op">=</span> <span class="va">null_model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Extracting 19 point patterns from list  ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,  19.</span>

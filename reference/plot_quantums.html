@@ -141,7 +141,7 @@
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>This functions provides a plotting style for envelope objects of the spatstat
-package (for more information please see <code><a href="https://rdrr.io/pkg/spatstat.core/man/envelope.html" class="external-link">spatstat.core::envelope</a></code>). The location of the
+package (for more information please see <code><a href="https://rdrr.io/pkg/spatstat.explore/man/envelope.html" class="external-link">spatstat.explore::envelope</a></code>). The location of the
 observed value in relation to the simulation envelope of the null model input is
 indicated by an additional colour bar at the bottom of the plot. If <code>standarized = TRUE</code>,
 all values are standarized by subtracting the theoretical value for CSR</p>
@@ -168,7 +168,7 @@ FEMS Microbiology Ecology 91, 1–13. &lt;https://doi.org/10.1093/femsec/fiu034&
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">pattern</span> <span class="op">&lt;-</span> <span class="fu">spatstat.random</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.random/man/rThomas.html" class="external-link">rThomas</a></span><span class="op">(</span>kappa <span class="op">=</span> <span class="fl">50</span>, scale <span class="op">=</span> <span class="fl">0.025</span>, mu <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">csr_envelope</span> <span class="op">&lt;-</span> <span class="fu">spatstat.core</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.core/man/envelope.html" class="external-link">envelope</a></span><span class="op">(</span><span class="va">pattern</span>, fun <span class="op">=</span> <span class="fu">spatstat.core</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/spatstat.core/man/pcf.html" class="external-link">pcf</a></span>, nsim <span class="op">=</span> <span class="fl">19</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">csr_envelope</span> <span class="op">&lt;-</span> <span class="fu">spatstat.explore</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.explore/man/envelope.html" class="external-link">envelope</a></span><span class="op">(</span><span class="va">pattern</span>, fun <span class="op">=</span> <span class="fu">spatstat.explore</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/spatstat.explore/man/pcf.html" class="external-link">pcf</a></span>, nsim <span class="op">=</span> <span class="fl">19</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Generating 19 simulations of CSR  ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,  19.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
