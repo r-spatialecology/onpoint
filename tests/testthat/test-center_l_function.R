@@ -13,7 +13,7 @@ test_that("center_l_function works for fv object", {
 
   input_pattern <- spatstat.random::runifpoint(n = 100)
 
-  lest <- spatstat.core::Lest(input_pattern)
+  lest <- spatstat.explore::Lest(input_pattern)
 
   result <- center_l_function(lest, correction = "Ripley")
 

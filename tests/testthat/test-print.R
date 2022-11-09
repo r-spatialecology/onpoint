@@ -3,7 +3,7 @@ context("test-print")
 set.seed(42)
 csr_pattern <- spatstat.random::runifpoint(n = 100)
 
-csr_envelope <- spatstat.core::envelope(csr_pattern, fun = "pcf", nsim = 199,
+csr_envelope <- spatstat.explore::envelope(csr_pattern, fun = "pcf", nsim = 199,
                                         funargs = list(divisor = "d",
                                                        correction = "Ripley",
                                                        stoyan = 0.25),

@@ -20,7 +20,7 @@ License: GPL (>= 3)
 Depends: R (>= 3.1)
 Imports:
   ggplot2,
-  spatstat.core, 
+  spatstat.explore, 
   spatstat.geom,
   spatstat.random,
   stats

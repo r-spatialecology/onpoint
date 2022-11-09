@@ -1,5 +1,5 @@
 library(testthat)
-library(spatstat.core)
+library(spatstat.explore)
 library(spatstat.geom)
 library(onpoint)
 
