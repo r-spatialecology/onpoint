@@ -103,111 +103,13 @@ Introduction and methods of edge correction. Journal of Vegetation Science 6, 57
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="https://rdrr.io/pkg/spatstat.core/man/Lest.html" class="external-link">Lest</a></code></p></div>
+    <div class="dont-index"><p><code><a href="https://rdrr.io/pkg/spatstat.explore/man/Lest.html" class="external-link">Lest</a></code></p></div>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">input_pattern</span> <span class="op">&lt;-</span> <span class="fu">spatstat.random</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.random/man/runifpoint.html" class="external-link">runifpoint</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">center_l_function</span><span class="op">(</span><span class="va">input_pattern</span>, correction <span class="op">=</span> <span class="st">"Ripley"</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Registered S3 methods overwritten by 'spatstat.explore':</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   method                 from         </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   as.data.frame.bw.optim spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   as.data.frame.envelope spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   as.data.frame.fv       spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   as.function.fv         spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   as.function.rhohat     spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   as.function.ssf        spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   as.im.scan.test        spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   as.im.ssf              spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   as.owin.quadrattest    spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   as.ppp.ssf             spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   cbind.fv               spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   collapse.anylist                    </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   collapse.fv                         </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   compatible.fasp        spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   compatible.fv                       </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   compatible.rat         spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   contour.ssf            spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   density.ppp                         </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   density.ppplist        spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   density.psp            spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   density.splitppp       spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   deriv.fv                            </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   dim.fasp               spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   dimnames.fasp          spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   domain.quadrattest     spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   [.fasp                 spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   formula.fv             spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   [.fv                   spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   harmonise.fv                        </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   harmonize.fv                        </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   image.ssf              spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   integral.ssf           spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   [.localpcfmatrix       spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   marks.ssf              spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   max.fv                 spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   max.ssf                spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   min.fv                 spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   min.ssf                spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   pairs.im                            </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   pairs.listof           spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   pairs.solist           spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   plot.bermantest        spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   plot.bw.frac           spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   plot.bw.optim          spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   plot.cdftest           spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   plot.envelope          spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   plot.fasp              spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   plot.fv                             </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   plot.laslett           spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   plot.localpcfmatrix    spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   plot.plotpairsim       spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   plot.quadrattest                    </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   plot.rho2hat           spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   plot.rhohat            spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   plot.scan.test         spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   plot.spatialcdf        spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   plot.ssf               spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   plot.studpermutest                  </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   predict.rho2hat        spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   predict.rhohat                      </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   print.bw.frac          spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   print.bw.optim         spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   print.densityfun       spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   print.envelope         spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   print.fasp             spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   print.fv                            </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   print.fvfun            spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   print.hasenvelope      spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   print.laslett          spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   print.localpcfmatrix   spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   print.plotpairsim      spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   print.quadrattest      spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   print.rat              spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   print.rho2hat          spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   print.rhohat           spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   print.Smoothfun        spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   print.ssf              spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   print.summary.ssf      spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   quantile.density                    </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   range.fv                            </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   range.ssf              spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   [.rat                  spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   shift.quadrattest      spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   simulate.rhohat        spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   [.ssf                  spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   summary.envelope       spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   summary.ssf            spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   unmark.ssf             spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   Window.quadrattest     spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   with.fv                spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   with.ssf               spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   $&lt;-.fv                 spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   dimnames&lt;-.fasp        spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   [&lt;-.fv                 spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   marks&lt;-.ssf            spatstat.core</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   names&lt;-.fv             spatstat.core</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Function value object (class ‘fv’)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> for the function r -&gt; L(r)-r</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ............................................................</span>
