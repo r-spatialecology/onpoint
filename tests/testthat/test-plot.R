@@ -5,19 +5,19 @@ csr_pattern <- spatstat.random::runifpoint(n = 100)
 cluster_pattern <- spatstat.random::rThomas(kappa = 15, scale = 0.05, mu = 5)
 regular_pattern <- spatstat.random::rHardcore(beta = 200, R = 0.05)
 
-csr_envelope <- spatstat.core::envelope(csr_pattern, fun = "pcf", nsim = 199,
+csr_envelope <- spatstat.explore::envelope(csr_pattern, fun = "pcf", nsim = 199,
                                         funargs = list(divisor = "d",
                                                        correction = "Ripley",
                                                        stoyan = 0.25),
                                         verbose = FALSE)
 
-cluster_envelope <- spatstat.core::envelope(cluster_pattern, fun = "pcf", nsim = 199,
+cluster_envelope <- spatstat.explore::envelope(cluster_pattern, fun = "pcf", nsim = 199,
                                             funargs = list(divisor = "d",
                                                            correction = "Ripley",
                                                            stoyan = 0.25),
                                             verbose = FALSE)
 
-regular_envelope <- spatstat.core::envelope(regular_pattern, fun = "pcf", nsim = 199,
+regular_envelope <- spatstat.explore::envelope(regular_pattern, fun = "pcf", nsim = 199,
                                             funargs = list(divisor = "d",
                                                            correction = "Ripley",
                                                            stoyan = 0.25),

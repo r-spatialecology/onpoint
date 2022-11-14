@@ -18,7 +18,7 @@ simulate_antecedent_conditions(x, i, j, nsim, heterogenous = FALSE, ...)
 \item{heterogenous}{If TRUE, points with the mark i are randomized using a heterogeneous
 Poisson process.}
 
-\item{...}{Arguments passed to \code{spatstat.core::density.ppp()}.}
+\item{...}{Arguments passed to \code{spatstat.explore::density.ppp()}.}
 }
 \value{
 list
@@ -27,7 +27,7 @@ list
 Simulate heterogenous pattern
 }
 \details{
-Simulate point patterns as null model data for \code{spatstat.core::envelope()} using
+Simulate point patterns as null model data for \code{spatstat.explore::envelope()} using
 antecedent conditions as null model. \code{x} must be marked point pattern.
 Antecedent conditions are suitable as a null model if points of type j may influence
 points of type i, but not the other way around (Velazquez et al 2016). One example are
@@ -44,7 +44,8 @@ spatstat.geom::marks(pattern_b) <- "b"
 pattern <- spatstat.geom::superimpose(pattern_a, pattern_b)
 
 null_model <- simulate_antecedent_conditions(x = pattern, i = "b", j = "a", nsim = 19)
-spatstat.core::envelope(Y = pattern, fun = spatstat.core::pcf, nsim = 19, simulate = null_model)
+spatstat.explore::envelope(Y = pattern, fun = spatstat.explore::pcf,
+nsim = 19, simulate = null_model)
 
 }
 \references{

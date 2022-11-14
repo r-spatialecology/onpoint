@@ -9,7 +9,7 @@ center_l_function(x, ...)
 \arguments{
 \item{x}{ppp}
 
-\item{...}{Arguments passed to \code{spatstat.core::Lest()}}
+\item{...}{Arguments passed to \code{spatstat.explore::Lest()}}
 }
 \value{
 fv.object
@@ -27,7 +27,7 @@ Returns an 'Function value object' of the \code{spatstat} package.
 input_pattern <- spatstat.random::runifpoint(n = 100)
 center_l_function(input_pattern, correction = "Ripley")
 
-lest <- spatstat.core::Lest(input_pattern)
+lest <- spatstat.explore::Lest(input_pattern)
 center_l_function(lest)
 
 }

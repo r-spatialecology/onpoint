@@ -1,7 +1,7 @@
 ---
-output: github_document
-editor_options: 
-  chunk_output_type: console
+output: 
+    github_document:
+      html_preview: false
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -18,12 +18,15 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 
-[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+Last updated: `r Sys.Date()`
+
 [![R-CMD-check](https://github.com/r-spatialecology/onpoint/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-spatialecology/onpoint/actions/workflows/R-CMD-check.yaml)
 [![codecov](https://codecov.io/gh/r-spatialecology/onpoint/branch/main/graph/badge.svg?token=RkgCfHnPyf)](https://codecov.io/gh/r-spatialecology/onpoint)
+[![Project Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![CRAN status](https://www.r-pkg.org/badges/version/onpoint)](https://CRAN.R-project.org/package=onpoint)
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![CRAN logs](http://cranlogs.r-pkg.org/badges/grand-total/onpoint)](http://cran.rstudio.com/web/packages/onpoint/index.html)
+[![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 <!-- badges: end -->
 
@@ -31,22 +34,22 @@ knitr::opts_chunk$set(
 
 ## Installation
 
-You can install the released version of `onpoint` from CRAN with:
+You can install the released version of `onpoint` from CRAN using:
 
 ```{r installation_cran, eval = FALSE}
 install.packages("onpoint")
 ```
 
-You can install the development version of `onpoint` from [Github](https://github.com/r-spatialecology/onpoint) with:
+You can install the development version of `onpoint` from [Github](https://github.com/r-spatialecology/onpoint) using:
 
 ```{r installation_github, eval = FALSE}
+# install.packages("remotes")
 remotes::install_github("r-spatialecology/onpoint")
 ```
 
 ```{r, message = FALSE}
 library(onpoint)
-library(spatstat.core)
-library(spatstat.data)
+library(spatstat)
 
 data(spruces)
 ```
@@ -144,7 +147,7 @@ plot_quantums(antecedent, ylab = "g(r)")
 
 Please note that the **onpoint** package is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
 
-To see how to contribute to this project, please see the [Contributing guidelines](CONTRIBUTING.md).
+To contribute to this project, please see the [Contributing guidelines](CONTRIBUTING.md).
 
 #### References
 Besag, J.E., 1977. Discussion on Dr. Ripley’s paper. Journal of the Royal Statistical Society. Series B (Methodological) 39, 193–195. <https://doi.org/10.1111/j.2517-6161.1977.tb01616.x>

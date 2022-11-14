@@ -5,19 +5,19 @@ csr_pattern <- spatstat.random::runifpoint(n = 100)
 cluster_pattern <- spatstat.random::rThomas(kappa = 15, scale = 0.05, mu = 5)
 regular_pattern <- spatstat.random::rHardcore(beta = 200, R = 0.05)
 
-csr_envelope <- spatstat.core::envelope(csr_pattern, fun = "pcf", nsim = 199,
+csr_envelope <- spatstat.explore::envelope(csr_pattern, fun = "pcf", nsim = 199,
                                         funargs = list(divisor = "d",
                                                        correction = "Ripley",
                                                        stoyan = 0.25),
                                         verbose = FALSE)
 
-cluster_envelope <- spatstat.core::envelope(cluster_pattern, fun = "pcf", nsim = 199,
+cluster_envelope <- spatstat.explore::envelope(cluster_pattern, fun = "pcf", nsim = 199,
                                             funargs = list(divisor = "d",
                                                            correction = "Ripley",
                                                            stoyan = 0.25),
                                             verbose = FALSE)
 
-regular_envelope <- spatstat.core::envelope(regular_pattern, fun = "pcf", nsim = 199,
+regular_envelope <- spatstat.explore::envelope(regular_pattern, fun = "pcf", nsim = 199,
                                             funargs = list(divisor = "d",
                                                            correction = "Ripley",
                                                            stoyan = 0.25),
@@ -44,6 +44,20 @@ test_that("summarize_envelope runs for data.frame", {
   expect_equal(object = result_env$result_total, expected = result_df$result_total)
 })
 
+test_that("summarize_envelope runs for exceptions", {
+
+  single_above <- spatstat.explore::as.data.frame.fv(csr_envelope)
+  single_below <- spatstat.explore::as.data.frame.fv(csr_envelope)
+
+  single_above[nrow(single_above), "obs"] <- single_above[nrow(single_above), "hi"] * 1.5
+  single_below[nrow(single_below), "obs"] <- single_below[nrow(single_below), "lo"] * 0.5
+
+  result_above <- summarize_envelope(single_above)
+  result_below <- summarize_envelope(single_below)
+
+  expect_true(result_above$result_above != 0)
+  expect_true(result_below$result_below != 0)
+})
 
 test_that("summarize_envelope returns errors", {
 

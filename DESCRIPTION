@@ -1,13 +1,13 @@
 Type: Package
 Package: onpoint
 Title: Helper Functions for Point Pattern Analysis
-Version: 1.0.2
+Version: 1.0.3
 Authors@R: 
-  person("Maximillian H.K.", "Hesselbarth", 
+  person("Maximilian H.K.", "Hesselbarth", 
   email = "mhk.hesselbarth@gmail.com",
   role = c("aut", "cre"), 
   comment = c(ORCID = "0000-0003-1125-9918"))
-Maintainer: Maximillian H.K. Hesselbarth <mhk.hesselbarth@gmail.com>
+Maintainer: Maximilian H.K. Hesselbarth <mhk.hesselbarth@gmail.com>
 Description: 
   Growing collection of helper functions for point pattern analysis. Most functions
   are designed to work with the 'spatstat' (<http://spatstat.org>) package. The focus of 
@@ -20,7 +20,7 @@ License: GPL (>= 3)
 Depends: R (>= 3.1)
 Imports:
   ggplot2,
-  spatstat.core, 
+  spatstat.explore, 
   spatstat.geom,
   spatstat.random,
   stats
@@ -28,6 +28,5 @@ Suggests:
     covr,
     spatstat (>= 2.0.0),
     testthat
-LazyData: true
 Encoding: UTF-8
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.1

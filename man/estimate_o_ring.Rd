@@ -9,7 +9,7 @@ estimate_o_ring(x, ...)
 \arguments{
 \item{x}{ppp}
 
-\item{...}{Arguments passed to \code{spatstat.core::pcf.ppp()}}
+\item{...}{Arguments passed to \code{spatstat.explore::pcf.ppp()}}
 }
 \value{
 fv.object

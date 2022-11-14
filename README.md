@@ -5,16 +5,18 @@
 
 <!-- badges: start -->
 
-[![Project Status: Active – The project has reached a stable, usable
-state and is being actively
-developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+Last updated: 2022-11-01
+
 [![R-CMD-check](https://github.com/r-spatialecology/onpoint/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-spatialecology/onpoint/actions/workflows/R-CMD-check.yaml)
 [![codecov](https://codecov.io/gh/r-spatialecology/onpoint/branch/main/graph/badge.svg?token=RkgCfHnPyf)](https://codecov.io/gh/r-spatialecology/onpoint)
+[![Project
+Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/onpoint)](https://CRAN.R-project.org/package=onpoint)
-[![License: GPL
-v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![CRAN
+logs](http://cranlogs.r-pkg.org/badges/grand-total/onpoint)](http://cran.rstudio.com/web/packages/onpoint/index.html)
+[![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 <!-- badges: end -->
 
@@ -23,23 +25,23 @@ point pattern analysis and the [spatstat](http://spatstat.org/) package.
 
 ## Installation
 
-You can install the released version of `onpoint` from CRAN with:
+You can install the released version of `onpoint` from CRAN using:
 
 ``` r
 install.packages("onpoint")
 ```
 
 You can install the development version of `onpoint` from
-[Github](https://github.com/r-spatialecology/onpoint) with:
+[Github](https://github.com/r-spatialecology/onpoint) using:
 
 ``` r
+# install.packages("remotes")
 remotes::install_github("r-spatialecology/onpoint")
 ```
 
 ``` r
 library(onpoint)
-library(spatstat.core)
-library(spatstat.data)
+library(spatstat)
 
 data(spruces)
 ```
@@ -151,8 +153,7 @@ antecedent <- envelope(spruces, fun = pcf,
 ### Various
 
 To plot simulation envelopes using quantum plots (e.g. Esser et
-al. 2015), just pass an `envelope` object as input to
-`plot_quantums()`.
+al. 2015), just pass an `envelope` object as input to `plot_quantums()`.
 
 ``` r
 plot_quantums(antecedent, ylab = "g(r)")
@@ -166,7 +167,7 @@ Please note that the **onpoint** package is released with a [Contributor
 Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project,
 you agree to abide by its terms.
 
-To see how to contribute to this project, please see the [Contributing
+To contribute to this project, please see the [Contributing
 guidelines](CONTRIBUTING.md).
 
 #### References

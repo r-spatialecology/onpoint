@@ -17,7 +17,7 @@
 #'
 #' @details
 #' This functions provides a plotting style for envelope objects of the spatstat
-#' package (for more information please see \code{spatstat.core::envelope}). The location of the
+#' package (for more information please see \code{spatstat.explore::envelope}). The location of the
 #' observed value in relation to the simulation envelope of the null model input is
 #' indicated by an additional colour bar at the bottom of the plot. If \code{standarized = TRUE},
 #' all values are standarized by subtracting the theoretical value for CSR
@@ -40,7 +40,7 @@
 #' @examples
 #' set.seed(42)
 #' pattern <- spatstat.random::rThomas(kappa = 50, scale = 0.025, mu = 5)
-#' csr_envelope <- spatstat.core::envelope(pattern, fun = spatstat.core::pcf, nsim = 19)
+#' csr_envelope <- spatstat.explore::envelope(pattern, fun = spatstat.explore::pcf, nsim = 19)
 #' plot_quantums(csr_envelope, ylab = "g(r)")
 #'
 #' @references
@@ -88,7 +88,7 @@ plot_quantums <- function(input,
 
   if (is(input, "envelope")) {
 
-    input <- spatstat.core::as.data.frame.fv(input)
+    input <- spatstat.explore::as.data.frame.fv(input)
   }
 
   names(input) <- c("r", "observed", "theoretical", "low", "high")

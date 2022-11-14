@@ -13,7 +13,7 @@ simulate_heterogenous_pattern(x, nsim, fix_n = FALSE, ...)
 
 \item{fix_n}{Logical if true the null model patterns have exactly the same number of points ais input.}
 
-\item{...}{Arguments passed to \code{spatstat.core::density.ppp()}.}
+\item{...}{Arguments passed to \code{spatstat.explore::density.ppp()}.}
 }
 \value{
 list
@@ -22,7 +22,7 @@ list
 Simulate heterogeneous pattern
 }
 \details{
-Simulate heterogeneous point patterns as null model data for \code{spatstat.core::envelope()}.
+Simulate heterogeneous point patterns as null model data for \code{spatstat.explore::envelope()}.
 A heterogeneous Poisson process is used, meaning that there are no interaction between points,
 however, the simulated coordinates depend on the intensity \eqn{\lambda} of the input pattern.
 
@@ -32,7 +32,7 @@ Returns a \code{list} with \code{ppp} objects.
 set.seed(42)
 input_pattern <- spatstat.random::rpoispp(lambda = function(x , y) {100 * exp(-3 * x)}, nsim = 1)
 null_model <- simulate_heterogenous_pattern(input_pattern, nsim = 19)
-spatstat.core::envelope(Y = input_pattern, fun = spatstat.core::pcf, nsim = 19,
+spatstat.explore::envelope(Y = input_pattern, fun = spatstat.explore::pcf, nsim = 19,
 simulate = null_model)
 
 }
