@@ -65,11 +65,11 @@ plot_quantums <- function(input,
   }
 
   if (is.null(labels)) {
-    labels <- c("obs > hi", "lo < obs < hi", "obs < lo")
+    labels <- c("obs < lo", "lo < obs < hi", "obs > hi")
   }
 
   if (length(labels) !=  3) {
-    labels <- c("obs > hi", "lo < obs < hi", "obs < lo")
+    labels <- c("obs < lo", "lo < obs < hi", "obs > hi")
     warning("Not enough labels provided - using 'obs > hi', 'lo < obs < hi' and 'ob < lo'.",
             call. = FALSE)
   }
@@ -79,9 +79,7 @@ plot_quantums <- function(input,
   if (is.null(ylab)) {ylab <- "f(r)"}
 
   if (is.null(color_scale)) {
-    color_scale <- c("#440154FF",
-                     "#238A8DFF",
-                     "#FDE725FF")
+    color_scale <- c("#440154FF", "#238A8DFF", "#FDE725FF")
   }
 
   names(color_scale) <- labels
@@ -89,6 +87,7 @@ plot_quantums <- function(input,
   if (is(input, "envelope")) {
 
     input <- spatstat.explore::as.data.frame.fv(input)
+
   }
 
   names(input) <- c("r", "observed", "theoretical", "low", "high")
@@ -104,16 +103,33 @@ plot_quantums <- function(input,
   input <- input[stats::complete.cases(input), ]
 
   input$type <- labels[[2]]
-  input$type[input$observed > input$high] <- labels[[1]]
-  input$type[input$observed < input$low] <- labels[[3]]
+  input$type[input$observed < input$low] <- labels[[1]]
+  input$type[input$observed > input$high] <- labels[[3]]
+
 
   # really needed
   input <- input[!is.na(input$type), ]
 
+  # get id when type changes for rectangles
+  change_pos <- rle(input$type)
+
+  # create id col
+  input$id <- rep(x = seq(from = 1, to = length(change_pos$lengths)),
+                  times = change_pos$lengths)
+
+  # get min/max r value for each rectangle
+  input_quantum <- do.call(data.frame, stats::aggregate(x = input$r, by = list(id = input$id),
+                                                        FUN = function(x) c(min = min(x), max = max(x))))
+
+  # class classification type
+  input_quantum$type <- factor(change_pos$values, levels = labels)
+
   if (is.null(quantum_position)) {
 
-    quantum_position <- c(min(c(input$low, input$observed)) - min(c(input$low, input$observed)) * 0.25,
-                          min(c(input$low, input$observed)))
+    ttl_range <- max(c(input$high, input$observed)) - min(c(input$low, input$observed))
+
+    quantum_position <- c(low = min(c(input$low, input$observed)) - (ttl_range * 0.05),
+                          high = min(c(input$low, input$observed)))
 
   }
 
@@ -121,16 +137,15 @@ plot_quantums <- function(input,
 
     if (quantum == TRUE) {
 
-      gg_plot <- ggplot2::ggplot(input) +
-        ggplot2::geom_ribbon(ggplot2::aes(x = r, ymin = low, ymax = high),
-                             fill = "grey") +
-        ggplot2::geom_line(ggplot2::aes(x = r, y = observed, linetype = "Observed"),
-                           size = line_size) +
-        ggplot2::geom_line(ggplot2::aes(x = r, y = theoretical, linetype = "Theoretical"),
-                           size = line_size) +
-        ggplot2::geom_linerange(ggplot2::aes(x = r, colour = type,
-                                             ymin = quantum_position[1], ymax = quantum_position[2])) +
+      gg_plot <- ggplot2::ggplot(data = input) +
+        ggplot2::geom_rect(data = input_quantum,
+                           ggplot2::aes(xmin = x.min, xmax = x.max, ymin = quantum_position[1], ymax = quantum_position[2],
+                                        fill = type, color = type)) +
+        ggplot2::geom_ribbon(ggplot2::aes(x = r, ymin = low, ymax = high), fill = "grey") +
+        ggplot2::geom_line(ggplot2::aes(x = r, y = observed, linetype = "Observed"), size = line_size) +
+        ggplot2::geom_line(ggplot2::aes(x = r, y = theoretical, linetype = "Theoretical"), size = line_size) +
         ggplot2::scale_color_manual(name = "", values = color_scale) +
+        ggplot2::scale_fill_manual(name = "", values = color_scale) +
         ggplot2::scale_linetype_manual(name = "", values = c(1, 2)) +
         ggplot2::labs(x = xlab, y = ylab, title = title) +
         ggplot2::theme_classic(base_size = base_size) +
@@ -150,10 +165,11 @@ plot_quantums <- function(input,
   }
 
   else{
-    gg_plot <- ggplot2::ggplot(input) +
-      ggplot2::geom_linerange(ggplot2::aes(x = r, colour = type,
-                                           ymin = quantum_position[1], ymax = quantum_position[2])) +
+    gg_plot <- ggplot2::ggplot(data = input_quantum) +
+      ggplot2::geom_rect(ggplot2::aes(fill = type, color = type, xmin = x.min, xmax = x.max,
+                                      ymin = quantum_position[1], ymax = quantum_position[2])) +
       ggplot2::coord_cartesian(ylim = c(quantum_position[1] * 0.75, quantum_position[2] * 1.25)) +
+      ggplot2::scale_fill_manual(name = "", values = color_scale) +
       ggplot2::scale_color_manual(name = "", values = color_scale) +
       ggplot2::labs(x = xlab, y = "", title = title) +
       ggplot2::theme_classic(base_size = base_size) +

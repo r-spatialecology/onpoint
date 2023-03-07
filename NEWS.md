@@ -1,3 +1,6 @@
+# onpoint 1.0.4
+* Update some plotting functions
+
 # onpoint 1.0.3
 * Small updates to internal code structure
 * Fix DESCRIPTION
