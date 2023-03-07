@@ -1,8 +1,8 @@
 pandoc: 2.19.2
-pkgdown: 2.0.6
+pkgdown: 2.0.7
 pkgdown_sha: ~
 articles: {}
-last_built: 2022-11-16T14:44Z
+last_built: 2023-03-07T14:41Z
 urls:
   reference: https://r-spatialecology.github.io/onpoint/reference
   article: https://r-spatialecology.github.io/onpoint/articles
