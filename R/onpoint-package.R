@@ -11,4 +11,13 @@
 
 # Global variables
 globalVariables(c(
-  "hi", "high", "is", "lo", "low", "marks", "obs", "observed", "r", "theo", "theoretical", "type", "y"))
+  "aggregate",
+  "hi", "high",
+  "is",
+  "lo", "low",
+  "marks",
+  "obs", "observed",
+  "r",
+  "theo", "theoretical", "type",
+  "x.min", "x.max",
+  "y"))
