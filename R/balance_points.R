@@ -21,9 +21,6 @@
 #' balance_points(pattern = input, n = 110)
 #' balance_points(pattern = input, n = input_b)
 #'
-#' @aliases balance_points
-#' @rdname balance_points
-#'
 #' @export
 balance_points <- function(pattern, n, verbose = TRUE) {
 
@@ -39,15 +36,16 @@ balance_points <- function(pattern, n, verbose = TRUE) {
     n <- n$n
   }
 
-  if (verbose) {
+  difference_rel <- abs((pattern$n - n)) / pattern$n
 
-    difference_rel <- abs((pattern$n - n)) / pattern$n
+  if (verbose) {
 
     message("> Relative difference between pattern and n: ", round(difference_rel, 2))
 
-    if (difference_rel > 0.33) {
-      warning("Differences between pattern and n more than 0.33.", call. = FALSE)
-    }
+  }
+
+  if (difference_rel > 0.33) {
+    warning("Differences between pattern and n more than 0.33.", call. = FALSE)
   }
 
   abs((pattern$n - n))

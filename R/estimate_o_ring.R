@@ -35,9 +35,6 @@
 #' Wiegand, T., Moloney, K.A., 2014. Handbook of spatial point-pattern analysis in
 #' ecology. Chapman and Hall/CRC Press, Boca Raton, USA. <isbn:978-1-4200-8254-8>
 #'
-#' @aliases estimate_o_ring
-#' @rdname estimate_o_ring
-#'
 #' @export
 estimate_o_ring <- function(x, ...) {
 

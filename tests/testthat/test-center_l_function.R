@@ -1,4 +1,4 @@
-context("test-center_l_function")
+# context("test-center_l_function")
 
 test_that("center_l_function works for point pattern", {
 

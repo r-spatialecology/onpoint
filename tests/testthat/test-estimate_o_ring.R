@@ -1,4 +1,4 @@
-context("test-estimate_o_ring")
+# context("test-estimate_o_ring")
 
 test_that("estimate_o_ring returns fv", {
 

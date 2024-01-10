@@ -1,3 +1,6 @@
+# onpoint 1.0.5
+* Minor cosmetic updates
+
 # onpoint 1.0.4
 * Some small function updates
 

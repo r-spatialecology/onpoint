@@ -34,9 +34,6 @@
 #' Wiegand, T., Moloney, K.A., 2014. Handbook of spatial point-pattern analysis in
 #' ecology. Chapman and Hall/CRC Press, Boca Raton, USA. <isbn:978-1-4200-8254-8>
 #'
-#' @aliases simulate_heterogenous_pattern
-#' @rdname simulate_heterogenous_pattern
-#'
 #' @export
 simulate_heterogenous_pattern <- function(x, nsim, fix_n = FALSE, ...) {
 

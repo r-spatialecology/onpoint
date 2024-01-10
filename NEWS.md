@@ -1,3 +1,9 @@
+# onpoint 1.0.5
+* Streamlined documentation
+* Updated testthat v3
+* Updated ggplot2 linewidth internally
+* `verbose` does not affect warnings
+
 # onpoint 1.0.4
 * Update some plotting functions
 

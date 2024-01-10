@@ -29,9 +29,6 @@
 #' x <- summarize_envelope(cluster_env)
 #' plot(x)
 #'
-#' @aliases plot.env_summarized
-#' @rdname plot.env_summarized
-#'
 #' @export
 plot.env_summarized <- function(x, col = c("#97CBDE", "#E1B0B5"),
                                 x_lab = NULL, y_lab = NULL, base_size = 10,

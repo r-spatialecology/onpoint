@@ -1,4 +1,4 @@
-context("test-print")
+# context("test-print")
 
 set.seed(42)
 csr_pattern <- spatstat.random::runifpoint(n = 100)

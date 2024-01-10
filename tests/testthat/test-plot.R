@@ -1,4 +1,4 @@
-context("test-plot")
+# context("test-plot")
 
 set.seed(42)
 csr_pattern <- spatstat.random::runifpoint(n = 100)

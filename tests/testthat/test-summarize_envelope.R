@@ -1,4 +1,4 @@
-context("test-summarize_envelope")
+# context("test-summarize_envelope")
 
 set.seed(42)
 csr_pattern <- spatstat.random::runifpoint(n = 100)

@@ -48,9 +48,6 @@
 #' interactions among bacteria and between bacteria and the leaf surface.
 #' FEMS Microbiology Ecology 91, 1–13. <https://doi.org/10.1093/femsec/fiu034>
 #'
-#' @aliases plot_quantums
-#' @rdname plot_quantums
-#'
 #' @export
 plot_quantums <- function(input,
                           labels = NULL, color_scale = NULL,
@@ -142,8 +139,8 @@ plot_quantums <- function(input,
                            ggplot2::aes(xmin = x.min, xmax = x.max, ymin = quantum_position[1], ymax = quantum_position[2],
                                         fill = type, color = type)) +
         ggplot2::geom_ribbon(ggplot2::aes(x = r, ymin = low, ymax = high), fill = "grey") +
-        ggplot2::geom_line(ggplot2::aes(x = r, y = observed, linetype = "Observed"), size = line_size) +
-        ggplot2::geom_line(ggplot2::aes(x = r, y = theoretical, linetype = "Theoretical"), size = line_size) +
+        ggplot2::geom_line(ggplot2::aes(x = r, y = observed, linetype = "Observed"), linewidth = line_size) +
+        ggplot2::geom_line(ggplot2::aes(x = r, y = theoretical, linetype = "Theoretical"), linewidth = line_size) +
         ggplot2::scale_color_manual(name = "", values = color_scale) +
         ggplot2::scale_fill_manual(name = "", values = color_scale) +
         ggplot2::scale_linetype_manual(name = "", values = c(1, 2)) +
@@ -155,8 +152,8 @@ plot_quantums <- function(input,
     else {
       gg_plot <- ggplot2::ggplot(input) +
         ggplot2::geom_ribbon(ggplot2::aes(x = r, ymin = low, ymax = high), fill = "grey") +
-        ggplot2::geom_line(ggplot2::aes(x = r, y = observed, linetype = "Observed"), size = line_size) +
-        ggplot2::geom_line(ggplot2::aes(x = r, y = theoretical, linetype = "Theoretical"), size = line_size) +
+        ggplot2::geom_line(ggplot2::aes(x = r, y = observed, linetype = "Observed"), linewidth = line_size) +
+        ggplot2::geom_line(ggplot2::aes(x = r, y = theoretical, linetype = "Theoretical"), linewidth = line_size) +
         ggplot2::scale_linetype_manual(name = "", values = c(1, 2)) +
         ggplot2::labs(x = xlab, y = ylab, title = title) +
         ggplot2::theme_classic(base_size = base_size) +

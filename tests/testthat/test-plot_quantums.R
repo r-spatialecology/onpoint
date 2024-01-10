@@ -1,4 +1,4 @@
-context("test-plot_quantums")
+# context("test-plot_quantums")
 
 test_that("plot_quantums returns ggplot", {
 
@@ -12,7 +12,7 @@ test_that("plot_quantums returns ggplot", {
 
   plot <- plot_quantums(csr_envelope, ylab = "g(r)")
 
-  expect_is(plot, "ggplot")
+  expect_s3_class(plot, "ggplot")
   expect_true(plot$labels$y == "g(r)")
   expect_length(plot$layers, n = 4)
 })
@@ -29,7 +29,7 @@ test_that("plot_quantums returns ggplot (only quantum)", {
 
   plot <- plot_quantums(csr_envelope, ylab = "g(r)", full_fun = FALSE)
 
-  expect_is(plot, "ggplot")
+  expect_s3_class(plot, "ggplot")
   expect_length(plot$layers, n = 1)
 })
 
@@ -45,7 +45,7 @@ test_that("plot_quantums returns ggplot only function", {
 
   plot <- plot_quantums(csr_envelope, ylab = "g(r)", quantum = FALSE)
 
-  expect_is(plot, "ggplot")
+  expect_s3_class(plot, "ggplot")
   expect_length(plot$layers, n = 3)
 })
 
