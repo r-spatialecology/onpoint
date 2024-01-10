@@ -7,7 +7,6 @@
 #' @param nsim Number of patterns to simulate.
 #' @param drop If nsim = 1 and drop = TRUE , the result will be a point pattern,
 #' rather than a list containing a point pattern.
-#' @param verbose If TRUE warning messages are printed.
 #'
 #' @details
 #' Local random labelling function, i.e. marks will be shuffeld only across points
@@ -38,12 +37,9 @@
 #' Wiegand, T., Moloney, K.A., 2014. Handbook of spatial point-pattern analysis in
 #' ecology. Chapman and Hall/CRC Press, Boca Raton, USA. <isbn:978-1-4200-8254-8>
 #'
-#' @aliases rlabel_local
-#' @rdname rlabel_local
-#'
 #' @export
 rlabel_local <- function(X, distance, nsim = 19,
-                         drop = TRUE, verbose = TRUE) {
+                         drop = TRUE) {
 
   # check if pattern is marked
   if (!spatstat.geom::is.marked(X) |
@@ -108,9 +104,8 @@ rlabel_local <- function(X, distance, nsim = 19,
     # still return list if nsim > 1 but throw warning
     if (nsim != 1) {
 
-      if (verbose) {
-        warning("drop = TRUE only possible for nsim = 1.", call. = FALSE)
-      }
+      warning("drop = TRUE only possible for nsim = 1.", call. = FALSE)
+
     }
 
     # return only ppp

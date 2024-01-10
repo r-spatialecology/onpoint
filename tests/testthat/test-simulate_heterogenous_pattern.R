@@ -1,4 +1,4 @@
-context("test-simulate_heterogenous_pattern")
+# context("test-simulate_heterogenous_pattern")
 
 test_that("simulate_heterogenous_pattern returns ppp", {
 

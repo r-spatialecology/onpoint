@@ -18,9 +18,6 @@
 #' split_at(x = x, pos = 3)
 #' }
 #'
-#' @aliases split_at
-#' @rdname split_at
-#'
 #' @keywords internal
 split_at <- function(x, pos) {
 

@@ -1,4 +1,4 @@
-testthat::context("test-estimate_pcf_fast")
+# testthat::context("test-estimate_pcf_fast")
 
 testthat::test_that("estimate_pcf returns spatstat.fv object", {
 
@@ -6,5 +6,5 @@ testthat::test_that("estimate_pcf returns spatstat.fv object", {
 
   pcf_est <- estimate_pcf_fast(pattern)
 
-  testthat::expect_is(pcf_est, "fv")
+  testthat::expect_s3_class(pcf_est, "fv")
 })

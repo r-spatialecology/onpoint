@@ -1,4 +1,4 @@
-context("test-rlabel_local")
+# context("test-rlabel_local")
 
 pattern <- spatstat.random::runifpoint(n = 250,
                                      win = spatstat.geom::owin(c(0, 100), c(0, 100)))

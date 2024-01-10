@@ -31,9 +31,6 @@
 #' Stoyan, D., Stoyan, H., 1994. Fractals, random shapes and point fields.
 #' John Wiley & Sons, Chichester, UK. <isbn:978-0-471-93757-9>
 #'
-#' @aliases estimate_pcf_fast
-#' @rdname estimate_pcf_fast
-#'
 #' @export
 estimate_pcf_fast <- function(pattern, ...){
 

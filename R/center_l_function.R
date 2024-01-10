@@ -35,9 +35,6 @@
 #' Introduction and methods of edge correction. Journal of Vegetation Science 6, 575–582.
 #' <https://doi.org/10.2307/3236356>
 #'
-#' @aliases center_l_function
-#' @rdname center_l_function
-#'
 #' @export
 center_l_function <- function(x, ...) {
 

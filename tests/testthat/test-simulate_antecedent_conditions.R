@@ -1,4 +1,4 @@
-context("test-simulate_antecedent_conditions")
+# context("test-simulate_antecedent_conditions")
 
 pattern_a <- spatstat.random::runifpoint(n = 20)
 spatstat.geom::marks(pattern_a) <- "a"

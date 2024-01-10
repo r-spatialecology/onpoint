@@ -16,9 +16,6 @@
 #' calc_area(x = dat)
 #' }
 #'
-#' @aliases calc_area
-#' @rdname calc_area
-#'
 #' @keywords internal
 calc_area <- function(x){
 

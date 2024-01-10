@@ -1,7 +1,7 @@
 Type: Package
 Package: onpoint
 Title: Helper Functions for Point Pattern Analysis
-Version: 1.0.4
+Version: 1.0.5
 Authors@R: 
   person("Maximilian H.K.", "Hesselbarth", 
   email = "mhk.hesselbarth@gmail.com",
@@ -27,6 +27,7 @@ Imports:
 Suggests: 
     covr,
     spatstat (>= 2.0.0),
-    testthat
+    testthat (>= 3.0.0)
 Encoding: UTF-8
 RoxygenNote: 7.2.3
+Config/testthat/edition: 3
