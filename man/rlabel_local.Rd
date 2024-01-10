@@ -4,7 +4,7 @@
 \alias{rlabel_local}
 \title{rlabel_local}
 \usage{
-rlabel_local(X, distance, nsim = 19, drop = TRUE, verbose = TRUE)
+rlabel_local(X, distance, nsim = 19, drop = TRUE)
 }
 \arguments{
 \item{X}{ppp}
@@ -15,8 +15,6 @@ rlabel_local(X, distance, nsim = 19, drop = TRUE, verbose = TRUE)
 
 \item{drop}{If nsim = 1 and drop = TRUE , the result will be a point pattern,
 rather than a list containing a point pattern.}
-
-\item{verbose}{If TRUE warning messages are printed.}
 }
 \value{
 list
