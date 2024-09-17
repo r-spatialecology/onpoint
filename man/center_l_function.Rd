@@ -44,5 +44,5 @@ Introduction and methods of edge correction. Journal of Vegetation Science 6, 57
 <https://doi.org/10.2307/3236356>
 }
 \seealso{
-\code{\link{Lest}}
+\code{\link[spatstat.explore]{Lest}}
 }

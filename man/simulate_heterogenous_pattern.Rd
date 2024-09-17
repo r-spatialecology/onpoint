@@ -44,6 +44,6 @@ Wiegand, T., Moloney, K.A., 2014. Handbook of spatial point-pattern analysis in
 ecology. Chapman and Hall/CRC Press, Boca Raton, USA. <isbn:978-1-4200-8254-8>
 }
 \seealso{
-\code{\link{envelope}} \cr
-\code{\link{density.ppp}}
+\code{\link[spatstat.explore]{envelope}} \cr
+\code{\link[spatstat.explore]{density.ppp}}
 }

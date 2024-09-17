@@ -20,7 +20,7 @@
 #' @return list
 #'
 #' @seealso
-#' \code{\link{rlabel}}
+#' \code{\link[spatstat.random]{rlabel}}
 #'
 #' @examples
 #' set.seed(42)

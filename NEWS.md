@@ -1,5 +1,6 @@
 # onpoint 1.0.6
 * Order of stable `i` and randomized pattern `j` changed in `simulate_antecedent_conditions`
+* Fix anchors in documentation
 
 # onpoint 1.0.5
 * Streamlined documentation

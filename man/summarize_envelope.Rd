@@ -41,5 +41,5 @@ summarize_envelope(cluster_env)
 
 }
 \seealso{
-\code{\link{envelope}}
+\code{\link[spatstat.explore]{envelope}}
 }
