@@ -3,7 +3,7 @@
 
 on:
   push:
-    branches: [main, development]
+    branches: [main, dev]
     tags: ['*']
   workflow_dispatch:
 
