@@ -1,4 +1,4 @@
-#' simulate_heterogenous_pattern
+#' rheteroppp
 #'
 #' @description Simulate heterogeneous pattern
 #'
@@ -23,7 +23,7 @@
 #' @examples
 #' set.seed(42)
 #' input_pattern <- spatstat.random::rpoispp(lambda = function(x , y) {100 * exp(-3 * x)}, nsim = 1)
-#' null_model <- simulate_heterogenous_pattern(input_pattern, nsim = 19)
+#' null_model <- rheteroppp(input_pattern, nsim = 19)
 #' spatstat.explore::envelope(Y = input_pattern, fun = spatstat.explore::pcf, nsim = 19,
 #' simulate = null_model)
 #'
@@ -35,7 +35,7 @@
 #' ecology. Chapman and Hall/CRC Press, Boca Raton, USA. <isbn:978-1-4200-8254-8>
 #'
 #' @export
-simulate_heterogenous_pattern <- function(x, nsim, fix_n = FALSE, ...) {
+rheteroppp <- function(x, nsim, fix_n = FALSE, ...) {
 
   if (!inherits(x = x, what = "ppp")) {
     stop("Please provide ppp object.", call. = FALSE)

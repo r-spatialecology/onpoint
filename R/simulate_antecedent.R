@@ -1,4 +1,4 @@
-#' simulate_antecedent_conditions
+#' simulate_antecedent
 #'
 #' @description Simulate heterogenous pattern
 #'
@@ -33,7 +33,7 @@
 #' spatstat.geom::marks(pattern_b) <- "b"
 #' pattern <- spatstat.geom::superimpose(pattern_a, pattern_b)
 #'
-#' null_model <- simulate_antecedent_conditions(x = pattern, i = "a", j = "b", nsim = 19)
+#' null_model <- simulate_antecedent(x = pattern, i = "a", j = "b", nsim = 19)
 #' spatstat.explore::envelope(Y = pattern, fun = spatstat.explore::pcf,
 #' nsim = 19, simulate = null_model)
 #'
@@ -46,7 +46,7 @@
 #' ecology. Chapman and Hall/CRC Press, Boca Raton, USA. <isbn:978-1-4200-8254-8>
 #'
 #' @export
-simulate_antecedent_conditions <- function(x, i, j, nsim, heterogenous = FALSE, ...) {
+simulate_antecedent <- function(x, i, j, nsim, heterogenous = FALSE, ...) {
 
   # check if pattern ist marked
   if (!spatstat.geom::is.marked(x)) {
