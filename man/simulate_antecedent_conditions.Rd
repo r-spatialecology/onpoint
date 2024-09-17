@@ -9,13 +9,13 @@ simulate_antecedent_conditions(x, i, j, nsim, heterogenous = FALSE, ...)
 \arguments{
 \item{x}{ppp}
 
-\item{i}{Mark of points that are randomized.}
+\item{i}{Mark of points that are not not changed.}
 
-\item{j}{Mark of points that do not change.}
+\item{j}{Mark of points that are randomized.}
 
 \item{nsim}{Number of patterns to simulate.}
 
-\item{heterogenous}{If TRUE, points with the mark i are randomized using a heterogeneous
+\item{heterogenous}{If TRUE, points with the mark j are randomized using a heterogeneous
 Poisson process.}
 
 \item{...}{Arguments passed to \code{spatstat.explore::density.ppp()}.}
@@ -28,10 +28,11 @@ Simulate heterogenous pattern
 }
 \details{
 Simulate point patterns as null model data for \code{spatstat.explore::envelope()} using
-antecedent conditions as null model. \code{x} must be marked point pattern.
-Antecedent conditions are suitable as a null model if points of type j may influence
-points of type i, but not the other way around (Velazquez et al 2016). One example are
-the positions of seedlings that may be influenced by the position of mature trees.
+antecedent conditions as null model. \code{x} must be a marked point pattern with
+two types of marks. Antecedent conditions are suitable as a null model if points
+of type i may influence points of type j, but not the other way around (Velazquez et al 2016).
+One example are the positions of seedlings that may be influenced by the position
+of mature trees.
 
 Returns a \code{list} with \code{ppp} objects.
 }
@@ -43,7 +44,7 @@ pattern_b <- spatstat.random::runifpoint(n = 100)
 spatstat.geom::marks(pattern_b) <- "b"
 pattern <- spatstat.geom::superimpose(pattern_a, pattern_b)
 
-null_model <- simulate_antecedent_conditions(x = pattern, i = "b", j = "a", nsim = 19)
+null_model <- simulate_antecedent_conditions(x = pattern, i = "a", j = "b", nsim = 19)
 spatstat.explore::envelope(Y = pattern, fun = spatstat.explore::pcf,
 nsim = 19, simulate = null_model)
 

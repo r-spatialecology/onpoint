@@ -3,19 +3,20 @@
 #' @description Simulate heterogenous pattern
 #'
 #' @param x ppp
-#' @param i Mark of points that are randomized.
-#' @param j Mark of points that do not change.
+#' @param i Mark of points that are not not changed.
+#' @param j Mark of points that are randomized.
 #' @param nsim Number of patterns to simulate.
-#' @param heterogenous If TRUE, points with the mark i are randomized using a heterogeneous
+#' @param heterogenous If TRUE, points with the mark j are randomized using a heterogeneous
 #' Poisson process.
 #' @param ... Arguments passed to \code{spatstat.explore::density.ppp()}.
 #'
 #' @details
 #' Simulate point patterns as null model data for \code{spatstat.explore::envelope()} using
-#' antecedent conditions as null model. \code{x} must be marked point pattern.
-#' Antecedent conditions are suitable as a null model if points of type j may influence
-#' points of type i, but not the other way around (Velazquez et al 2016). One example are
-#' the positions of seedlings that may be influenced by the position of mature trees.
+#' antecedent conditions as null model. \code{x} must be a marked point pattern with
+#' two types of marks. Antecedent conditions are suitable as a null model if points
+#' of type i may influence points of type j, but not the other way around (Velazquez et al 2016).
+#' One example are the positions of seedlings that may be influenced by the position
+#' of mature trees.
 #'
 #' Returns a \code{list} with \code{ppp} objects.
 #'
@@ -32,7 +33,7 @@
 #' spatstat.geom::marks(pattern_b) <- "b"
 #' pattern <- spatstat.geom::superimpose(pattern_a, pattern_b)
 #'
-#' null_model <- simulate_antecedent_conditions(x = pattern, i = "b", j = "a", nsim = 19)
+#' null_model <- simulate_antecedent_conditions(x = pattern, i = "a", j = "b", nsim = 19)
 #' spatstat.explore::envelope(Y = pattern, fun = spatstat.explore::pcf,
 #' nsim = 19, simulate = null_model)
 #'
@@ -62,41 +63,32 @@ simulate_antecedent_conditions <- function(x, i, j, nsim, heterogenous = FALSE, 
     stop("i and j must be marks of x.", call. = FALSE)
   }
 
-  # only points with mark j
-  pattern_j <- spatstat.geom::subset.ppp(x, marks == j, drop = TRUE)
-
-  # only points with mark i
+  # only points with mark i to keep stable
   pattern_i <- spatstat.geom::subset.ppp(x, marks == i, drop = TRUE)
 
-  if (heterogenous) {
+  # only points with mark j to randomze
+  pattern_j <- spatstat.geom::subset.ppp(x, marks == j, drop = TRUE)
 
-    lambda_xy <- spatstat.explore::density.ppp(pattern_i, ...)
+  if (heterogenous) {
+    lambda_j <- spatstat.explore::density.ppp(pattern_j, ...)
   }
 
   # create nsim patterns
   result <- lapply(seq_len(length.out = nsim), function(current_nsim) {
 
+    # use heterogeneous Poisson
     if (!heterogenous) {
-
-      # random pattern i
-      random_i <- spatstat.random::rpoint(n = pattern_i$n,
-                                        win = pattern_i$window)
-    }
-
-    else {
-
-      # random pattern i
-      random_i <- spatstat.random::rpoint(n = pattern_i$n,
-                                        f = lambda_xy,
-                                        win = x$window)
+      random_j <- spatstat.random::rpoint(n = pattern_j$n, win = pattern_j$window)
+    # use homogenous Poisson
+    } else {
+      random_j <- spatstat.random::rpoint(n = pattern_j$n, f = lambda_j, win = x$window)
     }
 
     # assign same marks again
-    spatstat.geom::marks(random_i) <- spatstat.geom::marks(pattern_i)
+    spatstat.geom::marks(random_j) <- spatstat.geom::marks(pattern_j)
 
     # combine random i with original j
-    pattern_combined <- spatstat.geom::superimpose(j = pattern_j,
-                                                   i = random_i,
+    pattern_combined <- spatstat.geom::superimpose(i = pattern_i, j = random_j,
                                                    W = pattern_j$window)
 
     # select only original marks
