@@ -25,7 +25,7 @@ README Last updated: `r Sys.Date()`
 [![Project Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![CRAN status](https://www.r-pkg.org/badges/version/onpoint)](https://CRAN.R-project.org/package=onpoint)
-[![CRAN logs](http://cranlogs.r-pkg.org/badges/grand-total/onpoint)](http://cran.rstudio.com/web/packages/onpoint/index.html)
+[![CRAN logs](https://cranlogs.r-pkg.org/badges/grand-total/onpoint)](http://cran.rstudio.com/web/packages/onpoint/index.html)
 [![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 <!-- badges: end -->
