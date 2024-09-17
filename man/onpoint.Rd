@@ -2,8 +2,8 @@
 % Please edit documentation in R/onpoint-package.R
 \docType{package}
 \name{onpoint}
-\alias{onpoint}
 \alias{onpoint-package}
+\alias{onpoint}
 \title{onpoint}
 \description{
 Growing collection of small helper functions for point pattern analysis. Most functions

@@ -17,7 +17,20 @@ test_that("simulate_antecedent_conditions returns nsim", {
   expect_length(null_model, n = 19)
 })
 
-test_that("simulate_antecedent_conditions does not randomize pattern j", {
+test_that("simulate_antecedent_conditions does not randomize pattern i", {
+
+  null_model <- simulate_antecedent_conditions(x = pattern, i = "b", j = "a",
+                                               nsim = 19)
+
+  pattern_i <- spatstat.geom::subset.ppp(null_model[[1]], marks == "b")
+
+  check <- all(spatstat.geom::coords(pattern_i) ==
+                 spatstat.geom::coords(spatstat.geom::subset.ppp(pattern, marks == "b")))
+
+  expect_true(check)
+})
+
+test_that("simulate_antecedent_conditions randomizes pattern j", {
 
   null_model <- simulate_antecedent_conditions(x = pattern,
                                                i = "b", j = "a",
@@ -25,22 +38,8 @@ test_that("simulate_antecedent_conditions does not randomize pattern j", {
 
   pattern_j <- spatstat.geom::subset.ppp(null_model[[1]], marks == "a")
 
-  check <- all(spatstat.geom::coords(pattern_j) ==
+  check <- all(spatstat.geom::coords(pattern_j) !=
                  spatstat.geom::coords(spatstat.geom::subset.ppp(pattern, marks == "a")))
-
-  expect_true(check)
-})
-
-test_that("simulate_antecedent_conditions randomizes pattern i", {
-
-  null_model <- simulate_antecedent_conditions(x = pattern,
-                                               i = "b", j = "a",
-                                               nsim = 19)
-
-  pattern_i <- spatstat.geom::subset.ppp(null_model[[1]], marks == "b")
-
-  check <- all(spatstat.geom::coords(pattern_i) !=
-                 spatstat.geom::coords(spatstat.geom::subset.ppp(pattern, marks == "b")))
 
   expect_true(check)
 })

@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-README Last updated: 2023-03-08
+README Last updated: 2024-07-29
 
 [![R-CMD-check](https://github.com/r-spatialecology/onpoint/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-spatialecology/onpoint/actions/workflows/R-CMD-check.yaml)
 [![codecov](https://codecov.io/gh/r-spatialecology/onpoint/branch/main/graph/badge.svg?token=RkgCfHnPyf)](https://codecov.io/gh/r-spatialecology/onpoint)
@@ -15,7 +15,7 @@ Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repost
 [![CRAN
 status](https://www.r-pkg.org/badges/version/onpoint)](https://CRAN.R-project.org/package=onpoint)
 [![CRAN
-logs](http://cranlogs.r-pkg.org/badges/grand-total/onpoint)](http://cran.rstudio.com/web/packages/onpoint/index.html)
+logs](https://cranlogs.r-pkg.org/badges/grand-total/onpoint)](http://cran.rstudio.com/web/packages/onpoint/index.html)
 [![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 <!-- badges: end -->
