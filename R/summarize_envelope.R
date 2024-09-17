@@ -21,7 +21,7 @@
 #' @return env_summarized
 #'
 #' @seealso
-#' \code{\link{envelope}}
+#' \code{\link[spatstat.explore]{envelope}}
 #'
 #' @examples
 #' set.seed(42)

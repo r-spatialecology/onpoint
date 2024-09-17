@@ -35,7 +35,7 @@
 #' @return ggplot
 #'
 #' @seealso
-#' \code{\link{envelope}}
+#' \code{\link[spatstat.explore]{envelope}}
 #'
 #' @examples
 #' set.seed(42)

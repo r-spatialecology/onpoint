@@ -21,8 +21,8 @@
 #' @return fv.object
 #'
 #' @seealso
-#' \code{\link{density.ppp}} \cr
-#' \code{\link{pcf}}
+#' \code{\link[spatstat.explore]{density.ppp}} \cr
+#' \code{\link[spatstat.explore]{pcf}}
 #'
 #' @examples
 #' input_pattern <- spatstat.random::runifpoint(n = 100)

@@ -14,7 +14,7 @@
 #' @return fv.object
 #'
 #' @seealso
-#' \code{\link{Lest}}
+#' \code{\link[spatstat.explore]{Lest}}
 #'
 #' @examples
 #' input_pattern <- spatstat.random::runifpoint(n = 100)

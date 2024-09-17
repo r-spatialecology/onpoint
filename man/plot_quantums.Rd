@@ -81,5 +81,5 @@ interactions among bacteria and between bacteria and the leaf surface.
 FEMS Microbiology Ecology 91, 1–13. <https://doi.org/10.1093/femsec/fiu034>
 }
 \seealso{
-\code{\link{envelope}}
+\code{\link[spatstat.explore]{envelope}}
 }

@@ -39,6 +39,6 @@ Stoyan, D., Stoyan, H., 1994. Fractals, random shapes and point fields.
 John Wiley & Sons, Chichester, UK. <isbn:978-0-471-93757-9>
 }
 \seealso{
-\code{\link{Kest}} \cr
-\code{\link{pcf.fv}}
+\code{\link[spatstat.explore]{Kest}} \cr
+\code{\link[spatstat.explore]{pcf.fv}}
 }

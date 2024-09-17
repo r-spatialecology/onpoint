@@ -17,8 +17,8 @@
 #' @return list
 #'
 #' @seealso
-#' \code{\link{envelope}} \cr
-#' \code{\link{density.ppp}}
+#' \code{\link[spatstat.explore]{envelope}} \cr
+#' \code{\link[spatstat.explore]{density.ppp}}
 #'
 #' @examples
 #' set.seed(42)

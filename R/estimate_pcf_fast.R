@@ -14,8 +14,8 @@
 #' object' of the \code{spatstat} package.
 #'
 #' @seealso
-#' \code{\link{Kest}} \cr
-#' \code{\link{pcf.fv}}
+#' \code{\link[spatstat.explore]{Kest}} \cr
+#' \code{\link[spatstat.explore]{pcf.fv}}
 #'
 #' @return fv.object
 #'
