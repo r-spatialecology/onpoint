@@ -1,5 +1,5 @@
 # onpoint 1.1
-* Improved function naming
+* Improved function names
 
 # onpoint 1.0.6
 * Order of stable `i` and randomized pattern `j` changed in `simulate_antecedent_conditions`

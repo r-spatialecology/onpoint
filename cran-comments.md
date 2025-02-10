@@ -1,5 +1,5 @@
 # onpoint 1.1
-Improve function names
+* Improved function names
 
 # onpoint 1.0.6
 * Minor methodological improvements
