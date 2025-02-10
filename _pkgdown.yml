@@ -7,16 +7,16 @@ template:
 reference:
   - title: Summary functions
     contents:
-      - center_l_function
-      - estimate_o_ring
-      - estimate_pcf_fast
+      - center_Lest
+      - Oest
+      - pcf_fast
       - summarize_envelope
 
   - title: Null models
     contents:
       - rlabel_local
-      - simulate_heterogenous_pattern
-      - simulate_antecedent_conditions
+      - rheteroppp
+      - simulate_antecedent
 
   - title: Various
     contents:

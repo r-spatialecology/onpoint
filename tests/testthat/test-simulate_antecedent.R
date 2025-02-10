@@ -1,4 +1,4 @@
-# context("test-simulate_antecedent_conditions")
+# context("test-simulate_antecedent")
 
 pattern_a <- spatstat.random::runifpoint(n = 20)
 spatstat.geom::marks(pattern_a) <- "a"
@@ -8,19 +8,16 @@ spatstat.geom::marks(pattern_b) <- "b"
 
 pattern <- spatstat.geom::superimpose(pattern_a, pattern_b)
 
-test_that("simulate_antecedent_conditions returns nsim", {
+test_that("simulate_antecedent returns nsim", {
 
-  null_model <- simulate_antecedent_conditions(x = pattern,
-                                               i = "b", j = "a",
-                                               nsim = 19)
+  null_model <- simulate_antecedent(x = pattern, i = "b", j = "a", nsim = 19)
 
   expect_length(null_model, n = 19)
 })
 
-test_that("simulate_antecedent_conditions does not randomize pattern i", {
+test_that("simulate_antecedent does not randomize pattern i", {
 
-  null_model <- simulate_antecedent_conditions(x = pattern, i = "b", j = "a",
-                                               nsim = 19)
+  null_model <- simulate_antecedent(x = pattern, i = "b", j = "a", nsim = 19)
 
   pattern_i <- spatstat.geom::subset.ppp(null_model[[1]], marks == "b")
 
@@ -30,9 +27,9 @@ test_that("simulate_antecedent_conditions does not randomize pattern i", {
   expect_true(check)
 })
 
-test_that("simulate_antecedent_conditions randomizes pattern j", {
+test_that("simulate_antecedent randomizes pattern j", {
 
-  null_model <- simulate_antecedent_conditions(x = pattern,
+  null_model <- simulate_antecedent(x = pattern,
                                                i = "b", j = "a",
                                                nsim = 19)
 
@@ -44,9 +41,9 @@ test_that("simulate_antecedent_conditions randomizes pattern j", {
   expect_true(check)
 })
 
-test_that("simulate_antecedent_conditions uses heterogenous process", {
+test_that("simulate_antecedent uses heterogenous process", {
 
-  null_model <- simulate_antecedent_conditions(x = pattern,
+  null_model <- simulate_antecedent(x = pattern,
                                                i = "b", j = "a",
                                                nsim = 19,
                                                heterogenous = TRUE)
@@ -54,18 +51,18 @@ test_that("simulate_antecedent_conditions uses heterogenous process", {
   expect_length(null_model, n = 19)
 })
 
-test_that("simulate_antecedent_conditions returns error", {
+test_that("simulate_antecedent returns error", {
 
   pattern_unmarked <- spatstat.random::runifpoint(n = 100)
 
-  expect_error(simulate_antecedent_conditions(x = pattern_unmarked),
+  expect_error(simulate_antecedent(x = pattern_unmarked),
                regexp = "Please provide marked point pattern.")
 
-  expect_error(simulate_antecedent_conditions(x = pattern, i = "a", j = "c"),
+  expect_error(simulate_antecedent(x = pattern, i = "a", j = "c"),
                regexp = "i and j must be marks of x.")
 
   spatstat.geom::marks(pattern[1]) <- "c"
 
-  expect_error(simulate_antecedent_conditions(x = pattern, i = "a", j = "b"),
+  expect_error(simulate_antecedent(x = pattern, i = "a", j = "b"),
                regexp = "Currently only bivariate point patterns are supported.")
 })

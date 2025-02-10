@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-README Last updated: 2024-07-29
+README Last updated: 2025-02-10
 
 [![R-CMD-check](https://github.com/r-spatialecology/onpoint/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-spatialecology/onpoint/actions/workflows/R-CMD-check.yaml)
 [![codecov](https://codecov.io/gh/r-spatialecology/onpoint/branch/main/graph/badge.svg?token=RkgCfHnPyf)](https://codecov.io/gh/r-spatialecology/onpoint)
@@ -53,48 +53,46 @@ namely Besag’s L-function centered to zero and the O-ring statistic and
 a fast estimation of the pair-correlation function.
 
 Centering Besag’s L-function to zero has the advantage of an easier
-interpretation and plotting (Haase 1995). The function
-`center_l_function()` can either deal with a point pattern and
-calculated the centered L-function directly, or center the L-function
-afterwards it was calculating using `spatstat`s `Lest()`.
+interpretation and plotting (Haase 1995). The function `center_Lest()`
+can either deal with a point pattern and calculated the centered
+L-function directly, or center the L-function afterwards it was
+calculating using `spatstat`s `Lest()`.
 
 ``` r
 # calculate L-function
 l_function <- Lest(spruces, correction = "Ripley")
 
 # center L-function to zero
-# center_l_function <- center_l_function(l_function)
-l_function_centered <- center_l_function(spruces, correction = "Ripley")
+l_function_centered <- center_Lest(spruces, correction = "Ripley")
 ```
 
 <img src="man/figures/README-plot_lfun-1.png" style="display: block; margin: auto;" />
 
 The O-ring statistic O(r) (Wiegand & Moloney 2004) can be calculated
-using `estimate_o_ring()`. Generally speaking, O(r) scales the pair
-correlation g(r) function with help of the intensity . One advantage of
-the O-ring statistic is that it can be interpreted as a neighborhood
-density because it is a probability density function (Wiegand & Moloney
-2004).
+using `Oest()`. Generally speaking, O(r) scales the pair correlation
+g(r) function with help of the intensity . One advantage of the O-ring
+statistic is that it can be interpreted as a neighborhood density
+because it is a probability density function (Wiegand & Moloney 2004).
 
 ``` r
-o_ring <- estimate_o_ring(spruces)
+o_ring <- Oest(spruces)
 ```
 
 Of course, both summary functions can be used in combination with
 `spatstat`’s `envelope()` function.
 
 ``` r
-oring_envelope <- envelope(spruces, fun = estimate_o_ring, nsim = 199, verbose = FALSE)
+oring_envelope <- envelope(spruces, fun = Oest, nsim = 199, verbose = FALSE)
 ```
 
 <img src="man/figures/README-plot_oring-1.png" style="display: block; margin: auto;" />
 
-`estimate_pcf_fast()` estimates the pair-correlation function based on
-Ripley’s K-function, which is faster than estimation the
-pair-correlation function directly.
+`pcf_fast()` estimates the pair-correlation function based on Ripley’s
+K-function, which is faster than estimation the pair-correlation
+function directly.
 
 ``` r
-estimate_pcf_fast(spruces)
+pcf_fast(spruces)
 #> Function value object (class 'fv')
 #> for the function r -> g(r)
 #> .............................................................
@@ -114,12 +112,11 @@ estimate_pcf_fast(spruces)
 
 `onpoint` includes two functions to simulate null model patterns.
 
-`simulate_heterogenous_pattern()` is a convienent wrapper around a few
-`spatstat` functions to straighforward simulate a heterogeneous Poisson
-process.
+`rheteroppp()` is a convienent wrapper around a few `spatstat` functions
+to straighforward simulate a heterogeneous Poisson process.
 
 ``` r
-null_model_hetero <- simulate_heterogenous_pattern(spruces, nsim = 199)
+null_model_hetero <- rheteroppp(spruces, nsim = 199)
 
 hetero <- envelope(spruces, fun = pcf, 
                    funargs = list(correction = "Ripley", divisor = "d"),
@@ -131,16 +128,16 @@ hetero <- envelope(spruces, fun = pcf,
 
 To simulate antecedent conditions in which only one pattern influences
 the other, but not the other way around (Wiegand & Moloney 2004,
-Velazquez et al. 2016), `simulate_antecedent_conditions()` can be used.
-This null model randomizes only one type of points (e.g. seedlings),
-while keeping the other type of points constant (e.g. mature trees) to
-check for associations between the two.
+Velazquez et al. 2016), `simulate_antecedent()` can be used. This null
+model randomizes only one type of points (e.g. seedlings), while keeping
+the other type of points constant (e.g. mature trees) to check for
+associations between the two.
 
 ``` r
 marks(spruces) <- ifelse(marks(spruces) > 0.3, yes = "adult", no = "seedling")
 
-null_model_antecedent <- simulate_antecedent_conditions(spruces, 
-                                                        i = "seedling", j = "adult", nsim = 199)
+null_model_antecedent <- simulate_antecedent(spruces, i = "seedling", j = "adult",
+                                             nsim = 199)
 
 antecedent <- envelope(spruces, fun = pcf, 
                        funargs = list(correction = "Ripley", divisor = "d"),
@@ -152,7 +149,7 @@ antecedent <- envelope(spruces, fun = pcf,
 
 ### Various
 
-To plot simulation envelopes using quantum plots (e.g. Esser et
+To plot simulation envelopes using quantum plots (e.g., Esser et
 al. 2015), just pass an `envelope` object as input to `plot_quantums()`.
 
 ``` r

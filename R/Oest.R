@@ -1,4 +1,4 @@
-#' estimate_o_ring
+#' Oest
 #'
 #' @description O-ring function
 #'
@@ -26,7 +26,7 @@
 #'
 #' @examples
 #' input_pattern <- spatstat.random::runifpoint(n = 100)
-#' estimate_o_ring(input_pattern)
+#' Oest(input_pattern)
 #'
 #' @references
 #' Wiegand, T., Moloney, K.A., 2004. Rings, circles, and null models for point pattern
@@ -36,7 +36,7 @@
 #' ecology. Chapman and Hall/CRC Press, Boca Raton, USA. <isbn:978-1-4200-8254-8>
 #'
 #' @export
-estimate_o_ring <- function(x, ...) {
+Oest <- function(x, ...) {
 
   if (!spatstat.geom::is.ppp(x)) {
     stop("Please provide ppp.")
