@@ -84,7 +84,7 @@ o_ring <- Oest(spruces)
 Of course, both summary functions can be used in combination with `spatstat`'s `envelope()` function.
 
 ```{r env_oring}
-oring_envelope <- envelope(spruces, fun = estimate_o_ring, nsim = 199, verbose = FALSE)
+oring_envelope <- envelope(spruces, fun = Oest, nsim = 199, verbose = FALSE)
 ```
 
 ```{r plot_oring, echo = FALSE, fig.width = 7.5, fig.height = 5, fig.align = "center"}
