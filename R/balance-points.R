@@ -8,8 +8,8 @@
 #'
 #' @details
 #' The function balances out the number of points in the input pattern to either
-#' the provided number of points as integer or the same number of points if a \code{ppp}
-#' object is provided.
+#' the provided number of points as integer or the same number of points if a
+#' \code{ppp} object is provided.
 #'
 #' @return ppp
 #'

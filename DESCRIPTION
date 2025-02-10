@@ -1,7 +1,7 @@
 Type: Package
 Package: onpoint
 Title: Helper Functions for Point Pattern Analysis
-Version: 1.0.6
+Version: 1.1
 Authors@R: 
   person("Maximilian H.K.", "Hesselbarth", 
   email = "mhk.hesselbarth@gmail.com",

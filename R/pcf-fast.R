@@ -1,4 +1,4 @@
-#' estimate_pcf_fast
+#' pcf_fast
 #'
 #' @description Fast estimation of the pair correlation function
 #'
@@ -22,7 +22,7 @@
 #' @examples
 #' set.seed(42)
 #' pattern <- spatstat.random::runifpoint(n = 100)
-#' pcf_fast <- estimate_pcf_fast(pattern)
+#' pcf_fast <- pcf_fast(pattern)
 #'
 #' @references
 #' Ripley, B.D., 1977. Modelling spatial patterns. Journal of the Royal Statistical Society.
@@ -32,7 +32,7 @@
 #' John Wiley & Sons, Chichester, UK. <isbn:978-0-471-93757-9>
 #'
 #' @export
-estimate_pcf_fast <- function(pattern, ...){
+pcf_fast <- function(pattern, ...){
 
   k_fun <- suppressMessages(spatstat.explore::Kest(X = pattern, ...)) # estimate K-fct
 

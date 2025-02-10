@@ -1,4 +1,4 @@
-#' center_l_function
+#' center_Lest
 #'
 #' @description Centered L-function
 #'
@@ -18,10 +18,10 @@
 #'
 #' @examples
 #' input_pattern <- spatstat.random::runifpoint(n = 100)
-#' center_l_function(input_pattern, correction = "Ripley")
+#' center_Lest(input_pattern, correction = "Ripley")
 #'
 #' lest <- spatstat.explore::Lest(input_pattern)
-#' center_l_function(lest)
+#' center_Lest(lest)
 #'
 #' @references
 #' Besag, J.E., 1977. Discussion on Dr. Ripley’s paper. Journal of the Royal Statistical
@@ -36,7 +36,7 @@
 #' <https://doi.org/10.2307/3236356>
 #'
 #' @export
-center_l_function <- function(x, ...) {
+center_Lest <- function(x, ...) {
 
   if (!spatstat.geom::is.ppp(x) && !spatstat.geom::is.fv(x)) {
     stop("Please provide either ppp or fv object.")
