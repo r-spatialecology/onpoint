@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="index.html">onpoint</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,25 +74,25 @@
 <h3 id="summary-functions">Summary functions<a class="anchor" aria-label="anchor" href="#summary-functions"></a>
 </h3>
 <p>Currently, <code>onpoint</code> provides three second-order summary functions, namely Besag’s L-function centered to zero and the O-ring statistic and a fast estimation of the pair-correlation function.</p>
-<p>Centering Besag’s L-function to zero has the advantage of an easier interpretation and plotting (Haase 1995). The function <code><a href="reference/center_l_function.html">center_l_function()</a></code> can either deal with a point pattern and calculated the centered L-function directly, or center the L-function afterwards it was calculating using <code>spatstat</code>s <code><a href="https://rdrr.io/pkg/spatstat.explore/man/Lest.html" class="external-link">Lest()</a></code>.</p>
+<p>Centering Besag’s L-function to zero has the advantage of an easier interpretation and plotting (Haase 1995). The function <code>center_l_function()</code> can either deal with a point pattern and calculated the centered L-function directly, or center the L-function afterwards it was calculating using <code>spatstat</code>s <code><a href="https://rdrr.io/pkg/spatstat.explore/man/Lest.html" class="external-link">Lest()</a></code>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># calculate L-function</span></span>
 <span><span class="va">l_function</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/spatstat.explore/man/Lest.html" class="external-link">Lest</a></span><span class="op">(</span><span class="va">spruces</span>, correction <span class="op">=</span> <span class="st">"Ripley"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># center L-function to zero</span></span>
 <span><span class="co"># center_l_function &lt;- center_l_function(l_function)</span></span>
-<span><span class="va">l_function_centered</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/center_l_function.html">center_l_function</a></span><span class="op">(</span><span class="va">spruces</span>, correction <span class="op">=</span> <span class="st">"Ripley"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">l_function_centered</span> <span class="op">&lt;-</span> <span class="fu">center_l_function</span><span class="op">(</span><span class="va">spruces</span>, correction <span class="op">=</span> <span class="st">"Ripley"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-plot_lfun-1.png" style="display: block; margin: auto;"></p>
-<p>The O-ring statistic O(r) (Wiegand &amp; Moloney 2004) can be calculated using <code><a href="reference/estimate_o_ring.html">estimate_o_ring()</a></code>. Generally speaking, O(r) scales the pair correlation g(r) function with help of the intensity . One advantage of the O-ring statistic is that it can be interpreted as a neighborhood density because it is a probability density function (Wiegand &amp; Moloney 2004).</p>
+<p>The O-ring statistic O(r) (Wiegand &amp; Moloney 2004) can be calculated using <code>estimate_o_ring()</code>. Generally speaking, O(r) scales the pair correlation g(r) function with help of the intensity . One advantage of the O-ring statistic is that it can be interpreted as a neighborhood density because it is a probability density function (Wiegand &amp; Moloney 2004).</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">o_ring</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/estimate_o_ring.html">estimate_o_ring</a></span><span class="op">(</span><span class="va">spruces</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">o_ring</span> <span class="op">&lt;-</span> <span class="fu">estimate_o_ring</span><span class="op">(</span><span class="va">spruces</span><span class="op">)</span></span></code></pre></div>
 <p>Of course, both summary functions can be used in combination with <code>spatstat</code>’s <code><a href="https://rdrr.io/pkg/spatstat.explore/man/envelope.html" class="external-link">envelope()</a></code> function.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">oring_envelope</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/spatstat.explore/man/envelope.html" class="external-link">envelope</a></span><span class="op">(</span><span class="va">spruces</span>, fun <span class="op">=</span> <span class="va">estimate_o_ring</span>, nsim <span class="op">=</span> <span class="fl">199</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-plot_oring-1.png" style="display: block; margin: auto;"></p>
-<p><code><a href="reference/estimate_pcf_fast.html">estimate_pcf_fast()</a></code> estimates the pair-correlation function based on Ripley’s K-function, which is faster than estimation the pair-correlation function directly.</p>
+<p><code>estimate_pcf_fast()</code> estimates the pair-correlation function based on Ripley’s K-function, which is faster than estimation the pair-correlation function directly.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/estimate_pcf_fast.html">estimate_pcf_fast</a></span><span class="op">(</span><span class="va">spruces</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu">estimate_pcf_fast</span><span class="op">(</span><span class="va">spruces</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Function value object (class 'fv')</span></span>
 <span><span class="co">#&gt; for the function r -&gt; g(r)</span></span>
 <span><span class="co">#&gt; .............................................................</span></span>
@@ -111,20 +111,20 @@
 <h3 id="null-models">Null models<a class="anchor" aria-label="anchor" href="#null-models"></a>
 </h3>
 <p><code>onpoint</code> includes two functions to simulate null model patterns.</p>
-<p><code><a href="reference/simulate_heterogenous_pattern.html">simulate_heterogenous_pattern()</a></code> is a convienent wrapper around a few <code>spatstat</code> functions to straighforward simulate a heterogeneous Poisson process.</p>
+<p><code>simulate_heterogenous_pattern()</code> is a convienent wrapper around a few <code>spatstat</code> functions to straighforward simulate a heterogeneous Poisson process.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">null_model_hetero</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/simulate_heterogenous_pattern.html">simulate_heterogenous_pattern</a></span><span class="op">(</span><span class="va">spruces</span>, nsim <span class="op">=</span> <span class="fl">199</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">null_model_hetero</span> <span class="op">&lt;-</span> <span class="fu">simulate_heterogenous_pattern</span><span class="op">(</span><span class="va">spruces</span>, nsim <span class="op">=</span> <span class="fl">199</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">hetero</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/spatstat.explore/man/envelope.html" class="external-link">envelope</a></span><span class="op">(</span><span class="va">spruces</span>, fun <span class="op">=</span> <span class="va">pcf</span>, </span>
 <span>                   funargs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>correction <span class="op">=</span> <span class="st">"Ripley"</span>, divisor <span class="op">=</span> <span class="st">"d"</span><span class="op">)</span>,</span>
 <span>                   simulate <span class="op">=</span> <span class="va">null_model_hetero</span>, nsim <span class="op">=</span> <span class="fl">199</span>, </span>
 <span>                   verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-plot_hetero-1.png" style="display: block; margin: auto;"></p>
-<p>To simulate antecedent conditions in which only one pattern influences the other, but not the other way around (Wiegand &amp; Moloney 2004, Velazquez et al. 2016), <code><a href="reference/simulate_antecedent_conditions.html">simulate_antecedent_conditions()</a></code> can be used. This null model randomizes only one type of points (e.g. seedlings), while keeping the other type of points constant (e.g. mature trees) to check for associations between the two.</p>
+<p>To simulate antecedent conditions in which only one pattern influences the other, but not the other way around (Wiegand &amp; Moloney 2004, Velazquez et al. 2016), <code>simulate_antecedent_conditions()</code> can be used. This null model randomizes only one type of points (e.g. seedlings), while keeping the other type of points constant (e.g. mature trees) to check for associations between the two.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.geom/man/marks.html" class="external-link">marks</a></span><span class="op">(</span><span class="va">spruces</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/spatstat.geom/man/marks.html" class="external-link">marks</a></span><span class="op">(</span><span class="va">spruces</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0.3</span>, yes <span class="op">=</span> <span class="st">"adult"</span>, no <span class="op">=</span> <span class="st">"seedling"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">null_model_antecedent</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/simulate_antecedent_conditions.html">simulate_antecedent_conditions</a></span><span class="op">(</span><span class="va">spruces</span>, </span>
+<span><span class="va">null_model_antecedent</span> <span class="op">&lt;-</span> <span class="fu">simulate_antecedent_conditions</span><span class="op">(</span><span class="va">spruces</span>, </span>
 <span>                                                        i <span class="op">=</span> <span class="st">"seedling"</span>, j <span class="op">=</span> <span class="st">"adult"</span>, nsim <span class="op">=</span> <span class="fl">199</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">antecedent</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/spatstat.explore/man/envelope.html" class="external-link">envelope</a></span><span class="op">(</span><span class="va">spruces</span>, fun <span class="op">=</span> <span class="va">pcf</span>, </span>
