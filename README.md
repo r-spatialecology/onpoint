@@ -17,8 +17,7 @@ status](https://www.r-pkg.org/badges/version/onpoint)](https://CRAN.R-project.or
 [![CRAN
 logs](https://cranlogs.r-pkg.org/badges/grand-total/onpoint)](http://cran.rstudio.com/web/packages/onpoint/index.html)
 [![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Codecov test
-coverage](https://codecov.io/gh/r-spatialecology/onpoint/graph/badge.svg)](https://app.codecov.io/gh/r-spatialecology/onpoint)
+
 <!-- badges: end -->
 
 `onpoint` is a growing collection of helper functions mainly related to
