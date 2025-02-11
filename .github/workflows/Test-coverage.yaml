@@ -3,10 +3,9 @@
 
 on:
   push:
-    branches: [main, dev]
+    branches: [CRAN, main]
   pull_request:
-    branches: [main]
-  workflow_dispatch:
+    branches: [CRAN]
 
 name: test-coverage
 
@@ -14,6 +13,7 @@ permissions: read-all
 
 jobs:
   test-coverage:
+    if: "!contains(github.event.commits[0].message, '[skip-ci]')"
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
